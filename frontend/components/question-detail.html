@@ -1,0 +1,62 @@
+<section class="questions-view visually-hidden" id="question-detail-view" aria-labelledby="question-detail-heading">
+    <button class="btn btn-link px-0 mb-3" id="question-back-button">
+        <i class="fas fa-arrow-left"></i> Back to questions
+    </button>
+    <div class="question-layout" id="question-detail-layout">
+        <div class="d-flex flex-column gap-3">
+            <div class="question-head">
+                <h2 class="mb-1" id="question-detail-heading"></h2>
+                <div class="question-meta" id="question-meta"></div>
+            </div>
+            <article class="question-statement" id="question-statement" aria-live="polite"></article>
+            <section class="question-resources" aria-labelledby="question-resources-heading">
+                <h3 class="h5" id="question-resources-heading">Helpful resources</h3>
+                <ul class="list-unstyled" id="question-resources-list"></ul>
+            </section>
+            <section class="question-samples" aria-labelledby="question-samples-heading">
+                <h3 class="h5" id="question-samples-heading">Sample tests</h3>
+                <div id="question-samples-container" class="d-flex flex-column gap-2"></div>
+            </section>
+            <section class="question-solution" aria-labelledby="question-solution-heading">
+                <div class="d-flex align-items-center gap-2">
+                    <h3 class="h5 mb-0" id="question-solution-heading">Editorial solution</h3>
+                    <span class="badge bg-secondary" id="question-solution-status">Hidden</span>
+                </div>
+                <p class="text-muted small mb-2">View the editorial after attempting the problem.</p>
+                <button class="btn btn-outline-primary" id="question-view-solution-btn">
+                    <i class="fas fa-book-open"></i> View solution
+                </button>
+                <div id="question-solution-body" class="mt-3 visually-hidden"></div>
+            </section>
+        </div>
+        <div class="d-flex flex-column gap-3">
+            <section class="question-solve-panel p-3 bg-white rounded-3 shadow-sm" aria-labelledby="question-editor-heading">
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                    <h3 class="h5 mb-0" id="question-editor-heading">Code playground</h3>
+                    <span class="badge bg-light text-dark" id="question-language">Python</span>
+                </div>
+                <textarea class="question-editor" id="question-editor" spellcheck="false" aria-label="Question code editor"></textarea>
+                <div class="d-flex gap-2 mt-3 flex-wrap">
+                    <button class="btn btn-primary" id="question-run-btn">
+                        <i class="fas fa-terminal"></i> Run
+                    </button>
+                    <button class="btn btn-success" id="question-submit-btn">
+                        <i class="fas fa-flag-checkered"></i> Submit
+                    </button>
+                </div>
+                <div class="question-results mt-3 visually-hidden" id="question-results" aria-live="polite"></div>
+            </section>
+            <section class="question-chat-panel" aria-labelledby="question-chat-heading">
+                <div class="d-flex justify-content-between align-items-center p-3 border-bottom">
+                    <h3 class="h6 mb-0" id="question-chat-heading"><i class="fas fa-robot"></i> Ask AI</h3>
+                    <span class="badge bg-primary-subtle text-primary-emphasis">Gemini</span>
+                </div>
+                <div class="chat-messages" id="chat-messages"></div>
+                <div class="chat-input">
+                    <textarea id="chat-input" rows="2" placeholder="Ask for hints, edge cases, or clarifications..." aria-label="Ask the AI assistant"></textarea>
+                    <button class="btn btn-primary" id="chat-send-btn">Send</button>
+                </div>
+            </section>
+        </div>
+    </div>
+</section>

@@ -5,13 +5,16 @@ Main CLI for A2Z DSA Learning System
 A comprehensive learning system for Striver's A2Z DSA course with Python focus.
 """
 
-import typer
 import json
+import subprocess
+import sys
 from pathlib import Path
 from typing import Optional
+
+import typer
 from rich.console import Console
-from rich.table import Table
 from rich.panel import Panel
+from rich.table import Table
 
 app = typer.Typer(help="A2Z DSA Learning System - Master data structures and algorithms systematically")
 console = Console()
@@ -81,8 +84,7 @@ def show_gaps():
     """Show coverage gaps and missing implementations"""
 
     try:
-        import subprocess
-        result = subprocess.run(['python', 'scripts/coverage_checker.py'],
+        result = subprocess.run([sys.executable, 'scripts/coverage_checker.py'],
                               capture_output=True, text=True, cwd='.')
         console.print(result.stdout)
         if result.stderr:
@@ -100,8 +102,7 @@ def show_plan():
     if not plan_file.exists():
         console.print("📅 Generating new study plan...", style="blue")
         try:
-            import subprocess
-            subprocess.run(['python', 'scripts/study_plan_generator.py'], check=True, cwd='.')
+            subprocess.run([sys.executable, 'scripts/study_plan_generator.py'], check=True, cwd='.')
         except subprocess.CalledProcessError as e:
             console.print(f"❌ Error generating study plan: {e}", style="red")
             return
@@ -154,15 +155,14 @@ def initialize():
         ("analyze_repos.py", "Analyzing repositories"),
         ("build_a2z_structure.py", "Building A2Z structure"),
         ("build_index.py", "Creating index and mappings"),
-        ("coverage_checker.py", "Checking coverage")
+        ("coverage_checker.py", "Checking coverage"),
+        ("build_questions_dataset.py", "Generating questions dataset")
     ]
-
-    import subprocess
 
     for script, description in scripts:
         console.print(f"📊 {description}...")
         try:
-            result = subprocess.run(['python', f'scripts/{script}'],
+            result = subprocess.run([sys.executable, f'scripts/{script}'],
                                   check=True, capture_output=True, text=True, cwd='.')
             console.print(f"✅ {description} complete")
         except subprocess.CalledProcessError as e:

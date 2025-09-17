@@ -1,0 +1,24 @@
+<section class="questions-view" id="questions-list-view" aria-labelledby="questions-list-heading">
+    <div class="d-flex flex-column flex-md-row align-items-md-center justify-content-between mb-4 gap-3">
+        <div>
+            <h2 class="mb-1" id="questions-list-heading"><i class="fas fa-question-circle"></i> Practice Questions</h2>
+            <p class="text-muted mb-0">Browse curated problems and track your progress.</p>
+        </div>
+        <div class="d-flex gap-2 flex-wrap">
+            <input type="search" class="form-control" id="questions-search" placeholder="Search questions..." aria-label="Search questions" />
+            <select class="form-select" id="questions-status-filter" aria-label="Filter by status">
+                <option value="">All statuses</option>
+                <option value="unsolved">Unsolved</option>
+                <option value="attempted">Attempted</option>
+                <option value="solved">Solved</option>
+            </select>
+            <select class="form-select" id="questions-difficulty-filter" aria-label="Filter by difficulty">
+                <option value="">All difficulty</option>
+                <option value="Easy">Easy</option>
+                <option value="Medium">Medium</option>
+                <option value="Hard">Hard</option>
+            </select>
+        </div>
+    </div>
+    <div class="row g-3" id="questions-list-container" aria-live="polite"></div>
+</section>

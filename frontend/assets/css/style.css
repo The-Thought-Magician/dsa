@@ -115,23 +115,6 @@ body {
     margin: 20px 0;
 }
 
-.loading-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0,0,0,0.5);
-    display: none;
-    z-index: 9999;
-}
-
-.loading-overlay.show {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
 .gap-item {
     padding: 10px;
     margin: 5px 0;
@@ -152,6 +135,167 @@ body {
     background-color: yellow;
     padding: 2px 4px;
     border-radius: 3px;
+}
+
+.questions-card {
+    border: none;
+    border-radius: 14px;
+    background: #ffffff;
+    box-shadow: 0 12px 24px rgba(15, 23, 42, 0.08);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    cursor: pointer;
+}
+
+.questions-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 16px 28px rgba(15, 23, 42, 0.12);
+}
+
+.question-meta {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.question-meta .badge {
+    font-size: 0.75rem;
+}
+
+.question-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 600;
+    font-size: 0.85rem;
+    text-transform: capitalize;
+}
+
+.question-status[data-status="unsolved"] {
+    color: #0d6efd;
+}
+
+.question-status[data-status="attempted"] {
+    color: #fd7e14;
+}
+
+.question-status[data-status="solved"] {
+    color: #198754;
+}
+
+.question-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 24px;
+}
+
+@media (min-width: 992px) {
+    .question-layout {
+        grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+    }
+}
+
+.question-statement {
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: inset 0 0 0 1px rgba(15, 23, 42, 0.05);
+}
+
+.question-statement pre {
+    background-color: #0f172a;
+    color: #f8fafc;
+    padding: 14px;
+    border-radius: 10px;
+    overflow-x: auto;
+}
+
+.question-statement code {
+    font-family: 'Fira Code', monospace;
+}
+
+.question-editor {
+    width: 100%;
+    min-height: 220px;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    font-family: 'Fira Code', monospace;
+    padding: 14px;
+    resize: vertical;
+}
+
+.question-results {
+    border-radius: 12px;
+    background: #ffffff;
+    box-shadow: inset 0 0 0 1px rgba(15, 23, 42, 0.05);
+}
+
+.question-results .result-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 14px;
+    border-bottom: 1px solid rgba(15, 23, 42, 0.05);
+    font-size: 0.9rem;
+}
+
+.question-results .result-item:last-child {
+    border-bottom: none;
+}
+
+.question-chat-panel {
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: inset 0 0 0 1px rgba(15, 23, 42, 0.05);
+    display: flex;
+    flex-direction: column;
+    max-height: 560px;
+}
+
+.chat-messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.chat-message {
+    padding: 12px 14px;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+.chat-message.ai {
+    background-color: #eff6ff;
+    color: #0f3964;
+    align-self: flex-start;
+}
+
+.chat-message.user {
+    background-color: #e7f8ef;
+    color: #14532d;
+    align-self: flex-end;
+}
+
+.chat-input {
+    padding: 12px;
+    border-top: 1px solid rgba(15, 23, 42, 0.05);
+    display: flex;
+    gap: 8px;
+}
+
+.chat-input textarea {
+    flex: 1;
+    resize: none;
+    border-radius: 10px;
+    border: 1px solid var(--border-color);
+    padding: 10px 12px;
+    font-size: 0.9rem;
+}
+
+.chat-input button {
+    white-space: nowrap;
 }
 
 @media (max-width: 768px) {

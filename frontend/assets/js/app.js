@@ -1,208 +1,462 @@
-const API_BASE_URL = '';
+import { API_BASE_URL } from './config.js';
+import { withLoading } from './ui/loading.js';
+import { showToast } from './ui/toast.js';
+import { QuestionsController } from './questions.js';
 
 class App {
     constructor() {
-        this.currentSection = 'dashboard';
         this.data = {
-            topics: [],
             stats: null,
+            topics: [],
             coverage: null,
-            studyPlan: null
+            studyPlan: null,
         };
-        this.init();
-    }
+        this.sections = {};
+        this.navLinks = [];
+        this.activeSection = 'dashboard';
 
-    async init() {
-        try {
-            console.log('App initializing...');
-            await this.loadInitialData();
-            this.setupEventListeners();
-            this.setupNavigation();
-
-            // Show initial section based on hash or default to dashboard
-            const hash = window.location.hash.slice(1) || 'dashboard';
-            this.showSection(hash);
-            console.log('App initialized successfully');
-        } catch (error) {
-            console.error('App initialization failed:', error);
-            this.showError('Application failed to initialize: ' + error.message);
-        }
-    }
-
-    async loadInitialData() {
-        try {
-            this.showLoading(true);
-
-            const [stats, topics, coverage] = await Promise.all([
-                this.fetchStats(),
-                this.fetchTopics(),
-                this.fetchCoverage()
-            ]);
-
-            this.data.stats = stats;
-            this.data.topics = topics;
-            this.data.coverage = coverage;
-
-            this.renderDashboard();
-
-        } catch (error) {
-            console.error('Error loading initial data:', error);
-            this.showError('Failed to load data. Please refresh the page.');
-        } finally {
-            this.showLoading(false);
-        }
-    }
-
-    setupEventListeners() {
-        const topicSearch = document.getElementById('topic-search');
-        const statusFilter = document.getElementById('status-filter');
-        const sectionFilter = document.getElementById('section-filter');
-
-        if (topicSearch) {
-            topicSearch.addEventListener('input',
-                this.debounce(() => this.loadTopics(), 300)
-            );
-        }
-
-        if (statusFilter) {
-            statusFilter.addEventListener('change', () => this.loadTopics());
-        }
-
-        if (sectionFilter) {
-            sectionFilter.addEventListener('change', () => this.loadTopics());
-        }
-    }
-
-    setupNavigation() {
-        // Handle hash changes for navigation
-        window.addEventListener('hashchange', () => {
-            const hash = window.location.hash.slice(1) || 'dashboard';
-            console.log('Hash changed to:', hash);
-            this.showSection(hash);
+        this.questionsController = new QuestionsController({
+            onNavigate: this.handleQuestionsNavigate.bind(this),
+            onStatusChange: this.handleQuestionStatusChange.bind(this),
         });
 
-        // Handle navigation link clicks
-        document.querySelectorAll('a[href^="#"]').forEach(link => {
-            link.addEventListener('click', (e) => {
-                e.preventDefault();
-                const hash = link.getAttribute('href').slice(1);
-                if (hash) {
-                    console.log('Navigation link clicked:', hash);
-                    window.location.hash = hash;
+        document.addEventListener('DOMContentLoaded', () => this.bootstrap());
+    }
+
+    async bootstrap() {
+        this.cacheDom();
+        this.bindNavigation();
+        this.bindTopicFilters();
+        await this.loadInitialData();
+        this.handleRoute();
+
+        window.addEventListener('popstate', () => this.handleRoute());
+        window.addEventListener('hashchange', () => this.handleRoute());
+    }
+
+    cacheDom() {
+        this.sections = {
+            dashboard: document.getElementById('dashboard-section'),
+            topics: document.getElementById('topics-section'),
+            coverage: document.getElementById('coverage-section'),
+            planning: document.getElementById('planning-section'),
+            questions: document.getElementById('questions-section'),
+        };
+        this.navLinks = Array.from(document.querySelectorAll('[data-route]'));
+    }
+
+    bindNavigation() {
+        this.navLinks.forEach((link) => {
+            link.addEventListener('click', (event) => {
+                event.preventDefault();
+                const route = link.getAttribute('data-route');
+                if (route === 'questions') {
+                    this.navigateToQuestions();
+                } else {
+                    this.navigateToSection(route || 'dashboard');
                 }
             });
         });
     }
 
-    debounce(func, wait) {
-        let timeout;
-        return function executedFunction(...args) {
-            const later = () => {
-                clearTimeout(timeout);
-                func(...args);
-            };
-            clearTimeout(timeout);
-            timeout = setTimeout(later, wait);
-        };
+    bindTopicFilters() {
+        const topicSearch = document.getElementById('topic-search');
+        const statusFilter = document.getElementById('status-filter');
+        const sectionFilter = document.getElementById('section-filter');
+
+        if (topicSearch) {
+            topicSearch.addEventListener('input', this.debounce(() => this.loadTopics(), 300));
+        }
+        statusFilter?.addEventListener('change', () => this.loadTopics());
+        sectionFilter?.addEventListener('change', () => this.loadTopics());
     }
 
-    async fetchStats() {
-        const response = await fetch(`${API_BASE_URL}/api/stats`);
-        if (!response.ok) throw new Error('Failed to fetch stats');
-        return await response.json();
+    async loadInitialData() {
+        try {
+            const [stats, topics, coverage] = await withLoading(
+                async () => {
+                    const [statsRes, topicsRes, coverageRes] = await Promise.all([
+                        fetch(`${API_BASE_URL}/api/stats`),
+                        fetch(`${API_BASE_URL}/api/topics`),
+                        fetch(`${API_BASE_URL}/api/coverage`),
+                    ]);
+
+                    if (!statsRes.ok || !topicsRes.ok || !coverageRes.ok) {
+                        throw new Error('Failed to load initial data');
+                    }
+
+                    return Promise.all([statsRes.json(), topicsRes.json(), coverageRes.json()]);
+                },
+                { label: 'Loading dashboard data...' }
+            );
+
+            this.data.stats = stats;
+            this.data.topics = topics;
+            this.data.coverage = coverage;
+            this.renderDashboard();
+        } catch (error) {
+            const message = error instanceof Error ? error.message : 'Failed to load initial data';
+            showToast(message, { type: 'error' });
+        }
     }
 
-    async fetchTopics(section = null, status = null) {
-        const params = new URLSearchParams();
-        if (section) params.append('section', section);
-        if (status) params.append('status', status);
+    handleRoute() {
+        const path = window.location.pathname;
+        if (path.startsWith('/questions')) {
+            const [, , questionId] = path.split('/');
+            this.showSection('questions');
+            if (questionId) {
+                this.questionsController
+                    .showDetail(questionId)
+                    .catch((error) => {
+                        const message = error instanceof Error ? error.message : 'Question unavailable';
+                        showToast(message, { type: 'error' });
+                        this.navigateToQuestions();
+                    });
+            } else {
+                this.questionsController.showList();
+            }
+            this.updateNav('questions');
+            return;
+        }
 
-        const response = await fetch(`${API_BASE_URL}/api/topics?${params}`);
-        if (!response.ok) throw new Error('Failed to fetch topics');
-        return await response.json();
+        const hashSection = window.location.hash.replace('#', '') || 'dashboard';
+        this.showSection(hashSection);
+        this.updateNav(hashSection);
     }
 
-    async fetchCoverage() {
-        const response = await fetch(`${API_BASE_URL}/api/coverage`);
-        if (!response.ok) throw new Error('Failed to fetch coverage');
-        return await response.json();
+    navigateToSection(section) {
+        if (section === 'questions') {
+            this.navigateToQuestions();
+            return;
+        }
+        window.history.pushState({}, '', `#${section}`);
+        this.handleRoute();
     }
 
-    async fetchStudyPlan() {
-        const response = await fetch(`${API_BASE_URL}/api/study-plan`);
-        if (!response.ok) throw new Error('Failed to fetch study plan');
-        return await response.json();
-    }
-
-    async fetchTodayPlan() {
-        const response = await fetch(`${API_BASE_URL}/api/study-plan/today`);
-        if (!response.ok) throw new Error('Failed to fetch today plan');
-        return await response.json();
+    navigateToQuestions(questionId = '') {
+        const suffix = questionId ? `/${questionId}` : '';
+        window.history.pushState({}, '', `/questions${suffix}`);
+        this.handleRoute();
     }
 
     showSection(sectionName) {
-        console.log('showSection called with:', sectionName);
-
-        // Hide all sections
-        document.querySelectorAll('.section').forEach(section => {
-            section.classList.remove('active');
-            console.log('Hiding section:', section.id);
+        Object.entries(this.sections).forEach(([name, element]) => {
+            if (!element) return;
+            if (name === sectionName) {
+                element.classList.add('active');
+            } else {
+                element.classList.remove('active');
+            }
         });
 
-        // Show target section
-        const targetSection = document.getElementById(`${sectionName}-section`);
-        if (targetSection) {
-            targetSection.classList.add('active');
-            console.log('Showing section:', targetSection.id);
-            this.currentSection = sectionName;
+        this.activeSection = sectionName;
 
-            // Load section-specific data
-            switch(sectionName) {
-                case 'topics':
-                    console.log('Loading topics data');
-                    this.loadTopics();
-                    break;
-                case 'coverage':
-                    console.log('Loading coverage data');
-                    this.loadCoverage();
-                    break;
-                case 'planning':
-                    console.log('Loading planning data');
-                    this.loadPlanning();
-                    break;
-                default:
-                    console.log('Dashboard section - no additional data loading needed');
+        switch (sectionName) {
+            case 'topics':
+                this.loadTopics();
+                break;
+            case 'coverage':
+                this.loadCoverage();
+                break;
+            case 'planning':
+                this.loadPlanning();
+                break;
+            default:
+                break;
+        }
+    }
+
+    updateNav(activeRoute) {
+        this.navLinks.forEach((link) => {
+            const route = link.getAttribute('data-route');
+            if (route === activeRoute) {
+                link.classList.add('active');
+            } else if (route !== 'questions' && activeRoute !== 'questions') {
+                // ensure other links lose active state unless questions route
+                link.classList.toggle('active', route === activeRoute);
+            } else {
+                link.classList.remove('active');
             }
+        });
+        if (activeRoute === 'questions') {
+            const questionsLink = this.navLinks.find((link) => link.getAttribute('data-route') === 'questions');
+            questionsLink?.classList.add('active');
+        }
+    }
+
+    handleQuestionsNavigate({ view, questionId }) {
+        if (view === 'detail' && questionId) {
+            this.navigateToQuestions(questionId);
         } else {
-            console.error('Section not found:', `${sectionName}-section`);
+            this.navigateToQuestions();
+        }
+    }
+
+    handleQuestionStatusChange() {
+        // Re-render list view after status updates; no-op for now but hook kept for analytics.
+    }
+
+    async loadTopics() {
+        try {
+            const searchTerm = document.getElementById('topic-search')?.value ?? '';
+            const statusFilter = document.getElementById('status-filter')?.value ?? '';
+            const sectionFilter = document.getElementById('section-filter')?.value ?? '';
+
+            const params = new URLSearchParams();
+            if (sectionFilter) params.append('section', sectionFilter);
+            if (statusFilter) params.append('status', statusFilter);
+            else if (searchTerm) params.append('section', searchTerm);
+
+            const response = await withLoading(
+                async () => {
+                    const res = await fetch(`${API_BASE_URL}/api/topics?${params.toString()}`);
+                    if (!res.ok) {
+                        throw new Error('Failed to load topics');
+                    }
+                    return res.json();
+                },
+                { label: 'Refreshing topics...' }
+            );
+
+            this.renderTopics(response);
+        } catch (error) {
+            const message = error instanceof Error ? error.message : 'Failed to load topics';
+            showToast(message, { type: 'error' });
+        }
+    }
+
+    renderTopics(topics) {
+        const container = document.getElementById('topics-container');
+        if (!container) return;
+
+        if (!topics.length) {
+            container.innerHTML = '<div class="alert alert-info">No topics found.</div>';
+            return;
+        }
+
+        container.innerHTML = topics
+            .map((topic) => `
+                <div class="topic-card card">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-start mb-2">
+                            <h5 class="card-title mb-0">
+                                <span class="badge bg-primary me-2">${topic.step_number}</span>
+                                ${topic.title}
+                            </h5>
+                            <span class="status-badge status-${topic.status}">${topic.status}</span>
+                        </div>
+                        <p class="card-text text-muted small">${topic.notes}</p>
+                        <div class="row text-center">
+                            <div class="col-4">
+                                <i class="fas fa-tasks text-primary"></i>
+                                <div class="small">Problems</div>
+                                <strong>${topic.problem_count}</strong>
+                            </div>
+                            <div class="col-4">
+                                <i class="fas fa-file-code text-success"></i>
+                                <div class="small">Files</div>
+                                <strong>${topic.file_count}</strong>
+                            </div>
+                            <div class="col-4">
+                                <i class="fas fa-tags text-info"></i>
+                                <div class="small">Tags</div>
+                                <strong>${topic.tags.length}</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `)
+            .join('');
+    }
+
+    async loadCoverage() {
+        try {
+            if (!this.data.coverage) {
+                this.data.coverage = await withLoading(
+                    async () => {
+                        const res = await fetch(`${API_BASE_URL}/api/coverage`);
+                        if (!res.ok) {
+                            throw new Error('Failed to load coverage data');
+                        }
+                        return res.json();
+                    },
+                    { label: 'Loading coverage data...' }
+                );
+            }
+            this.renderCoverage();
+        } catch (error) {
+            const message = error instanceof Error ? error.message : 'Failed to load coverage';
+            showToast(message, { type: 'error' });
+        }
+    }
+
+    renderCoverage() {
+        const coverage = this.data.coverage;
+        if (!coverage) return;
+
+        const gapsContainer = document.getElementById('gaps-container');
+        if (gapsContainer) {
+            gapsContainer.innerHTML = `
+                <div class="row">
+                    <div class="col-md-6">
+                        <h6><i class="fas fa-exclamation-circle text-warning"></i> Missing Python Implementations</h6>
+                        ${coverage.gaps.missing_python
+                            .slice(0, 10)
+                            .map((item) => `<div class="gap-item">${item}</div>`)
+                            .join('')}
+                    </div>
+                    <div class="col-md-6">
+                        <h6><i class="fas fa-lightbulb text-info"></i> Recommendations</h6>
+                        ${coverage.recommendations.map((rec) => `<div class="recommendation-item">${rec}</div>`).join('')}
+                    </div>
+                </div>
+            `;
+        }
+
+        const tableBody = document.querySelector('#coverage-table tbody');
+        if (tableBody) {
+            tableBody.innerHTML = Object.entries(coverage.coverage_by_section)
+                .sort((a, b) => a[1].step_number - b[1].step_number)
+                .map(([title, info]) => `
+                    <tr>
+                        <td><span class="badge bg-primary">${info.step_number}</span></td>
+                        <td>${title}</td>
+                        <td><span class="status-badge status-${info.status}">${info.status}</span></td>
+                        <td>${info.problem_count}</td>
+                        <td>${info.file_count}</td>
+                    </tr>
+                `)
+                .join('');
+        }
+
+        if (window.renderCharts) {
+            window.renderCharts();
+        }
+    }
+
+    async loadPlanning() {
+        try {
+            const [todayPlan, studyPlan] = await withLoading(
+                async () => {
+                    const today = await fetch(`${API_BASE_URL}/api/study-plan/today`).then((res) => res.json().catch(() => null));
+                    const plan = await fetch(`${API_BASE_URL}/api/study-plan`).then((res) => {
+                        if (!res.ok) throw new Error('Failed to load study plan');
+                        return res.json();
+                    });
+                    return [today, plan];
+                },
+                { label: 'Loading study plan...' }
+            );
+            this.renderPlanning(todayPlan, studyPlan);
+        } catch (error) {
+            const message = error instanceof Error ? error.message : 'Failed to load planning data';
+            showToast(message, { type: 'error' });
+        }
+    }
+
+    renderPlanning(todayPlan, studyPlan) {
+        const todayContainer = document.getElementById('today-plan');
+        if (todayContainer && todayPlan) {
+            todayContainer.innerHTML = `
+                <h4><i class="fas fa-calendar-day"></i> Today's Plan - ${todayPlan.day_name}</h4>
+                <p><i class="fas fa-clock"></i> Total time: ${Math.floor(todayPlan.total_time / 60)}h ${todayPlan.total_time % 60}m |
+                   <i class="fas fa-tasks"></i> ${todayPlan.task_count} tasks</p>
+                <div class="row">
+                    ${todayPlan.tasks
+                        .map(
+                            (task) => `
+                                <div class="col-md-6 mb-3">
+                                    <div class="card task-card">
+                                        <div class="card-body">
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <h5 class="card-title">${task.title}</h5>
+                                                <span class="badge bg-secondary">${task.difficulty}</span>
+                                            </div>
+                                            <p class="card-text">
+                                                <i class="fas fa-clock"></i> ${task.estimated_time} min
+                                                <br>
+                                                <i class="fas fa-tags"></i> ${task.section}
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            `
+                        )
+                        .join('')}
+                </div>
+            `;
+        }
+
+        const planContainer = document.getElementById('study-plan-container');
+        if (planContainer && studyPlan) {
+            planContainer.innerHTML = studyPlan.plans
+                .map(
+                    (plan) => `
+                        <div class="card mb-3">
+                            <div class="card-header">
+                                <h5 class="mb-0">${plan.day_name} - ${plan.date}</h5>
+                            </div>
+                            <div class="card-body">
+                                <p><i class="fas fa-clock"></i> ${plan.total_time} minutes | <i class="fas fa-tasks"></i> ${plan.task_count} tasks</p>
+                                <ul class="list-group list-group-flush">
+                                    ${plan.tasks
+                                        .map(
+                                            (task) => `
+                                                <li class="list-group-item">
+                                                    <div class="d-flex justify-content-between">
+                                                        <strong>${task.title}</strong>
+                                                        <span class="badge bg-light text-dark">${task.difficulty}</span>
+                                                    </div>
+                                                    <div class="text-muted small">
+                                                        ${task.estimated_time} min • ${task.type}
+                                                    </div>
+                                                </li>
+                                            `
+                                        )
+                                        .join('')}
+                                </ul>
+                            </div>
+                        </div>
+                    `
+                )
+                .join('');
+        }
+    }
+
+    async generateNewPlan() {
+        try {
+            await withLoading(
+                async () => {
+                    const res = await fetch(`${API_BASE_URL}/api/rebuild`, { method: 'POST' });
+                    if (!res.ok) {
+                        throw new Error('Failed to rebuild data');
+                    }
+                },
+                { label: 'Regenerating plan...' }
+            );
+            await this.loadPlanning();
+            showToast('New study plan generated successfully!', { type: 'success' });
+        } catch (error) {
+            const message = error instanceof Error ? error.message : 'Failed to generate new plan';
+            showToast(message, { type: 'error' });
         }
     }
 
     renderDashboard() {
         this.renderStatsCards();
-        this.renderCharts();
+        if (window.renderCharts) {
+            window.renderCharts();
+        }
     }
 
     renderStatsCards() {
-        console.log('renderStatsCards called');
         const stats = this.data.stats;
         const coverage = this.data.coverage;
-        console.log('Stats data:', stats);
-
         const container = document.getElementById('stats-cards');
-        console.log('Container found:', container);
+        if (!stats || !container) return;
 
-        if (!container) {
-            console.error('stats-cards container not found');
-            return;
-        }
-
-        if (!stats) {
-            console.error('No stats data available');
-            return;
-        }
-
-        const cardsHTML = `
+        container.innerHTML = `
             <div class="col-lg-3 col-md-6">
                 <div class="stats-card text-center">
                     <div class="card-icon"><i class="fas fa-book"></i></div>
@@ -232,353 +486,18 @@ class App {
                 </div>
             </div>
         `;
-
-        console.log('Setting innerHTML for stats-cards');
-        container.innerHTML = cardsHTML;
-        console.log('Stats cards rendered successfully');
     }
 
-    async loadTopics() {
-        try {
-            this.showLoading(true);
-
-            const searchTerm = document.getElementById('topic-search').value;
-            const statusFilter = document.getElementById('status-filter').value;
-            const sectionFilter = document.getElementById('section-filter').value;
-
-            const topics = await this.fetchTopics(
-                sectionFilter || (searchTerm ? searchTerm : null),
-                statusFilter || null
-            );
-
-            this.renderTopics(topics);
-
-        } catch (error) {
-            console.error('Error loading topics:', error);
-            this.showError('Failed to load topics');
-        } finally {
-            this.showLoading(false);
-        }
-    }
-
-    renderTopics(topics) {
-        const container = document.getElementById('topics-container');
-
-        if (topics.length === 0) {
-            container.innerHTML = '<div class="alert alert-info">No topics found matching your criteria.</div>';
-            return;
-        }
-
-        const topicsHTML = topics.map(topic => `
-            <div class="topic-card card">
-                <div class="card-body">
-                    <div class="d-flex justify-content-between align-items-start mb-2">
-                        <h5 class="card-title mb-0">
-                            <span class="badge bg-primary me-2">${topic.step_number}</span>
-                            ${topic.title}
-                        </h5>
-                        <span class="status-badge status-${topic.status}">${topic.status}</span>
-                    </div>
-                    <p class="card-text text-muted small">${topic.notes}</p>
-                    <div class="row text-center">
-                        <div class="col-4">
-                            <i class="fas fa-tasks text-primary"></i>
-                            <div class="small">Problems</div>
-                            <strong>${topic.problem_count}</strong>
-                        </div>
-                        <div class="col-4">
-                            <i class="fas fa-file-code text-success"></i>
-                            <div class="small">Files</div>
-                            <strong>${topic.file_count}</strong>
-                        </div>
-                        <div class="col-4">
-                            <i class="fas fa-tags text-info"></i>
-                            <div class="small">Topics</div>
-                            <strong>${topic.tags.length}</strong>
-                        </div>
-                    </div>
-                    ${topic.tags.length > 0 ? `
-                        <div class="mt-3">
-                            ${topic.tags.slice(0, 5).map(tag => `<span class="badge bg-light text-dark me-1">${tag}</span>`).join('')}
-                            ${topic.tags.length > 5 ? `<span class="text-muted">+${topic.tags.length - 5} more</span>` : ''}
-                        </div>
-                    ` : ''}
-                </div>
-            </div>
-        `).join('');
-
-        container.innerHTML = topicsHTML;
-    }
-
-    async loadCoverage() {
-        try {
-            this.showLoading(true);
-
-            if (!this.data.coverage) {
-                this.data.coverage = await this.fetchCoverage();
-            }
-
-            this.renderCoverage();
-
-        } catch (error) {
-            console.error('Error loading coverage:', error);
-            this.showError('Failed to load coverage data');
-        } finally {
-            this.showLoading(false);
-        }
-    }
-
-    renderCoverage() {
-        const coverage = this.data.coverage;
-
-        const gapsHTML = `
-            <div class="row">
-                <div class="col-md-6">
-                    <h6><i class="fas fa-exclamation-circle text-warning"></i> Missing Python Implementations</h6>
-                    ${coverage.gaps.missing_python.slice(0, 10).map(item => `
-                        <div class="gap-item">${item}</div>
-                    `).join('')}
-                    ${coverage.gaps.missing_python.length > 10 ?
-                        `<div class="text-muted">... and ${coverage.gaps.missing_python.length - 10} more</div>` : ''}
-                </div>
-                <div class="col-md-6">
-                    <h6><i class="fas fa-lightbulb text-info"></i> Recommendations</h6>
-                    ${coverage.recommendations.map(rec => `
-                        <div class="recommendation-item">${rec}</div>
-                    `).join('')}
-                </div>
-            </div>
-        `;
-
-        document.getElementById('gaps-container').innerHTML = gapsHTML;
-
-        const tableBody = document.querySelector('#coverage-table tbody');
-        const sectionsHTML = Object.entries(coverage.coverage_by_section)
-            .sort((a, b) => a[1].step_number - b[1].step_number)
-            .map(([title, info]) => `
-                <tr>
-                    <td><span class="badge bg-primary">${info.step_number}</span></td>
-                    <td>${title}</td>
-                    <td><span class="status-badge status-${info.status}">${info.status}</span></td>
-                    <td>${info.problem_count}</td>
-                    <td>${info.file_count}</td>
-                </tr>
-            `).join('');
-
-        tableBody.innerHTML = sectionsHTML;
-    }
-
-    async loadPlanning() {
-        try {
-            this.showLoading(true);
-
-            const [todayPlan, studyPlan] = await Promise.all([
-                this.fetchTodayPlan().catch(() => null),
-                this.fetchStudyPlan()
-            ]);
-
-            this.renderPlanning(todayPlan, studyPlan);
-
-        } catch (error) {
-            console.error('Error loading planning data:', error);
-            this.showError('Failed to load planning data');
-        } finally {
-            this.showLoading(false);
-        }
-    }
-
-    renderPlanning(todayPlan, studyPlan) {
-        const todayContainer = document.getElementById('today-plan');
-
-        if (todayPlan && todayPlan.tasks.length > 0) {
-            const todayHTML = `
-                <h4><i class="fas fa-calendar-day"></i> Today's Plan - ${todayPlan.day_name}</h4>
-                <p><i class="fas fa-clock"></i> Total time: ${Math.floor(todayPlan.total_time / 60)}h ${todayPlan.total_time % 60}m |
-                   <i class="fas fa-tasks"></i> ${todayPlan.task_count} tasks</p>
-                <div class="row">
-                    ${todayPlan.tasks.map((task, index) => `
-                        <div class="col-md-6 mb-3">
-                            <div class="card task-card task-type-${task.type}">
-                                <div class="card-body">
-                                    <h6>${index + 1}. ${task.title}</h6>
-                                    <p class="small text-muted">${task.estimated_time}min • ${task.difficulty} • ${task.problems.length} problems</p>
-                                    <div class="small">${task.problems.slice(0, 2).join(', ')}${task.problems.length > 2 ? '...' : ''}</div>
-                                </div>
-                            </div>
-                        </div>
-                    `).join('')}
-                </div>
-            `;
-            todayContainer.innerHTML = todayHTML;
-        } else {
-            todayContainer.innerHTML = `
-                <h4><i class="fas fa-info-circle"></i> No Plan for Today</h4>
-                <p>No tasks scheduled for today. Generate a new study plan to get started!</p>
-            `;
-        }
-
-        this.renderStudyPlan(studyPlan);
-    }
-
-    renderStudyPlan(studyPlan) {
-        const container = document.getElementById('study-plan-container');
-
-        const planHTML = `
-            <div class="mb-4">
-                <div class="row">
-                    <div class="col-md-3">
-                        <div class="text-center">
-                            <h4>${Math.floor(studyPlan.summary.total_study_time / 60)}h ${studyPlan.summary.total_study_time % 60}m</h4>
-                            <small class="text-muted">Total Study Time</small>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="text-center">
-                            <h4>${Math.floor(studyPlan.summary.average_daily_time / 60)}h ${studyPlan.summary.average_daily_time % 60}m</h4>
-                            <small class="text-muted">Average Daily</small>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="text-center">
-                            <h4>${studyPlan.summary.total_tasks}</h4>
-                            <small class="text-muted">Total Tasks</small>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="text-center">
-                            <h4>${studyPlan.summary.average_tasks_per_day.toFixed(1)}</h4>
-                            <small class="text-muted">Tasks per Day</small>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="accordion" id="studyPlanAccordion">
-                ${studyPlan.plans.map((plan, index) => `
-                    <div class="accordion-item">
-                        <h2 class="accordion-header">
-                            <button class="accordion-button ${index > 0 ? 'collapsed' : ''}"
-                                    type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#plan-${index}">
-                                <strong>${plan.date} (${plan.day_name})</strong>
-                                <span class="ms-auto me-3">
-                                    <small>${Math.floor(plan.total_time / 60)}h ${plan.total_time % 60}m • ${plan.task_count} tasks</small>
-                                </span>
-                            </button>
-                        </h2>
-                        <div id="plan-${index}" class="accordion-collapse collapse ${index === 0 ? 'show' : ''}"
-                             data-bs-parent="#studyPlanAccordion">
-                            <div class="accordion-body">
-                                ${plan.tasks.length > 0 ? plan.tasks.map((task, taskIndex) => `
-                                    <div class="task-card card mb-2 priority-${task.priority}">
-                                        <div class="card-body py-2">
-                                            <div class="row align-items-center">
-                                                <div class="col-md-6">
-                                                    <h6 class="mb-1">${taskIndex + 1}. ${task.title}</h6>
-                                                    <small class="text-muted">${task.section}</small>
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <small>
-                                                        <i class="fas fa-clock"></i> ${task.estimated_time}min<br>
-                                                        <i class="fas fa-layer-group"></i> ${task.difficulty}
-                                                    </small>
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <small>
-                                                        <i class="fas fa-tasks"></i> ${task.problems.length} problems<br>
-                                                        <span class="badge bg-secondary">${task.type}</span>
-                                                    </small>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                `).join('') : '<p class="text-muted">No tasks for this day</p>'}
-                            </div>
-                        </div>
-                    </div>
-                `).join('')}
-            </div>
-        `;
-
-        container.innerHTML = planHTML;
-    }
-
-    async generateNewPlan() {
-        try {
-            this.showLoading(true);
-
-            const response = await fetch(`${API_BASE_URL}/api/rebuild`, {
-                method: 'POST'
-            });
-
-            if (!response.ok) throw new Error('Failed to rebuild data');
-
-            await this.loadPlanning();
-            this.showSuccess('New study plan generated successfully!');
-
-        } catch (error) {
-            console.error('Error generating new plan:', error);
-            this.showError('Failed to generate new plan');
-        } finally {
-            this.showLoading(false);
-        }
-    }
-
-    showLoading(show) {
-        console.log('showLoading called:', show);
-        const modalElement = document.getElementById('loadingModal');
-        console.log('Modal element:', modalElement);
-
-        if (!modalElement) {
-            console.warn('Loading modal not found, skipping modal display');
-            return;
-        }
-
-        try {
-            const modal = new bootstrap.Modal(modalElement);
-            if (show) {
-                modal.show();
-            } else {
-                modal.hide();
-            }
-        } catch (error) {
-            console.error('Bootstrap modal error:', error);
-        }
-    }
-
-    showError(message) {
-        // Simple error display - could be enhanced with toast notifications
-        console.error(message);
-        alert(`Error: ${message}`);
-    }
-
-    showSuccess(message) {
-        // Simple success display - could be enhanced with toast notifications
-        console.log(message);
-        alert(message);
+    debounce(func, wait) {
+        let timeout;
+        return (...args) => {
+            window.clearTimeout(timeout);
+            timeout = window.setTimeout(() => func.apply(this, args), wait);
+        };
     }
 }
 
-window.showSection = (section) => {
-    window.app.showSection(section);
-};
+window.App = App;
+window.app = new App();
 
-window.loadTopics = () => {
-    window.app.loadTopics();
-};
-
-window.generateNewPlan = () => {
-    window.app.generateNewPlan();
-};
-
-console.log('app.js loaded');
-
-document.addEventListener('DOMContentLoaded', () => {
-    console.log('DOMContentLoaded fired, creating App');
-    try {
-        window.app = new App();
-        console.log('App created successfully');
-    } catch (error) {
-        console.error('Failed to create App:', error);
-    }
-});
+window.generateNewPlan = () => window.app.generateNewPlan();

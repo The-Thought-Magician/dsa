@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
 from fastapi.middleware.cors import CORSMiddleware
-from .routers import topics, coverage, planning
+from .routers import topics, coverage, planning, questions, ai
 
 app = FastAPI(
     title="A2Z DSA Learning System API",
@@ -21,12 +21,19 @@ app.add_middleware(
 app.include_router(topics.router)
 app.include_router(coverage.router)
 app.include_router(planning.router)
+app.include_router(questions.questions_router)
+app.include_router(ai.ai_router)
 
 app.mount("/assets", StaticFiles(directory="frontend/assets"), name="assets")
 app.mount("/static", StaticFiles(directory="frontend"), name="static")
 
 @app.get("/")
 async def serve_frontend():
+    return FileResponse("frontend/index.html")
+
+@app.get("/questions")
+@app.get("/questions/{_:path}")
+async def serve_questions(_: str = ""):
     return FileResponse("frontend/index.html")
 
 @app.get("/health")

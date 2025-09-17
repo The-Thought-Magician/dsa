@@ -1,0 +1,90 @@
+{
+  "questions": [
+    {
+      "id": "two-sum",
+      "title": "Two Sum",
+      "difficulty": "Easy",
+      "tags": [
+        "array",
+        "hashmap",
+        "two-pointer"
+      ],
+      "statement_markdown": "Given an array of integers `nums` and an integer `target`, return the indices of the two numbers that add up to `target`.\n\n* Exactly one valid answer exists for each test case.\n* Use 0-based indexing for the result.\n* Print the indices in ascending order separated by a single space.\n\n**Input**\n```\nn            # size of the array\nn integers   # the array elements\ntarget       # integer target\n```\n\n**Output**\n```\ni j\n```\nsuch that `nums[i] + nums[j] == target` and `i < j`.",
+      "starter_code": "from typing import List\n\n\ndef solve() -> None:\n    n = int(input().strip())\n    nums = list(map(int, input().split()))\n    target = int(input().strip())\n\n    # TODO: implement your solution\n    # Print two indices (0-based) separated by a space, in ascending order.\n    print(\"0 0\")\n\n\nif __name__ == \"__main__\":\n    solve()",
+      "sample_tests": [
+        {
+          "id": 1,
+          "input": "4\n2 7 11 15\n9\n",
+          "output": "0 1\n",
+          "explanation": "2 + 7 = 9 => indices 0 and 1"
+        },
+        {
+          "id": 2,
+          "input": "5\n3 4 5 8 11\n9\n",
+          "output": "1 2\n",
+          "explanation": "4 + 5 = 9 => indices 1 and 2"
+        }
+      ],
+      "resources": [
+        {
+          "title": "Striver A2Z - Two Sum",
+          "url": "https://takeuforward.org/data-structure/two-sum-classic-question/",
+          "notes": "Hash map approach recommended"
+        },
+        {
+          "title": "LeetCode #1",
+          "url": "https://leetcode.com/problems/two-sum/",
+          "notes": "Original problem statement"
+        }
+      ],
+      "metadata": {
+        "time_complexity": "O(n)",
+        "space_complexity": "O(n)"
+      },
+      "solution_markdown": "```python\nfrom typing import Dict, List\n\n\ndef solve() -> None:\n    n = int(input().strip())\n    nums = list(map(int, input().split()))\n    target = int(input().strip())\n\n    seen: Dict[int, int] = {}\n    for idx, value in enumerate(nums):\n        remaining = target - value\n        if remaining in seen:\n            i = seen[remaining]\n            j = idx\n            print(f\"{min(i, j)} {max(i, j)}\")\n            return\n        seen[value] = idx\n```"
+    },
+    {
+      "id": "valid-parentheses",
+      "title": "Valid Parentheses",
+      "difficulty": "Medium",
+      "tags": [
+        "stack",
+        "string",
+        "simulation"
+      ],
+      "statement_markdown": "Given a string containing only the characters `(`, `)`, `{`, `}`, `[` and `]`, determine if the input string is valid.\n\nA string is valid if:\n\n* Open brackets must be closed by the same type of brackets.\n* Open brackets must be closed in the correct order.\n\nPrint `YES` if the string is valid, otherwise print `NO`.\n\n**Input**\n```\ns  # a string of bracket characters\n```\n\n**Output**\n```\nYES|NO\n```",
+      "starter_code": "def solve() -> None:\n    s = input().strip()\n\n    # TODO: implement your solution\n    print(\"YES\")\n\n\nif __name__ == \"__main__\":\n    solve()",
+      "sample_tests": [
+        {
+          "id": 1,
+          "input": "()[]{}\n",
+          "output": "YES\n",
+          "explanation": "All brackets closed in correct order"
+        },
+        {
+          "id": 2,
+          "input": "([)]\n",
+          "output": "NO\n",
+          "explanation": "Mismatched closing bracket"
+        }
+      ],
+      "resources": [
+        {
+          "title": "Striver A2Z - Valid Parentheses",
+          "url": "https://takeuforward.org/data-structure/check-for-balanced-parentheses/",
+          "notes": "Discusses stack based validation"
+        },
+        {
+          "title": "LeetCode #20",
+          "url": "https://leetcode.com/problems/valid-parentheses/",
+          "notes": "Original constraints and samples"
+        }
+      ],
+      "metadata": {
+        "time_complexity": "O(n)",
+        "space_complexity": "O(n)"
+      },
+      "solution_markdown": "```python\ndef solve() -> None:\n    s = input().strip()\n    matching = {\n        ')': '(',\n        ']': '[',\n        '}': '{'\n    }\n    stack = []\n\n    for ch in s:\n        if ch in '([{':\n            stack.append(ch)\n        else:\n            if not stack or stack.pop() != matching.get(ch):\n                print('NO')\n                return\n\n    print('YES' if not stack else 'NO')\n```"
+    }
+  ]
+}
