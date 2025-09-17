@@ -1,6 +1,6 @@
 from fastapi import APIRouter, HTTPException
 from datetime import datetime
-from ..models import StatsResponse, DailyPlanResponse, StudyPlanResponse
+from ..models import StatsResponse, DailyPlanResponse, StudyPlanResponse, StudyTaskResponse
 from ..services import data_service
 
 router = APIRouter(prefix="/api", tags=["planning"])

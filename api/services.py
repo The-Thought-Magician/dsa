@@ -2,7 +2,7 @@ import json
 import subprocess
 from pathlib import Path
 from typing import List, Dict, Any, Optional
-from .models import TopicResponse, MappingResponse, CoverageResponse, StatsResponse, StudyPlanResponse, DailyPlanResponse
+from .models import TopicResponse, MappingResponse, CoverageResponse, StatsResponse, StudyPlanResponse, DailyPlanResponse, StudyTaskResponse
 
 class DataService:
     def __init__(self):

@@ -13,9 +13,20 @@ class App {
     }
 
     async init() {
-        await this.loadInitialData();
-        this.setupEventListeners();
-        this.showSection('dashboard');
+        try {
+            console.log('App initializing...');
+            await this.loadInitialData();
+            this.setupEventListeners();
+            this.setupNavigation();
+
+            // Show initial section based on hash or default to dashboard
+            const hash = window.location.hash.slice(1) || 'dashboard';
+            this.showSection(hash);
+            console.log('App initialized successfully');
+        } catch (error) {
+            console.error('App initialization failed:', error);
+            this.showError('Application failed to initialize: ' + error.message);
+        }
     }
 
     async loadInitialData() {
@@ -43,12 +54,44 @@ class App {
     }
 
     setupEventListeners() {
-        document.getElementById('topic-search').addEventListener('input',
-            this.debounce(() => this.loadTopics(), 300)
-        );
+        const topicSearch = document.getElementById('topic-search');
+        const statusFilter = document.getElementById('status-filter');
+        const sectionFilter = document.getElementById('section-filter');
 
-        document.getElementById('status-filter').addEventListener('change', () => this.loadTopics());
-        document.getElementById('section-filter').addEventListener('change', () => this.loadTopics());
+        if (topicSearch) {
+            topicSearch.addEventListener('input',
+                this.debounce(() => this.loadTopics(), 300)
+            );
+        }
+
+        if (statusFilter) {
+            statusFilter.addEventListener('change', () => this.loadTopics());
+        }
+
+        if (sectionFilter) {
+            sectionFilter.addEventListener('change', () => this.loadTopics());
+        }
+    }
+
+    setupNavigation() {
+        // Handle hash changes for navigation
+        window.addEventListener('hashchange', () => {
+            const hash = window.location.hash.slice(1) || 'dashboard';
+            console.log('Hash changed to:', hash);
+            this.showSection(hash);
+        });
+
+        // Handle navigation link clicks
+        document.querySelectorAll('a[href^="#"]').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const hash = link.getAttribute('href').slice(1);
+                if (hash) {
+                    console.log('Navigation link clicked:', hash);
+                    window.location.hash = hash;
+                }
+            });
+        });
     }
 
     debounce(func, wait) {
@@ -98,23 +141,40 @@ class App {
     }
 
     showSection(sectionName) {
+        console.log('showSection called with:', sectionName);
+
+        // Hide all sections
         document.querySelectorAll('.section').forEach(section => {
             section.classList.remove('active');
+            console.log('Hiding section:', section.id);
         });
 
-        document.getElementById(`${sectionName}-section`).classList.add('active');
-        this.currentSection = sectionName;
+        // Show target section
+        const targetSection = document.getElementById(`${sectionName}-section`);
+        if (targetSection) {
+            targetSection.classList.add('active');
+            console.log('Showing section:', targetSection.id);
+            this.currentSection = sectionName;
 
-        switch(sectionName) {
-            case 'topics':
-                this.loadTopics();
-                break;
-            case 'coverage':
-                this.loadCoverage();
-                break;
-            case 'planning':
-                this.loadPlanning();
-                break;
+            // Load section-specific data
+            switch(sectionName) {
+                case 'topics':
+                    console.log('Loading topics data');
+                    this.loadTopics();
+                    break;
+                case 'coverage':
+                    console.log('Loading coverage data');
+                    this.loadCoverage();
+                    break;
+                case 'planning':
+                    console.log('Loading planning data');
+                    this.loadPlanning();
+                    break;
+                default:
+                    console.log('Dashboard section - no additional data loading needed');
+            }
+        } else {
+            console.error('Section not found:', `${sectionName}-section`);
         }
     }
 
@@ -124,8 +184,23 @@ class App {
     }
 
     renderStatsCards() {
+        console.log('renderStatsCards called');
         const stats = this.data.stats;
         const coverage = this.data.coverage;
+        console.log('Stats data:', stats);
+
+        const container = document.getElementById('stats-cards');
+        console.log('Container found:', container);
+
+        if (!container) {
+            console.error('stats-cards container not found');
+            return;
+        }
+
+        if (!stats) {
+            console.error('No stats data available');
+            return;
+        }
 
         const cardsHTML = `
             <div class="col-lg-3 col-md-6">
@@ -158,7 +233,9 @@ class App {
             </div>
         `;
 
-        document.getElementById('stats-cards').innerHTML = cardsHTML;
+        console.log('Setting innerHTML for stats-cards');
+        container.innerHTML = cardsHTML;
+        console.log('Stats cards rendered successfully');
     }
 
     async loadTopics() {
@@ -448,11 +525,24 @@ class App {
     }
 
     showLoading(show) {
-        const modal = new bootstrap.Modal(document.getElementById('loadingModal'));
-        if (show) {
-            modal.show();
-        } else {
-            modal.hide();
+        console.log('showLoading called:', show);
+        const modalElement = document.getElementById('loadingModal');
+        console.log('Modal element:', modalElement);
+
+        if (!modalElement) {
+            console.warn('Loading modal not found, skipping modal display');
+            return;
+        }
+
+        try {
+            const modal = new bootstrap.Modal(modalElement);
+            if (show) {
+                modal.show();
+            } else {
+                modal.hide();
+            }
+        } catch (error) {
+            console.error('Bootstrap modal error:', error);
         }
     }
 
@@ -481,6 +571,14 @@ window.generateNewPlan = () => {
     window.app.generateNewPlan();
 };
 
+console.log('app.js loaded');
+
 document.addEventListener('DOMContentLoaded', () => {
-    window.app = new App();
+    console.log('DOMContentLoaded fired, creating App');
+    try {
+        window.app = new App();
+        console.log('App created successfully');
+    } catch (error) {
+        console.error('Failed to create App:', error);
+    }
 });

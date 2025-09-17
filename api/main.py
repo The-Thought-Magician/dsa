@@ -22,6 +22,7 @@ app.include_router(topics.router)
 app.include_router(coverage.router)
 app.include_router(planning.router)
 
+app.mount("/assets", StaticFiles(directory="frontend/assets"), name="assets")
 app.mount("/static", StaticFiles(directory="frontend"), name="static")
 
 @app.get("/")

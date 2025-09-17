@@ -12,4 +12,3 @@
 10. Always keep track of the project state through plan.md file in the root directory containing checklist of tasks to be done. Use design.md for project design documentation. Update done.md after each session with checklist of completed tasks, including any deviations from the original plan to ensure project feasibility.
 
 # VERY IMPORTANT - NEVER USE FAKE DATA OR FALSE INFORMATION TO MAKE CODE WORK. Always work with real data. Incase the inforamtion is not available, assume it will come from the api endpoint mentioned in the system design. 
-# THERE IS NO NEED TO RUN THE APPLICATION OR TEST IT UNLESS ASKED TO.
