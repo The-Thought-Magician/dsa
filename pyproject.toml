@@ -1,0 +1,25 @@
+[project]
+name = "a2z-dsa-learning-system"
+version = "1.0.0"
+description = "Comprehensive Python-first learning system for Striver's A2Z DSA course with web interface"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "fastapi>=0.116.0",
+    "uvicorn>=0.35.0",
+    "pydantic>=2.11.0",
+    "typer>=0.17.0",
+    "rich>=14.1.0",
+    "beautifulsoup4>=4.13.0",
+    "lxml>=6.0.0",
+    "httpx>=0.28.0",
+    "google-generativeai>=0.8.0"
+]
+
+[project.scripts]
+dsa-cli = "main:app"
+dsa-web = "run_server:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"

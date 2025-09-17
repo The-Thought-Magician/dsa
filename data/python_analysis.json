@@ -1,0 +1,1946 @@
+[
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 13 + 14 - Trees + BST/BFS-TRAVERSALS.py",
+    "step_section": "Step 13 + 14 - Trees + BST",
+    "file_name": "BFS-TRAVERSALS.py",
+    "problem_name": "Bfs Traversals"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 13 + 14 - Trees + BST/SERIALISE-DESERIALISE.py",
+    "step_section": "Step 13 + 14 - Trees + BST",
+    "file_name": "SERIALISE-DESERIALISE.py",
+    "problem_name": "Serialise Deserialise"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 13 + 14 - Trees + BST/CONVERT-SORTED-ARR-TO-BST.py",
+    "step_section": "Step 13 + 14 - Trees + BST",
+    "file_name": "CONVERT-SORTED-ARR-TO-BST.py",
+    "problem_name": "Convert Sorted Arr To Bst"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 13 + 14 - Trees + BST/KTH-SMALLEST-ELEMENT-IN-BST.py",
+    "step_section": "Step 13 + 14 - Trees + BST",
+    "file_name": "KTH-SMALLEST-ELEMENT-IN-BST.py",
+    "problem_name": "Kth Smallest Element In Bst"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 13 + 14 - Trees + BST/SAME-TREE.py",
+    "step_section": "Step 13 + 14 - Trees + BST",
+    "file_name": "SAME-TREE.py",
+    "problem_name": "Same Tree"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 13 + 14 - Trees + BST/SUBTREE-OF-ANOTHER-TREE.py",
+    "step_section": "Step 13 + 14 - Trees + BST",
+    "file_name": "SUBTREE-OF-ANOTHER-TREE.py",
+    "problem_name": "Subtree Of Another Tree"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 13 + 14 - Trees + BST/DIAMETER-OF-BINARY-TREE.py",
+    "step_section": "Step 13 + 14 - Trees + BST",
+    "file_name": "DIAMETER-OF-BINARY-TREE.py",
+    "problem_name": "Diameter Of Binary Tree"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 13 + 14 - Trees + BST/MAX-DEPTH-OF-BINARY-TREE.py",
+    "step_section": "Step 13 + 14 - Trees + BST",
+    "file_name": "MAX-DEPTH-OF-BINARY-TREE.py",
+    "problem_name": "Max Depth Of Binary Tree"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 13 + 14 - Trees + BST/MAX-PATH-SUM.py",
+    "step_section": "Step 13 + 14 - Trees + BST",
+    "file_name": "MAX-PATH-SUM.py",
+    "problem_name": "Max Path Sum"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 13 + 14 - Trees + BST/SEARCH-IN-BST.py",
+    "step_section": "Step 13 + 14 - Trees + BST",
+    "file_name": "SEARCH-IN-BST.py",
+    "problem_name": "Search In Bst"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 13 + 14 - Trees + BST/VALIDATE-BST.py",
+    "step_section": "Step 13 + 14 - Trees + BST",
+    "file_name": "VALIDATE-BST.py",
+    "problem_name": "Validate Bst"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 13 + 14 - Trees + BST/BINARY-TREE-RIGHT-SIDE-VIEW.py",
+    "step_section": "Step 13 + 14 - Trees + BST",
+    "file_name": "BINARY-TREE-RIGHT-SIDE-VIEW.py",
+    "problem_name": "Binary Tree Right Side View"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 13 + 14 - Trees + BST/CONSTRUCT-BINARY-TREE-FROM-PRE-IN-TRAVERSAL.py",
+    "step_section": "Step 13 + 14 - Trees + BST",
+    "file_name": "CONSTRUCT-BINARY-TREE-FROM-PRE-IN-TRAVERSAL.py",
+    "problem_name": "Construct Binary Tree From Pre In Traversal"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 13 + 14 - Trees + BST/COUNT-GOOD-NODES.py",
+    "step_section": "Step 13 + 14 - Trees + BST",
+    "file_name": "COUNT-GOOD-NODES.py",
+    "problem_name": "Count Good Nodes"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 13 + 14 - Trees + BST/DFS-TRAVERSALS.py",
+    "step_section": "Step 13 + 14 - Trees + BST",
+    "file_name": "DFS-TRAVERSALS.py",
+    "problem_name": "Dfs Traversals"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 13 + 14 - Trees + BST/LOWEST-COMMON-ANCESTOR.py",
+    "step_section": "Step 13 + 14 - Trees + BST",
+    "file_name": "LOWEST-COMMON-ANCESTOR.py",
+    "problem_name": "Lowest Common Ancestor"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 13 + 14 - Trees + BST/BALANCED-BINARY-TREE.py",
+    "step_section": "Step 13 + 14 - Trees + BST",
+    "file_name": "BALANCED-BINARY-TREE.py",
+    "problem_name": "Balanced Binary Tree"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 13 + 14 - Trees + BST/INVERT-BINARY-TREE.py",
+    "step_section": "Step 13 + 14 - Trees + BST",
+    "file_name": "INVERT-BINARY-TREE.py",
+    "problem_name": "Invert Binary Tree"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 09 - Stacks Queues/MIN-STACK.py",
+    "step_section": "Step 09 - Stacks Queues",
+    "file_name": "MIN-STACK.py",
+    "problem_name": "Min Stack"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 09 - Stacks Queues/TRAPPING-RAINWATER.py",
+    "step_section": "Step 09 - Stacks Queues",
+    "file_name": "TRAPPING-RAINWATER.py",
+    "problem_name": "Trapping Rainwater"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 09 - Stacks Queues/STACK-USING-TWO-QUEUE.py",
+    "step_section": "Step 09 - Stacks Queues",
+    "file_name": "STACK-USING-TWO-QUEUE.py",
+    "problem_name": "Stack Using Two Queue"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 09 - Stacks Queues/ASTEROID-COLLISION.py",
+    "step_section": "Step 09 - Stacks Queues",
+    "file_name": "ASTEROID-COLLISION.py",
+    "problem_name": "Asteroid Collision"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 09 - Stacks Queues/SUM-OF-SUBARRAY-MINIMUMS.py",
+    "step_section": "Step 09 - Stacks Queues",
+    "file_name": "SUM-OF-SUBARRAY-MINIMUMS.py",
+    "problem_name": "Sum Of Subarray Minimums"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 09 - Stacks Queues/CRAWLER-LOG-FOLDER.py",
+    "step_section": "Step 09 - Stacks Queues",
+    "file_name": "CRAWLER-LOG-FOLDER.py",
+    "problem_name": "Crawler Log Folder"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 09 - Stacks Queues/STACK-USING-ONE-QUEUE.py",
+    "step_section": "Step 09 - Stacks Queues",
+    "file_name": "STACK-USING-ONE-QUEUE.py",
+    "problem_name": "Stack Using One Queue"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 09 - Stacks Queues/QUEUE-USING-STACK.py",
+    "step_section": "Step 09 - Stacks Queues",
+    "file_name": "QUEUE-USING-STACK.py",
+    "problem_name": "Queue Using Stack"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 09 - Stacks Queues/NEXT-SMALLER.py",
+    "step_section": "Step 09 - Stacks Queues",
+    "file_name": "NEXT-SMALLER.py",
+    "problem_name": "Next Smaller"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 09 - Stacks Queues/VALID-PARANTHESES.py",
+    "step_section": "Step 09 - Stacks Queues",
+    "file_name": "VALID-PARANTHESES.py",
+    "problem_name": "Valid Parantheses"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 09 - Stacks Queues/MAXIMAL-RECTANGLE.py",
+    "step_section": "Step 09 - Stacks Queues",
+    "file_name": "MAXIMAL-RECTANGLE.py",
+    "problem_name": "Maximal Rectangle"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 09 - Stacks Queues/STOCK-SPAN.py",
+    "step_section": "Step 09 - Stacks Queues",
+    "file_name": "STOCK-SPAN.py",
+    "problem_name": "Stock Span"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 09 - Stacks Queues/REMOVE-K-DIGITS.py",
+    "step_section": "Step 09 - Stacks Queues",
+    "file_name": "REMOVE-K-DIGITS.py",
+    "problem_name": "Remove K Digits"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 09 - Stacks Queues/NEXT-GREATER-ELEMENT-2.py",
+    "step_section": "Step 09 - Stacks Queues",
+    "file_name": "NEXT-GREATER-ELEMENT-2.py",
+    "problem_name": "Next Greater Element 2"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 09 - Stacks Queues/NUMBER-OF-NGES-TO-THE-RIGHT.py",
+    "step_section": "Step 09 - Stacks Queues",
+    "file_name": "NUMBER-OF-NGES-TO-THE-RIGHT.py",
+    "problem_name": "Number Of Nges To The Right"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 09 - Stacks Queues/STACK-USING-LINKEDLIST.py",
+    "step_section": "Step 09 - Stacks Queues",
+    "file_name": "STACK-USING-LINKEDLIST.py",
+    "problem_name": "Stack Using Linkedlist"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 09 - Stacks Queues/SLIDING-WINDOW-MAX.py",
+    "step_section": "Step 09 - Stacks Queues",
+    "file_name": "SLIDING-WINDOW-MAX.py",
+    "problem_name": "Sliding Window Max"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 09 - Stacks Queues/SUM-OF-SUBARRAY-RANGES.py",
+    "step_section": "Step 09 - Stacks Queues",
+    "file_name": "SUM-OF-SUBARRAY-RANGES.py",
+    "problem_name": "Sum Of Subarray Ranges"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 09 - Stacks Queues/LARGEST-RECTANGLE-IN-HISTOGRAM.py",
+    "step_section": "Step 09 - Stacks Queues",
+    "file_name": "LARGEST-RECTANGLE-IN-HISTOGRAM.py",
+    "problem_name": "Largest Rectangle In Histogram"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 09 - Stacks Queues/INFIX-PREFIX-POSTFIX/PREFIX-INFIX.py",
+    "step_section": "Step 09 - Stacks Queues",
+    "file_name": "PREFIX-INFIX.py",
+    "problem_name": "Prefix Infix"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 09 - Stacks Queues/INFIX-PREFIX-POSTFIX/PREFIX-POSTFIX.py",
+    "step_section": "Step 09 - Stacks Queues",
+    "file_name": "PREFIX-POSTFIX.py",
+    "problem_name": "Prefix Postfix"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 09 - Stacks Queues/INFIX-PREFIX-POSTFIX/POSTFIX-PREFIX.py",
+    "step_section": "Step 09 - Stacks Queues",
+    "file_name": "POSTFIX-PREFIX.py",
+    "problem_name": "Postfix Prefix"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 09 - Stacks Queues/INFIX-PREFIX-POSTFIX/INFIX-PREFIX.py",
+    "step_section": "Step 09 - Stacks Queues",
+    "file_name": "INFIX-PREFIX.py",
+    "problem_name": "Infix Prefix"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 09 - Stacks Queues/INFIX-PREFIX-POSTFIX/INFIX-POSTFIX.py",
+    "step_section": "Step 09 - Stacks Queues",
+    "file_name": "INFIX-POSTFIX.py",
+    "problem_name": "Infix Postfix"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 09 - Stacks Queues/INFIX-PREFIX-POSTFIX/POSTFIX-INFIX.py",
+    "step_section": "Step 09 - Stacks Queues",
+    "file_name": "POSTFIX-INFIX.py",
+    "problem_name": "Postfix Infix"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 15 - Graphs/CHEAPEST-FLIGHT-K-STOPS.py",
+    "step_section": "Step 15 - Graphs",
+    "file_name": "CHEAPEST-FLIGHT-K-STOPS.py",
+    "problem_name": "Cheapest Flight K Stops"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 15 - Graphs/ENCLAVES.py",
+    "step_section": "Step 15 - Graphs",
+    "file_name": "ENCLAVES.py",
+    "problem_name": "Enclaves"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 15 - Graphs/MAKE-A-LARGE-ISLAND.py",
+    "step_section": "Step 15 - Graphs",
+    "file_name": "MAKE-A-LARGE-ISLAND.py",
+    "problem_name": "Make A Large Island"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 15 - Graphs/BIPARTITE-GRAPH.py",
+    "step_section": "Step 15 - Graphs",
+    "file_name": "BIPARTITE-GRAPH.py",
+    "problem_name": "Bipartite Graph"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 15 - Graphs/MINIMUM-EFFORT-PATH.py",
+    "step_section": "Step 15 - Graphs",
+    "file_name": "MINIMUM-EFFORT-PATH.py",
+    "problem_name": "Minimum Effort Path"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 15 - Graphs/MOST-STONES-REMOVED-WITHIN-SAME-ROW.py",
+    "step_section": "Step 15 - Graphs",
+    "file_name": "MOST-STONES-REMOVED-WITHIN-SAME-ROW.py",
+    "problem_name": "Most Stones Removed Within Same Row"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 15 - Graphs/ALIENS-DICTIONARY.py",
+    "step_section": "Step 15 - Graphs",
+    "file_name": "ALIENS-DICTIONARY.py",
+    "problem_name": "Aliens Dictionary"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 15 - Graphs/EVENTUAL-SAFE-STATES.py",
+    "step_section": "Step 15 - Graphs",
+    "file_name": "EVENTUAL-SAFE-STATES.py",
+    "problem_name": "Eventual Safe States"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 15 - Graphs/NUM-WAYS-TO-ARRIVE-AT-DESTINATION.py",
+    "step_section": "Step 15 - Graphs",
+    "file_name": "NUM-WAYS-TO-ARRIVE-AT-DESTINATION.py",
+    "problem_name": "Num Ways To Arrive At Destination"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 15 - Graphs/NUMBER-PROVINCES.py",
+    "step_section": "Step 15 - Graphs",
+    "file_name": "NUMBER-PROVINCES.py",
+    "problem_name": "Number Provinces"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 15 - Graphs/MST-KRUSKAL-ALGO.py",
+    "step_section": "Step 15 - Graphs",
+    "file_name": "MST-KRUSKAL-ALGO.py",
+    "problem_name": "Mst Kruskal Algo"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 15 - Graphs/DFS.py",
+    "step_section": "Step 15 - Graphs",
+    "file_name": "DFS.py",
+    "problem_name": "Dfs"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 15 - Graphs/DJIKSTRA-ALGORITHM.py",
+    "step_section": "Step 15 - Graphs",
+    "file_name": "DJIKSTRA-ALGORITHM.py",
+    "problem_name": "Djikstra Algorithm"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 15 - Graphs/MST-PRIMS-ALGORITHM.py",
+    "step_section": "Step 15 - Graphs",
+    "file_name": "MST-PRIMS-ALGORITHM.py",
+    "problem_name": "Mst Prims Algorithm"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 15 - Graphs/UNDIRECTED-GRAPH-CYCLE-DFS.py",
+    "step_section": "Step 15 - Graphs",
+    "file_name": "UNDIRECTED-GRAPH-CYCLE-DFS.py",
+    "problem_name": "Undirected Graph Cycle Dfs"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 15 - Graphs/BFS.py",
+    "step_section": "Step 15 - Graphs",
+    "file_name": "BFS.py",
+    "problem_name": "Bfs"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 15 - Graphs/DISJOINT-SET-IMPLEMENTATION.py",
+    "step_section": "Step 15 - Graphs",
+    "file_name": "DISJOINT-SET-IMPLEMENTATION.py",
+    "problem_name": "Disjoint Set Implementation"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 15 - Graphs/SMALLEST-DISTANCE-THRESHOLD.py",
+    "step_section": "Step 15 - Graphs",
+    "file_name": "SMALLEST-DISTANCE-THRESHOLD.py",
+    "problem_name": "Smallest Distance Threshold"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 15 - Graphs/DIRECTED-GRAPH-CYCLE-DFS.py",
+    "step_section": "Step 15 - Graphs",
+    "file_name": "DIRECTED-GRAPH-CYCLE-DFS.py",
+    "problem_name": "Directed Graph Cycle Dfs"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 15 - Graphs/MIN-MULTIPLICATIONS-TO-REACH-END.py",
+    "step_section": "Step 15 - Graphs",
+    "file_name": "MIN-MULTIPLICATIONS-TO-REACH-END.py",
+    "problem_name": "Min Multiplications To Reach End"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 15 - Graphs/01-MATRIX.py",
+    "step_section": "Step 15 - Graphs",
+    "file_name": "01-MATRIX.py",
+    "problem_name": "01 Matrix"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 15 - Graphs/FLOYD-WARSHALL.py",
+    "step_section": "Step 15 - Graphs",
+    "file_name": "FLOYD-WARSHALL.py",
+    "problem_name": "Floyd Warshall"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 15 - Graphs/BINARY-MAZE-SHORTEST-PATH.py",
+    "step_section": "Step 15 - Graphs",
+    "file_name": "BINARY-MAZE-SHORTEST-PATH.py",
+    "problem_name": "Binary Maze Shortest Path"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 15 - Graphs/TOPOLOGICAL-SORT-DFS.py",
+    "step_section": "Step 15 - Graphs",
+    "file_name": "TOPOLOGICAL-SORT-DFS.py",
+    "problem_name": "Topological Sort Dfs"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 15 - Graphs/WORD-LADDER-2.py",
+    "step_section": "Step 15 - Graphs",
+    "file_name": "WORD-LADDER-2.py",
+    "problem_name": "Word Ladder 2"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 15 - Graphs/SHORTEST-PATH-UG.py",
+    "step_section": "Step 15 - Graphs",
+    "file_name": "SHORTEST-PATH-UG.py",
+    "problem_name": "Shortest Path Ug"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 15 - Graphs/WORD-LADDER-1.py",
+    "step_section": "Step 15 - Graphs",
+    "file_name": "WORD-LADDER-1.py",
+    "problem_name": "Word Ladder 1"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 15 - Graphs/TOPOLOGICAL-SORT-BFS-KAHNS-ALGO.py",
+    "step_section": "Step 15 - Graphs",
+    "file_name": "TOPOLOGICAL-SORT-BFS-KAHNS-ALGO.py",
+    "problem_name": "Topological Sort Bfs Kahns Algo"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 15 - Graphs/OPERATIONS-TO-MAKE-NETWORK-CONNECTED.py",
+    "step_section": "Step 15 - Graphs",
+    "file_name": "OPERATIONS-TO-MAKE-NETWORK-CONNECTED.py",
+    "problem_name": "Operations To Make Network Connected"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 15 - Graphs/ROTTEN-ORANGES.py",
+    "step_section": "Step 15 - Graphs",
+    "file_name": "ROTTEN-ORANGES.py",
+    "problem_name": "Rotten Oranges"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 15 - Graphs/ACCOUNT-MERGE.py",
+    "step_section": "Step 15 - Graphs",
+    "file_name": "ACCOUNT-MERGE.py",
+    "problem_name": "Account Merge"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 15 - Graphs/BELLMAN-FORD.py",
+    "step_section": "Step 15 - Graphs",
+    "file_name": "BELLMAN-FORD.py",
+    "problem_name": "Bellman Ford"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 15 - Graphs/UNDIRECTED-GRAPH-CYCLE-BFS.py",
+    "step_section": "Step 15 - Graphs",
+    "file_name": "UNDIRECTED-GRAPH-CYCLE-BFS.py",
+    "problem_name": "Undirected Graph Cycle Bfs"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 15 - Graphs/DIRECTED-GRAPH-CYCLE-BFS.py",
+    "step_section": "Step 15 - Graphs",
+    "file_name": "DIRECTED-GRAPH-CYCLE-BFS.py",
+    "problem_name": "Directed Graph Cycle Bfs"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 15 - Graphs/COURSE-SCHEDULE-2.py",
+    "step_section": "Step 15 - Graphs",
+    "file_name": "COURSE-SCHEDULE-2.py",
+    "problem_name": "Course Schedule 2"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 15 - Graphs/NETWORK-DELAY.py",
+    "step_section": "Step 15 - Graphs",
+    "file_name": "NETWORK-DELAY.py",
+    "problem_name": "Network Delay"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 15 - Graphs/COURSE-SCHEDULE-1.py",
+    "step_section": "Step 15 - Graphs",
+    "file_name": "COURSE-SCHEDULE-1.py",
+    "problem_name": "Course Schedule 1"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 15 - Graphs/SURROUNDED-REGIONS.py",
+    "step_section": "Step 15 - Graphs",
+    "file_name": "SURROUNDED-REGIONS.py",
+    "problem_name": "Surrounded Regions"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 15 - Graphs/FLOOD-FILL.py",
+    "step_section": "Step 15 - Graphs",
+    "file_name": "FLOOD-FILL.py",
+    "problem_name": "Flood Fill"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 02 - Sorting Techniques/BUBBLE-SORT.py",
+    "step_section": "Step 02 - Sorting Techniques",
+    "file_name": "BUBBLE-SORT.py",
+    "problem_name": "Bubble Sort"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 02 - Sorting Techniques/MERGE-SORT.py",
+    "step_section": "Step 02 - Sorting Techniques",
+    "file_name": "MERGE-SORT.py",
+    "problem_name": "Merge Sort"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 02 - Sorting Techniques/SELECTION-SORT.py",
+    "step_section": "Step 02 - Sorting Techniques",
+    "file_name": "SELECTION-SORT.py",
+    "problem_name": "Selection Sort"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 02 - Sorting Techniques/QUICK-SORT.py",
+    "step_section": "Step 02 - Sorting Techniques",
+    "file_name": "QUICK-SORT.py",
+    "problem_name": "Quick Sort"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 02 - Sorting Techniques/INSERTION-SORT.py",
+    "step_section": "Step 02 - Sorting Techniques",
+    "file_name": "INSERTION-SORT.py",
+    "problem_name": "Insertion Sort"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 16 - Dynamic Programming/SUBSEQ-05-PARTN-WITH-GIVEN-DIFF.py",
+    "step_section": "Step 16 - Dynamic Programming",
+    "file_name": "SUBSEQ-05-PARTN-WITH-GIVEN-DIFF.py",
+    "problem_name": "Subseq 05 Partn With Given Diff"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 16 - Dynamic Programming/SUBSEQ-03-PARTITION-ARR-TO-MIN-SUM-DIFF.py",
+    "step_section": "Step 16 - Dynamic Programming",
+    "file_name": "SUBSEQ-03-PARTITION-ARR-TO-MIN-SUM-DIFF.py",
+    "problem_name": "Subseq 03 Partition Arr To Min Sum Diff"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 16 - Dynamic Programming/MINIMAL-COST.py",
+    "step_section": "Step 16 - Dynamic Programming",
+    "file_name": "MINIMAL-COST.py",
+    "problem_name": "Minimal Cost"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 16 - Dynamic Programming/CHOCO-PICKUP.py",
+    "step_section": "Step 16 - Dynamic Programming",
+    "file_name": "CHOCO-PICKUP.py",
+    "problem_name": "Choco Pickup"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 16 - Dynamic Programming/STOCKS-6.py",
+    "step_section": "Step 16 - Dynamic Programming",
+    "file_name": "STOCKS-6.py",
+    "problem_name": "Stocks 6"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 16 - Dynamic Programming/SHORTEST-COMMON-SUPERSEQ.py",
+    "step_section": "Step 16 - Dynamic Programming",
+    "file_name": "SHORTEST-COMMON-SUPERSEQ.py",
+    "problem_name": "Shortest Common Superseq"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 16 - Dynamic Programming/SUBSEQ-09-KNAPSACK.py",
+    "step_section": "Step 16 - Dynamic Programming",
+    "file_name": "SUBSEQ-09-KNAPSACK.py",
+    "problem_name": "Subseq 09 Knapsack"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 16 - Dynamic Programming/STOCKS-4.py",
+    "step_section": "Step 16 - Dynamic Programming",
+    "file_name": "STOCKS-4.py",
+    "problem_name": "Stocks 4"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 16 - Dynamic Programming/STOCKS-5.py",
+    "step_section": "Step 16 - Dynamic Programming",
+    "file_name": "STOCKS-5.py",
+    "problem_name": "Stocks 5"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 16 - Dynamic Programming/STOCKS-2.py",
+    "step_section": "Step 16 - Dynamic Programming",
+    "file_name": "STOCKS-2.py",
+    "problem_name": "Stocks 2"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 16 - Dynamic Programming/SUBSEQ-08-COIN-CHANGE2.py",
+    "step_section": "Step 16 - Dynamic Programming",
+    "file_name": "SUBSEQ-08-COIN-CHANGE2.py",
+    "problem_name": "Subseq 08 Coin Change2"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 16 - Dynamic Programming/SUBSEQ-04-COUNT-SUBSET-EQ-TO-GIVEN-SUM.py",
+    "step_section": "Step 16 - Dynamic Programming",
+    "file_name": "SUBSEQ-04-COUNT-SUBSET-EQ-TO-GIVEN-SUM.py",
+    "problem_name": "Subseq 04 Count Subset Eq To Given Sum"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 16 - Dynamic Programming/CLIMBING-STAIRS.py",
+    "step_section": "Step 16 - Dynamic Programming",
+    "file_name": "CLIMBING-STAIRS.py",
+    "problem_name": "Climbing Stairs"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 16 - Dynamic Programming/SUBSEQ-07-TARGET-SUM.py",
+    "step_section": "Step 16 - Dynamic Programming",
+    "file_name": "SUBSEQ-07-TARGET-SUM.py",
+    "problem_name": "Subseq 07 Target Sum"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 16 - Dynamic Programming/LONGEST-PALINDROMIC-SUBSEQ.py",
+    "step_section": "Step 16 - Dynamic Programming",
+    "file_name": "LONGEST-PALINDROMIC-SUBSEQ.py",
+    "problem_name": "Longest Palindromic Subseq"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 16 - Dynamic Programming/SUBSEQ-06-COIN-CHANGE.py",
+    "step_section": "Step 16 - Dynamic Programming",
+    "file_name": "SUBSEQ-06-COIN-CHANGE.py",
+    "problem_name": "Subseq 06 Coin Change"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 16 - Dynamic Programming/SUBSEQ-01-SUBSET-SUM-PROBLEM.py",
+    "step_section": "Step 16 - Dynamic Programming",
+    "file_name": "SUBSEQ-01-SUBSET-SUM-PROBLEM.py",
+    "problem_name": "Subseq 01 Subset Sum Problem"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 16 - Dynamic Programming/LIS-02-PRINT-LIS.py",
+    "step_section": "Step 16 - Dynamic Programming",
+    "file_name": "LIS-02-PRINT-LIS.py",
+    "problem_name": "Lis 02 Print Lis"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 16 - Dynamic Programming/MCM-01-MCM.py",
+    "step_section": "Step 16 - Dynamic Programming",
+    "file_name": "MCM-01-MCM.py",
+    "problem_name": "Mcm 01 Mcm"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 16 - Dynamic Programming/SUBSEQ-10-ROD-CUTTING.py",
+    "step_section": "Step 16 - Dynamic Programming",
+    "file_name": "SUBSEQ-10-ROD-CUTTING.py",
+    "problem_name": "Subseq 10 Rod Cutting"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 16 - Dynamic Programming/DELETE-OPERATIONG-MAKE-STRING-SAME.py",
+    "step_section": "Step 16 - Dynamic Programming",
+    "file_name": "DELETE-OPERATIONG-MAKE-STRING-SAME.py",
+    "problem_name": "Delete Operationg Make String Same"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 16 - Dynamic Programming/LONGEST-COMMON-SUBSEQ.py",
+    "step_section": "Step 16 - Dynamic Programming",
+    "file_name": "LONGEST-COMMON-SUBSEQ.py",
+    "problem_name": "Longest Common Subseq"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 16 - Dynamic Programming/LIS-04-NUMBER-LIS.py",
+    "step_section": "Step 16 - Dynamic Programming",
+    "file_name": "LIS-04-NUMBER-LIS.py",
+    "problem_name": "Lis 04 Number Lis"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 16 - Dynamic Programming/DISTINCT-SUBSEQ.py",
+    "step_section": "Step 16 - Dynamic Programming",
+    "file_name": "DISTINCT-SUBSEQ.py",
+    "problem_name": "Distinct Subseq"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 16 - Dynamic Programming/BURST-BALLOON-02.py",
+    "step_section": "Step 16 - Dynamic Programming",
+    "file_name": "BURST-BALLOON-02.py",
+    "problem_name": "Burst Balloon 02"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 16 - Dynamic Programming/SUBSEQ-02-PARTITION-EQUAL-SUBSET-SUM.py",
+    "step_section": "Step 16 - Dynamic Programming",
+    "file_name": "SUBSEQ-02-PARTITION-EQUAL-SUBSET-SUM.py",
+    "problem_name": "Subseq 02 Partition Equal Subset Sum"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 16 - Dynamic Programming/MIN-PATH-SUM-TRIANGLE.py",
+    "step_section": "Step 16 - Dynamic Programming",
+    "file_name": "MIN-PATH-SUM-TRIANGLE.py",
+    "problem_name": "Min Path Sum Triangle"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 16 - Dynamic Programming/LIS-03-LARGEST-DIV-SUBSET.py",
+    "step_section": "Step 16 - Dynamic Programming",
+    "file_name": "LIS-03-LARGEST-DIV-SUBSET.py",
+    "problem_name": "Lis 03 Largest Div Subset"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 16 - Dynamic Programming/MIN-INSERTIONS-TO-MAKE-STRING-PALINDROME.py",
+    "step_section": "Step 16 - Dynamic Programming",
+    "file_name": "MIN-INSERTIONS-TO-MAKE-STRING-PALINDROME.py",
+    "problem_name": "Min Insertions To Make String Palindrome"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 16 - Dynamic Programming/FROG-JUMP.py",
+    "step_section": "Step 16 - Dynamic Programming",
+    "file_name": "FROG-JUMP.py",
+    "problem_name": "Frog Jump"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 16 - Dynamic Programming/MCM-02-MIN-COST-TO-CUT-STICK.py",
+    "step_section": "Step 16 - Dynamic Programming",
+    "file_name": "MCM-02-MIN-COST-TO-CUT-STICK.py",
+    "problem_name": "Mcm 02 Min Cost To Cut Stick"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 16 - Dynamic Programming/STOCKS-1.py",
+    "step_section": "Step 16 - Dynamic Programming",
+    "file_name": "STOCKS-1.py",
+    "problem_name": "Stocks 1"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 16 - Dynamic Programming/MIN-FALLING-PATH-SUM.py",
+    "step_section": "Step 16 - Dynamic Programming",
+    "file_name": "MIN-FALLING-PATH-SUM.py",
+    "problem_name": "Min Falling Path Sum"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 16 - Dynamic Programming/DP-SQUARE-COUNT-SUBMATRICS.py",
+    "step_section": "Step 16 - Dynamic Programming",
+    "file_name": "DP-SQUARE-COUNT-SUBMATRICS.py",
+    "problem_name": "Dp Square Count Submatrics"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 16 - Dynamic Programming/EDIT-DISTANCE.py",
+    "step_section": "Step 16 - Dynamic Programming",
+    "file_name": "EDIT-DISTANCE.py",
+    "problem_name": "Edit Distance"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 16 - Dynamic Programming/LIS-05-BITONIC.py",
+    "step_section": "Step 16 - Dynamic Programming",
+    "file_name": "LIS-05-BITONIC.py",
+    "problem_name": "Lis 05 Bitonic"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 16 - Dynamic Programming/STOCKS-3.py",
+    "step_section": "Step 16 - Dynamic Programming",
+    "file_name": "STOCKS-3.py",
+    "problem_name": "Stocks 3"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 16 - Dynamic Programming/PRINT-LONGEST-COMMON-SUBSEQ.py",
+    "step_section": "Step 16 - Dynamic Programming",
+    "file_name": "PRINT-LONGEST-COMMON-SUBSEQ.py",
+    "problem_name": "Print Longest Common Subseq"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 16 - Dynamic Programming/LIS-06-LONGEST-STRING-CHAIN.py",
+    "step_section": "Step 16 - Dynamic Programming",
+    "file_name": "LIS-06-LONGEST-STRING-CHAIN.py",
+    "problem_name": "Lis 06 Longest String Chain"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 16 - Dynamic Programming/0-1-KNAPSACK.py",
+    "step_section": "Step 16 - Dynamic Programming",
+    "file_name": "0-1-KNAPSACK.py",
+    "problem_name": "0 1 Knapsack"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 16 - Dynamic Programming/UNIQUE-PATHS-2.py",
+    "step_section": "Step 16 - Dynamic Programming",
+    "file_name": "UNIQUE-PATHS-2.py",
+    "problem_name": "Unique Paths 2"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 16 - Dynamic Programming/WILDCARD-MATCHING.py",
+    "step_section": "Step 16 - Dynamic Programming",
+    "file_name": "WILDCARD-MATCHING.py",
+    "problem_name": "Wildcard Matching"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 16 - Dynamic Programming/LIS-01-IMPLEMENT.py",
+    "step_section": "Step 16 - Dynamic Programming",
+    "file_name": "LIS-01-IMPLEMENT.py",
+    "problem_name": "Lis 01 Implement"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 16 - Dynamic Programming/NINJAS-TRAINING.py",
+    "step_section": "Step 16 - Dynamic Programming",
+    "file_name": "NINJAS-TRAINING.py",
+    "problem_name": "Ninjas Training"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 16 - Dynamic Programming/HOUSE-ROBBER-2.py",
+    "step_section": "Step 16 - Dynamic Programming",
+    "file_name": "HOUSE-ROBBER-2.py",
+    "problem_name": "House Robber 2"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 16 - Dynamic Programming/UNIQUE-PATHS-1.py",
+    "step_section": "Step 16 - Dynamic Programming",
+    "file_name": "UNIQUE-PATHS-1.py",
+    "problem_name": "Unique Paths 1"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 16 - Dynamic Programming/HOUSE-ROBBER-1.py",
+    "step_section": "Step 16 - Dynamic Programming",
+    "file_name": "HOUSE-ROBBER-1.py",
+    "problem_name": "House Robber 1"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 16 - Dynamic Programming/LONGEST-COMMON-SUBSTRING.py",
+    "step_section": "Step 16 - Dynamic Programming",
+    "file_name": "LONGEST-COMMON-SUBSTRING.py",
+    "problem_name": "Longest Common Substring"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 06 - Linked List/INTERSECTION-OF-LL.py",
+    "step_section": "Step 06 - Linked List",
+    "file_name": "INTERSECTION-OF-LL.py",
+    "problem_name": "Intersection Of Ll"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 06 - Linked List/LENGTH-OF-CYCLE.py",
+    "step_section": "Step 06 - Linked List",
+    "file_name": "LENGTH-OF-CYCLE.py",
+    "problem_name": "Length Of Cycle"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 06 - Linked List/FLATTEN-DLL.py",
+    "step_section": "Step 06 - Linked List",
+    "file_name": "FLATTEN-DLL.py",
+    "problem_name": "Flatten Dll"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 06 - Linked List/SPLIT-LINKED-LIST-IN-PARTS.py",
+    "step_section": "Step 06 - Linked List",
+    "file_name": "SPLIT-LINKED-LIST-IN-PARTS.py",
+    "problem_name": "Split Linked List In Parts"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 06 - Linked List/PAIRS-IN-DLL.py",
+    "step_section": "Step 06 - Linked List",
+    "file_name": "PAIRS-IN-DLL.py",
+    "problem_name": "Pairs In Dll"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 06 - Linked List/FLATTEN-LL.py",
+    "step_section": "Step 06 - Linked List",
+    "file_name": "FLATTEN-LL.py",
+    "problem_name": "Flatten Ll"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 06 - Linked List/PALINDROME.py",
+    "step_section": "Step 06 - Linked List",
+    "file_name": "PALINDROME.py",
+    "problem_name": "Palindrome"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 06 - Linked List/ROTATE-LIST.py",
+    "step_section": "Step 06 - Linked List",
+    "file_name": "ROTATE-LIST.py",
+    "problem_name": "Rotate List"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 06 - Linked List/REMOVE-DUPLICATES-DLL.py",
+    "step_section": "Step 06 - Linked List",
+    "file_name": "REMOVE-DUPLICATES-DLL.py",
+    "problem_name": "Remove Duplicates Dll"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 06 - Linked List/SORT-LIST.py",
+    "step_section": "Step 06 - Linked List",
+    "file_name": "SORT-LIST.py",
+    "problem_name": "Sort List"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 06 - Linked List/REMOVE-NTH-NODE.py",
+    "step_section": "Step 06 - Linked List",
+    "file_name": "REMOVE-NTH-NODE.py",
+    "problem_name": "Remove Nth Node"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 06 - Linked List/DETECT-CYCLE.py",
+    "step_section": "Step 06 - Linked List",
+    "file_name": "DETECT-CYCLE.py",
+    "problem_name": "Detect Cycle"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 06 - Linked List/ODD-EVEN-GROUPING.py",
+    "step_section": "Step 06 - Linked List",
+    "file_name": "ODD-EVEN-GROUPING.py",
+    "problem_name": "Odd Even Grouping"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 06 - Linked List/REVERSE-LL.py",
+    "step_section": "Step 06 - Linked List",
+    "file_name": "REVERSE-LL.py",
+    "problem_name": "Reverse Ll"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 06 - Linked List/DETECT-CYCLE-II.py",
+    "step_section": "Step 06 - Linked List",
+    "file_name": "DETECT-CYCLE-II.py",
+    "problem_name": "Detect Cycle Ii"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 06 - Linked List/INSERT-NODE-DLL.py",
+    "step_section": "Step 06 - Linked List",
+    "file_name": "INSERT-NODE-DLL.py",
+    "problem_name": "Insert Node Dll"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 06 - Linked List/INSERT-GCD-IN-LINKED-LIST.py",
+    "step_section": "Step 06 - Linked List",
+    "file_name": "INSERT-GCD-IN-LINKED-LIST.py",
+    "problem_name": "Insert Gcd In Linked List"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 06 - Linked List/REMOVE-NODES-DLL.py",
+    "step_section": "Step 06 - Linked List",
+    "file_name": "REMOVE-NODES-DLL.py",
+    "problem_name": "Remove Nodes Dll"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 06 - Linked List/ADD-TWO-NUMBERS.py",
+    "step_section": "Step 06 - Linked List",
+    "file_name": "ADD-TWO-NUMBERS.py",
+    "problem_name": "Add Two Numbers"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 06 - Linked List/TORTOISE-HAIR-METHOD.py",
+    "step_section": "Step 06 - Linked List",
+    "file_name": "TORTOISE-HAIR-METHOD.py",
+    "problem_name": "Tortoise Hair Method"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 06 - Linked List/CLONE-LIST.py",
+    "step_section": "Step 06 - Linked List",
+    "file_name": "CLONE-LIST.py",
+    "problem_name": "Clone List"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 06 - Linked List/SORT-0S-1S-2S.py",
+    "step_section": "Step 06 - Linked List",
+    "file_name": "SORT-0S-1S-2S.py",
+    "problem_name": "Sort 0S 1S 2S"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 06 - Linked List/REVERSE-DLL.py",
+    "step_section": "Step 06 - Linked List",
+    "file_name": "REVERSE-DLL.py",
+    "problem_name": "Reverse Dll"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 06 - Linked List/REVERSE-NODES-IN-GROUP-OF-K.py",
+    "step_section": "Step 06 - Linked List",
+    "file_name": "REVERSE-NODES-IN-GROUP-OF-K.py",
+    "problem_name": "Reverse Nodes In Group Of K"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 06 - Linked List/DESIGN BASED/LFU-CACHE.py",
+    "step_section": "Step 06 - Linked List",
+    "file_name": "LFU-CACHE.py",
+    "problem_name": "Lfu Cache"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 06 - Linked List/DESIGN BASED/LRU-CACHE.py",
+    "step_section": "Step 06 - Linked List",
+    "file_name": "LRU-CACHE.py",
+    "problem_name": "Lru Cache"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 04 - Binary Search/PAINTERS-PARTITION.py",
+    "step_section": "Step 04 - Binary Search",
+    "file_name": "PAINTERS-PARTITION.py",
+    "problem_name": "Painters Partition"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 04 - Binary Search/2D-MATRIX-BINARY-SEARCH.py",
+    "step_section": "Step 04 - Binary Search",
+    "file_name": "2D-MATRIX-BINARY-SEARCH.py",
+    "problem_name": "2D Matrix Binary Search"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 04 - Binary Search/2D-MATRIX-BS-HARD.py",
+    "step_section": "Step 04 - Binary Search",
+    "file_name": "2D-MATRIX-BS-HARD.py",
+    "problem_name": "2D Matrix Bs Hard"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 04 - Binary Search/FIRST-LAST-INDEX.py",
+    "step_section": "Step 04 - Binary Search",
+    "file_name": "FIRST-LAST-INDEX.py",
+    "problem_name": "First Last Index"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 04 - Binary Search/MIN-IN-ROTATED-ARRAY.py",
+    "step_section": "Step 04 - Binary Search",
+    "file_name": "MIN-IN-ROTATED-ARRAY.py",
+    "problem_name": "Min In Rotated Array"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 04 - Binary Search/SHIP-PACKAGES.py",
+    "step_section": "Step 04 - Binary Search",
+    "file_name": "SHIP-PACKAGES.py",
+    "problem_name": "Ship Packages"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 04 - Binary Search/SPLIT-LARGEST.py",
+    "step_section": "Step 04 - Binary Search",
+    "file_name": "SPLIT-LARGEST.py",
+    "problem_name": "Split Largest"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 04 - Binary Search/NTH-ROOT.py",
+    "step_section": "Step 04 - Binary Search",
+    "file_name": "NTH-ROOT.py",
+    "problem_name": "Nth Root"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 04 - Binary Search/AGGRESSIVE-COWS.py",
+    "step_section": "Step 04 - Binary Search",
+    "file_name": "AGGRESSIVE-COWS.py",
+    "problem_name": "Aggressive Cows"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 04 - Binary Search/MAX-1S-ROW.py",
+    "step_section": "Step 04 - Binary Search",
+    "file_name": "MAX-1S-ROW.py",
+    "problem_name": "Max 1S Row"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 04 - Binary Search/SQRT.py",
+    "step_section": "Step 04 - Binary Search",
+    "file_name": "SQRT.py",
+    "problem_name": "Sqrt"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 04 - Binary Search/KTH-MISSING-POS.py",
+    "step_section": "Step 04 - Binary Search",
+    "file_name": "KTH-MISSING-POS.py",
+    "problem_name": "Kth Missing Pos"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 04 - Binary Search/MEDIAN-OF-TWO-SORTED-ARR.py",
+    "step_section": "Step 04 - Binary Search",
+    "file_name": "MEDIAN-OF-TWO-SORTED-ARR.py",
+    "problem_name": "Median Of Two Sorted Arr"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 04 - Binary Search/SEARCH-ROT-SORTED-1.py",
+    "step_section": "Step 04 - Binary Search",
+    "file_name": "SEARCH-ROT-SORTED-1.py",
+    "problem_name": "Search Rot Sorted 1"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 04 - Binary Search/GAS-STATIONS.py",
+    "step_section": "Step 04 - Binary Search",
+    "file_name": "GAS-STATIONS.py",
+    "problem_name": "Gas Stations"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 04 - Binary Search/KOKO-EATING-BANANAS.py",
+    "step_section": "Step 04 - Binary Search",
+    "file_name": "KOKO-EATING-BANANAS.py",
+    "problem_name": "Koko Eating Bananas"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 04 - Binary Search/ROTATION.py",
+    "step_section": "Step 04 - Binary Search",
+    "file_name": "ROTATION.py",
+    "problem_name": "Rotation"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 04 - Binary Search/BOOK-ALLOCATION-PROBLEM.py",
+    "step_section": "Step 04 - Binary Search",
+    "file_name": "BOOK-ALLOCATION-PROBLEM.py",
+    "problem_name": "Book Allocation Problem"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 04 - Binary Search/CEIL-FLOOR.py",
+    "step_section": "Step 04 - Binary Search",
+    "file_name": "CEIL-FLOOR.py",
+    "problem_name": "Ceil Floor"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 04 - Binary Search/PEAK-ELEMENT.py",
+    "step_section": "Step 04 - Binary Search",
+    "file_name": "PEAK-ELEMENT.py",
+    "problem_name": "Peak Element"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 04 - Binary Search/PEAK-ELEMENT-02.py",
+    "step_section": "Step 04 - Binary Search",
+    "file_name": "PEAK-ELEMENT-02.py",
+    "problem_name": "Peak Element 02"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 04 - Binary Search/SINGLE-ELEMENT.py",
+    "step_section": "Step 04 - Binary Search",
+    "file_name": "SINGLE-ELEMENT.py",
+    "problem_name": "Single Element"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 04 - Binary Search/SEARCH-INSERT-POSITION.py",
+    "step_section": "Step 04 - Binary Search",
+    "file_name": "SEARCH-INSERT-POSITION.py",
+    "problem_name": "Search Insert Position"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 04 - Binary Search/SMALLEST-DIVISOR.py",
+    "step_section": "Step 04 - Binary Search",
+    "file_name": "SMALLEST-DIVISOR.py",
+    "problem_name": "Smallest Divisor"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 04 - Binary Search/MIN-DAYS-M-BOUQETS.py",
+    "step_section": "Step 04 - Binary Search",
+    "file_name": "MIN-DAYS-M-BOUQETS.py",
+    "problem_name": "Min Days M Bouqets"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 04 - Binary Search/MEDIAN-IN-MATRIX.py",
+    "step_section": "Step 04 - Binary Search",
+    "file_name": "MEDIAN-IN-MATRIX.py",
+    "problem_name": "Median In Matrix"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 04 - Binary Search/SEARCH-ROT-SORTED-2.py",
+    "step_section": "Step 04 - Binary Search",
+    "file_name": "SEARCH-ROT-SORTED-2.py",
+    "problem_name": "Search Rot Sorted 2"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 17 - Tries/WORD-SEARCH-2.py",
+    "step_section": "Step 17 - Tries",
+    "file_name": "WORD-SEARCH-2.py",
+    "problem_name": "Word Search 2"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 17 - Tries/DP-ON-TRIES-MIN-VALID-SUBSTRING.py",
+    "step_section": "Step 17 - Tries",
+    "file_name": "DP-ON-TRIES-MIN-VALID-SUBSTRING.py",
+    "problem_name": "Dp On Tries Min Valid Substring"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 17 - Tries/IMPLEMENT-TRIE.py",
+    "step_section": "Step 17 - Tries",
+    "file_name": "IMPLEMENT-TRIE.py",
+    "problem_name": "Implement Trie"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 17 - Tries/DESIGN-ADD-SEARCH-DATA-STRUCTURE.py",
+    "step_section": "Step 17 - Tries",
+    "file_name": "DESIGN-ADD-SEARCH-DATA-STRUCTURE.py",
+    "problem_name": "Design Add Search Data Structure"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 05 + 18 - Strings/RABIN-KARP-REPEATED-STRING-MATCH.py",
+    "step_section": "Step 05 + 18 - Strings",
+    "file_name": "RABIN-KARP-REPEATED-STRING-MATCH.py",
+    "problem_name": "Rabin Karp Repeated String Match"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 05 + 18 - Strings/LONGEST-HAPPY-PREFIX.py",
+    "step_section": "Step 05 + 18 - Strings",
+    "file_name": "LONGEST-HAPPY-PREFIX.py",
+    "problem_name": "Longest Happy Prefix"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 05 + 18 - Strings/LONGEST-COMMON-PREFIX.py",
+    "step_section": "Step 05 + 18 - Strings",
+    "file_name": "LONGEST-COMMON-PREFIX.py",
+    "problem_name": "Longest Common Prefix"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 05 + 18 - Strings/SORT-CHARS-BY-FREQ.py",
+    "step_section": "Step 05 + 18 - Strings",
+    "file_name": "SORT-CHARS-BY-FREQ.py",
+    "problem_name": "Sort Chars By Freq"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 05 + 18 - Strings/ROMAN-TO-INT.py",
+    "step_section": "Step 05 + 18 - Strings",
+    "file_name": "ROMAN-TO-INT.py",
+    "problem_name": "Roman To Int"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 05 + 18 - Strings/IMPLEMENT-ATOI.py",
+    "step_section": "Step 05 + 18 - Strings",
+    "file_name": "IMPLEMENT-ATOI.py",
+    "problem_name": "Implement Atoi"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 05 + 18 - Strings/FIND-INDEX-OF-FIRST-OCCURENCE.py",
+    "step_section": "Step 05 + 18 - Strings",
+    "file_name": "FIND-INDEX-OF-FIRST-OCCURENCE.py",
+    "problem_name": "Find Index Of First Occurence"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 05 + 18 - Strings/COUNT-PALINDROMIC-SUBSEQ.py",
+    "step_section": "Step 05 + 18 - Strings",
+    "file_name": "COUNT-PALINDROMIC-SUBSEQ.py",
+    "problem_name": "Count Palindromic Subseq"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 05 + 18 - Strings/VALID-ANAGRAMS.py",
+    "step_section": "Step 05 + 18 - Strings",
+    "file_name": "VALID-ANAGRAMS.py",
+    "problem_name": "Valid Anagrams"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 05 + 18 - Strings/CHECK-ROTATION.py",
+    "step_section": "Step 05 + 18 - Strings",
+    "file_name": "CHECK-ROTATION.py",
+    "problem_name": "Check Rotation"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 05 + 18 - Strings/LONGEST-PALINDROMIC-SUBSTR.py",
+    "step_section": "Step 05 + 18 - Strings",
+    "file_name": "LONGEST-PALINDROMIC-SUBSTR.py",
+    "problem_name": "Longest Palindromic Substr"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 05 + 18 - Strings/REMOVE-OUTER-PARANTH.py",
+    "step_section": "Step 05 + 18 - Strings",
+    "file_name": "REMOVE-OUTER-PARANTH.py",
+    "problem_name": "Remove Outer Paranth"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 05 + 18 - Strings/KMP-PATTERN-MATCHING.py",
+    "step_section": "Step 05 + 18 - Strings",
+    "file_name": "KMP-PATTERN-MATCHING.py",
+    "problem_name": "Kmp Pattern Matching"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 05 + 18 - Strings/MAX-SCORE-FROM-REMOVING-SUBSTR.py",
+    "step_section": "Step 05 + 18 - Strings",
+    "file_name": "MAX-SCORE-FROM-REMOVING-SUBSTR.py",
+    "problem_name": "Max Score From Removing Substr"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 05 + 18 - Strings/SUM-OF-BEAUTY-OF-ALL-SUBSTR.py",
+    "step_section": "Step 05 + 18 - Strings",
+    "file_name": "SUM-OF-BEAUTY-OF-ALL-SUBSTR.py",
+    "problem_name": "Sum Of Beauty Of All Substr"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 05 + 18 - Strings/LARGEST-ODD-NUM-IN-STRING.py",
+    "step_section": "Step 05 + 18 - Strings",
+    "file_name": "LARGEST-ODD-NUM-IN-STRING.py",
+    "problem_name": "Largest Odd Num In String"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 05 + 18 - Strings/MIN-ADD-TO-MAKE-PARANTHESES.py",
+    "step_section": "Step 05 + 18 - Strings",
+    "file_name": "MIN-ADD-TO-MAKE-PARANTHESES.py",
+    "problem_name": "Min Add To Make Parantheses"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 05 + 18 - Strings/REV-WORDS.py",
+    "step_section": "Step 05 + 18 - Strings",
+    "file_name": "REV-WORDS.py",
+    "problem_name": "Rev Words"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 05 + 18 - Strings/SHORTEST-PALINDROME.py",
+    "step_section": "Step 05 + 18 - Strings",
+    "file_name": "SHORTEST-PALINDROME.py",
+    "problem_name": "Shortest Palindrome"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 05 + 18 - Strings/COUNT-SAY.py",
+    "step_section": "Step 05 + 18 - Strings",
+    "file_name": "COUNT-SAY.py",
+    "problem_name": "Count Say"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 05 + 18 - Strings/COUNT-SUBSTRS.py",
+    "step_section": "Step 05 + 18 - Strings",
+    "file_name": "COUNT-SUBSTRS.py",
+    "problem_name": "Count Substrs"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 07 - Recursion/RAT-IN-A-MAZE.py",
+    "step_section": "Step 07 - Recursion",
+    "file_name": "RAT-IN-A-MAZE.py",
+    "problem_name": "Rat In A Maze"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 07 - Recursion/COMBINATION-SUM-2.py",
+    "step_section": "Step 07 - Recursion",
+    "file_name": "COMBINATION-SUM-2.py",
+    "problem_name": "Combination Sum 2"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 07 - Recursion/SUBSETS.py",
+    "step_section": "Step 07 - Recursion",
+    "file_name": "SUBSETS.py",
+    "problem_name": "Subsets"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 07 - Recursion/COMBINATION-SUM-3.py",
+    "step_section": "Step 07 - Recursion",
+    "file_name": "COMBINATION-SUM-3.py",
+    "problem_name": "Combination Sum 3"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 07 - Recursion/GENERATE-ALL-BIN-STRINGS.py",
+    "step_section": "Step 07 - Recursion",
+    "file_name": "GENERATE-ALL-BIN-STRINGS.py",
+    "problem_name": "Generate All Bin Strings"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 07 - Recursion/WORD-BREAK.py",
+    "step_section": "Step 07 - Recursion",
+    "file_name": "WORD-BREAK.py",
+    "problem_name": "Word Break"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 07 - Recursion/BETTER-STRING.py",
+    "step_section": "Step 07 - Recursion",
+    "file_name": "BETTER-STRING.py",
+    "problem_name": "Better String"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 07 - Recursion/N-QUEEN.py",
+    "step_section": "Step 07 - Recursion",
+    "file_name": "N-QUEEN.py",
+    "problem_name": "N Queen"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 07 - Recursion/SUBSET-SUM-1.py",
+    "step_section": "Step 07 - Recursion",
+    "file_name": "SUBSET-SUM-1.py",
+    "problem_name": "Subset Sum 1"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 07 - Recursion/SUBSET-SUM-2.py",
+    "step_section": "Step 07 - Recursion",
+    "file_name": "SUBSET-SUM-2.py",
+    "problem_name": "Subset Sum 2"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 07 - Recursion/REVERSE-STACK.py",
+    "step_section": "Step 07 - Recursion",
+    "file_name": "REVERSE-STACK.py",
+    "problem_name": "Reverse Stack"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 07 - Recursion/WORD-SEARCH.py",
+    "step_section": "Step 07 - Recursion",
+    "file_name": "WORD-SEARCH.py",
+    "problem_name": "Word Search"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 07 - Recursion/PHONE-NUMBER.py",
+    "step_section": "Step 07 - Recursion",
+    "file_name": "PHONE-NUMBER.py",
+    "problem_name": "Phone Number"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 07 - Recursion/M-COLORING-PROBLEM.py",
+    "step_section": "Step 07 - Recursion",
+    "file_name": "M-COLORING-PROBLEM.py",
+    "problem_name": "M Coloring Problem"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 07 - Recursion/COMBINATION-SUM-1.py",
+    "step_section": "Step 07 - Recursion",
+    "file_name": "COMBINATION-SUM-1.py",
+    "problem_name": "Combination Sum 1"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 07 - Recursion/PALINDROME-PARTITIONING.py",
+    "step_section": "Step 07 - Recursion",
+    "file_name": "PALINDROME-PARTITIONING.py",
+    "problem_name": "Palindrome Partitioning"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 07 - Recursion/SUDOKU-SOLVER.py",
+    "step_section": "Step 07 - Recursion",
+    "file_name": "SUDOKU-SOLVER.py",
+    "problem_name": "Sudoku Solver"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 07 - Recursion/GENERATE-PARANTHESES.py",
+    "step_section": "Step 07 - Recursion",
+    "file_name": "GENERATE-PARANTHESES.py",
+    "problem_name": "Generate Parantheses"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 10 - Sliding Window/SUBSTRING-CONTAINING-ALL-THREE-CHARS.py",
+    "step_section": "Step 10 - Sliding Window",
+    "file_name": "SUBSTRING-CONTAINING-ALL-THREE-CHARS.py",
+    "problem_name": "Substring Containing All Three Chars"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 10 - Sliding Window/LONGEST-SUBSTR-REP-CHARS.py",
+    "step_section": "Step 10 - Sliding Window",
+    "file_name": "LONGEST-SUBSTR-REP-CHARS.py",
+    "problem_name": "Longest Substr Rep Chars"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 10 - Sliding Window/COUNT-K-UNIQ-ELEM-SUBARRAY.py",
+    "step_section": "Step 10 - Sliding Window",
+    "file_name": "COUNT-K-UNIQ-ELEM-SUBARRAY.py",
+    "problem_name": "Count K Uniq Elem Subarray"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 10 - Sliding Window/MIN-WINDOW-SUBSTRING.py",
+    "step_section": "Step 10 - Sliding Window",
+    "file_name": "MIN-WINDOW-SUBSTRING.py",
+    "problem_name": "Min Window Substring"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 10 - Sliding Window/FRUITS-BASKETS.py",
+    "step_section": "Step 10 - Sliding Window",
+    "file_name": "FRUITS-BASKETS.py",
+    "problem_name": "Fruits Baskets"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 10 - Sliding Window/MAX-CONSEC-ONES.py",
+    "step_section": "Step 10 - Sliding Window",
+    "file_name": "MAX-CONSEC-ONES.py",
+    "problem_name": "Max Consec Ones"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 10 - Sliding Window/LONGEST-K-UNIQ-CHARS-SUBSTRING.py",
+    "step_section": "Step 10 - Sliding Window",
+    "file_name": "LONGEST-K-UNIQ-CHARS-SUBSTRING.py",
+    "problem_name": "Longest K Uniq Chars Substring"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 10 - Sliding Window/LONGEST-REP-CHARS-REPLACE.py",
+    "step_section": "Step 10 - Sliding Window",
+    "file_name": "LONGEST-REP-CHARS-REPLACE.py",
+    "problem_name": "Longest Rep Chars Replace"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 10 - Sliding Window/BINARY-SUBARR-WITH-GOAL.py",
+    "step_section": "Step 10 - Sliding Window",
+    "file_name": "BINARY-SUBARR-WITH-GOAL.py",
+    "problem_name": "Binary Subarr With Goal"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 10 - Sliding Window/NICE-SUBARRAY.py",
+    "step_section": "Step 10 - Sliding Window",
+    "file_name": "NICE-SUBARRAY.py",
+    "problem_name": "Nice Subarray"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 10 - Sliding Window/MAX-POINTS-OBTAINED-FROM-CARDS.py",
+    "step_section": "Step 10 - Sliding Window",
+    "file_name": "MAX-POINTS-OBTAINED-FROM-CARDS.py",
+    "problem_name": "Max Points Obtained From Cards"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 01 - Basics/CHECK-PALINDROME.py",
+    "step_section": "Step 01 - Basics",
+    "file_name": "CHECK-PALINDROME.py",
+    "problem_name": "Check Palindrome"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 01 - Basics/LCM-GCD.py",
+    "step_section": "Step 01 - Basics",
+    "file_name": "LCM-GCD.py",
+    "problem_name": "Lcm Gcd"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 01 - Basics/ARMSTRONG-NUMBER.py",
+    "step_section": "Step 01 - Basics",
+    "file_name": "ARMSTRONG-NUMBER.py",
+    "problem_name": "Armstrong Number"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 01 - Basics/COUNT-PRIMES.py",
+    "step_section": "Step 01 - Basics",
+    "file_name": "COUNT-PRIMES.py",
+    "problem_name": "Count Primes"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 01 - Basics/ALL-DIVISORS.py",
+    "step_section": "Step 01 - Basics",
+    "file_name": "ALL-DIVISORS.py",
+    "problem_name": "All Divisors"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 01 - Basics/REVERSE-NUMBER.py",
+    "step_section": "Step 01 - Basics",
+    "file_name": "REVERSE-NUMBER.py",
+    "problem_name": "Reverse Number"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 11 - Heaps/DIVIDE-ARR-IN-SETS-OF-K-CONSEC-NUMBERS.py",
+    "step_section": "Step 11 - Heaps",
+    "file_name": "DIVIDE-ARR-IN-SETS-OF-K-CONSEC-NUMBERS.py",
+    "problem_name": "Divide Arr In Sets Of K Consec Numbers"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 11 - Heaps/REPLACE-WITH-RANK.py",
+    "step_section": "Step 11 - Heaps",
+    "file_name": "REPLACE-WITH-RANK.py",
+    "problem_name": "Replace With Rank"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 11 - Heaps/MEDIAN-DATA-STREAM.py",
+    "step_section": "Step 11 - Heaps",
+    "file_name": "MEDIAN-DATA-STREAM.py",
+    "problem_name": "Median Data Stream"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 11 - Heaps/MAX-COMBINATION-SUM.py",
+    "step_section": "Step 11 - Heaps",
+    "file_name": "MAX-COMBINATION-SUM.py",
+    "problem_name": "Max Combination Sum"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 11 - Heaps/TASK-SCHEDULER.py",
+    "step_section": "Step 11 - Heaps",
+    "file_name": "TASK-SCHEDULER.py",
+    "problem_name": "Task Scheduler"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 11 - Heaps/MERGE-K-SORTED-ARR.py",
+    "step_section": "Step 11 - Heaps",
+    "file_name": "MERGE-K-SORTED-ARR.py",
+    "problem_name": "Merge K Sorted Arr"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 11 - Heaps/HEAP-SORT.py",
+    "step_section": "Step 11 - Heaps",
+    "file_name": "HEAP-SORT.py",
+    "problem_name": "Heap Sort"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 11 - Heaps/KTH-LARGEST-IN-STREAM.py",
+    "step_section": "Step 11 - Heaps",
+    "file_name": "KTH-LARGEST-IN-STREAM.py",
+    "problem_name": "Kth Largest In Stream"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 11 - Heaps/DESIGN-TWITTER.py",
+    "step_section": "Step 11 - Heaps",
+    "file_name": "DESIGN-TWITTER.py",
+    "problem_name": "Design Twitter"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 11 - Heaps/INTRO-IMPLEMENT.py",
+    "step_section": "Step 11 - Heaps",
+    "file_name": "INTRO-IMPLEMENT.py",
+    "problem_name": "Intro Implement"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 11 - Heaps/MERGE-K-LINKEDLISTS.py",
+    "step_section": "Step 11 - Heaps",
+    "file_name": "MERGE-K-LINKEDLISTS.py",
+    "problem_name": "Merge K Linkedlists"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 11 - Heaps/MIN-COST-OF-ROPE.py",
+    "step_section": "Step 11 - Heaps",
+    "file_name": "MIN-COST-OF-ROPE.py",
+    "problem_name": "Min Cost Of Rope"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 11 - Heaps/K-MOST-FREQUENT.py",
+    "step_section": "Step 11 - Heaps",
+    "file_name": "K-MOST-FREQUENT.py",
+    "problem_name": "K Most Frequent"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 11 - Heaps/KTH-LARGEST.py",
+    "step_section": "Step 11 - Heaps",
+    "file_name": "KTH-LARGEST.py",
+    "problem_name": "Kth Largest"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 03 - Arrays/MAX-PRODUCT-SUBARR.py",
+    "step_section": "Step 03 - Arrays",
+    "file_name": "MAX-PRODUCT-SUBARR.py",
+    "problem_name": "Max Product Subarr"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 03 - Arrays/LONGEST-SUBARR-WITH-SUM-K.py",
+    "step_section": "Step 03 - Arrays",
+    "file_name": "LONGEST-SUBARR-WITH-SUM-K.py",
+    "problem_name": "Longest Subarr With Sum K"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 03 - Arrays/SET-MATRIX-ZERO.py",
+    "step_section": "Step 03 - Arrays",
+    "file_name": "SET-MATRIX-ZERO.py",
+    "problem_name": "Set Matrix Zero"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 03 - Arrays/ROTATE-IMAGE.py",
+    "step_section": "Step 03 - Arrays",
+    "file_name": "ROTATE-IMAGE.py",
+    "problem_name": "Rotate Image"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 03 - Arrays/SUBARR-SUM-EQ-K.py",
+    "step_section": "Step 03 - Arrays",
+    "file_name": "SUBARR-SUM-EQ-K.py",
+    "problem_name": "Subarr Sum Eq K"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 03 - Arrays/MERGE-SORTED-ARR.py",
+    "step_section": "Step 03 - Arrays",
+    "file_name": "MERGE-SORTED-ARR.py",
+    "problem_name": "Merge Sorted Arr"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 03 - Arrays/3-SUM.py",
+    "step_section": "Step 03 - Arrays",
+    "file_name": "3-SUM.py",
+    "problem_name": "3 Sum"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 03 - Arrays/2-SUM.py",
+    "step_section": "Step 03 - Arrays",
+    "file_name": "2-SUM.py",
+    "problem_name": "2 Sum"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 03 - Arrays/MISSING-REPEATING.py",
+    "step_section": "Step 03 - Arrays",
+    "file_name": "MISSING-REPEATING.py",
+    "problem_name": "Missing Repeating"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 03 - Arrays/GRUMPY-BOOKSTORE-OWNER.py",
+    "step_section": "Step 03 - Arrays",
+    "file_name": "GRUMPY-BOOKSTORE-OWNER.py",
+    "problem_name": "Grumpy Bookstore Owner"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 03 - Arrays/ROTATE-ARRAY-D-PLACES.py",
+    "step_section": "Step 03 - Arrays",
+    "file_name": "ROTATE-ARRAY-D-PLACES.py",
+    "problem_name": "Rotate Array D Places"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 03 - Arrays/CONTIGUOUS-ARRAY.py",
+    "step_section": "Step 03 - Arrays",
+    "file_name": "CONTIGUOUS-ARRAY.py",
+    "problem_name": "Contiguous Array"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 03 - Arrays/REV-PAIRS.py",
+    "step_section": "Step 03 - Arrays",
+    "file_name": "REV-PAIRS.py",
+    "problem_name": "Rev Pairs"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 03 - Arrays/COUNT-INVERSIONS.py",
+    "step_section": "Step 03 - Arrays",
+    "file_name": "COUNT-INVERSIONS.py",
+    "problem_name": "Count Inversions"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 03 - Arrays/PRINT-MAX-SUM-SUBARR.py",
+    "step_section": "Step 03 - Arrays",
+    "file_name": "PRINT-MAX-SUM-SUBARR.py",
+    "problem_name": "Print Max Sum Subarr"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 03 - Arrays/SPIRAL-MATRIX.py",
+    "step_section": "Step 03 - Arrays",
+    "file_name": "SPIRAL-MATRIX.py",
+    "problem_name": "Spiral Matrix"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 03 - Arrays/3-SUM-CLOSEST.py",
+    "step_section": "Step 03 - Arrays",
+    "file_name": "3-SUM-CLOSEST.py",
+    "problem_name": "3 Sum Closest"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 03 - Arrays/KTH-ELEMENT.py",
+    "step_section": "Step 03 - Arrays",
+    "file_name": "KTH-ELEMENT.py",
+    "problem_name": "Kth Element"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 03 - Arrays/ARRAY-LEADERS.py",
+    "step_section": "Step 03 - Arrays",
+    "file_name": "ARRAY-LEADERS.py",
+    "problem_name": "Array Leaders"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 03 - Arrays/MOVE-ZEROS-TO-END.py",
+    "step_section": "Step 03 - Arrays",
+    "file_name": "MOVE-ZEROS-TO-END.py",
+    "problem_name": "Move Zeros To End"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 03 - Arrays/LONGEST-CONSECUTIVE-SUBSEQ.py",
+    "step_section": "Step 03 - Arrays",
+    "file_name": "LONGEST-CONSECUTIVE-SUBSEQ.py",
+    "problem_name": "Longest Consecutive Subseq"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 03 - Arrays/PASCAL-TRIANG.py",
+    "step_section": "Step 03 - Arrays",
+    "file_name": "PASCAL-TRIANG.py",
+    "problem_name": "Pascal Triang"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 03 - Arrays/MERGE-INTERVALS.py",
+    "step_section": "Step 03 - Arrays",
+    "file_name": "MERGE-INTERVALS.py",
+    "problem_name": "Merge Intervals"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 03 - Arrays/SPIRAL-MATRIX-IV.py",
+    "step_section": "Step 03 - Arrays",
+    "file_name": "SPIRAL-MATRIX-IV.py",
+    "problem_name": "Spiral Matrix Iv"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 03 - Arrays/SORT-0S-1S-2S.py",
+    "step_section": "Step 03 - Arrays",
+    "file_name": "SORT-0S-1S-2S.py",
+    "problem_name": "Sort 0S 1S 2S"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 03 - Arrays/MAX-SUM-SUBARRAY.py",
+    "step_section": "Step 03 - Arrays",
+    "file_name": "MAX-SUM-SUBARRAY.py",
+    "problem_name": "Max Sum Subarray"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 03 - Arrays/REMOVE-DUPLICATES-SORTED-ARR.py",
+    "step_section": "Step 03 - Arrays",
+    "file_name": "REMOVE-DUPLICATES-SORTED-ARR.py",
+    "problem_name": "Remove Duplicates Sorted Arr"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 03 - Arrays/MAJORITY-ELEMENT.py",
+    "step_section": "Step 03 - Arrays",
+    "file_name": "MAJORITY-ELEMENT.py",
+    "problem_name": "Majority Element"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 03 - Arrays/BEST-TIME-TO-BUY-SELL-STOCK.py",
+    "step_section": "Step 03 - Arrays",
+    "file_name": "BEST-TIME-TO-BUY-SELL-STOCK.py",
+    "problem_name": "Best Time To Buy Sell Stock"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 03 - Arrays/NEXT-PERMUTATION.py",
+    "step_section": "Step 03 - Arrays",
+    "file_name": "NEXT-PERMUTATION.py",
+    "problem_name": "Next Permutation"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 03 - Arrays/LARGEST-SUBARR-WITH-ZERO-SUM.py",
+    "step_section": "Step 03 - Arrays",
+    "file_name": "LARGEST-SUBARR-WITH-ZERO-SUM.py",
+    "problem_name": "Largest Subarr With Zero Sum"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 03 - Arrays/4-SUM.py",
+    "step_section": "Step 03 - Arrays",
+    "file_name": "4-SUM.py",
+    "problem_name": "4 Sum"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 03 - Arrays/MAJORITY-ELEMENT-2.py",
+    "step_section": "Step 03 - Arrays",
+    "file_name": "MAJORITY-ELEMENT-2.py",
+    "problem_name": "Majority Element 2"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 03 - Arrays/SUBARR-WITH-XOR-X.py",
+    "step_section": "Step 03 - Arrays",
+    "file_name": "SUBARR-WITH-XOR-X.py",
+    "problem_name": "Subarr With Xor X"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 03 - Arrays/UNION-FIND.py",
+    "step_section": "Step 03 - Arrays",
+    "file_name": "UNION-FIND.py",
+    "problem_name": "Union Find"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 08 - Bit Manipulation/SET-UNSET-RIGHTMOST-UNSET.py",
+    "step_section": "Step 08 - Bit Manipulation",
+    "file_name": "SET-UNSET-RIGHTMOST-UNSET.py",
+    "problem_name": "Set Unset Rightmost Unset"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 08 - Bit Manipulation/SIEVE.py",
+    "step_section": "Step 08 - Bit Manipulation",
+    "file_name": "SIEVE.py",
+    "problem_name": "Sieve"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 08 - Bit Manipulation/COUNT-SET-BITS.py",
+    "step_section": "Step 08 - Bit Manipulation",
+    "file_name": "COUNT-SET-BITS.py",
+    "problem_name": "Count Set Bits"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 08 - Bit Manipulation/XOR-L-TO-R.py",
+    "step_section": "Step 08 - Bit Manipulation",
+    "file_name": "XOR-L-TO-R.py",
+    "problem_name": "Xor L To R"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 08 - Bit Manipulation/PRIME-FACTORISATION.py",
+    "step_section": "Step 08 - Bit Manipulation",
+    "file_name": "PRIME-FACTORISATION.py",
+    "problem_name": "Prime Factorisation"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 08 - Bit Manipulation/ALL-DIV-OF-A-NUM.py",
+    "step_section": "Step 08 - Bit Manipulation",
+    "file_name": "ALL-DIV-OF-A-NUM.py",
+    "problem_name": "All Div Of A Num"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 08 - Bit Manipulation/COUNT-BITS-TO-FLIP-A-TO-B.py",
+    "step_section": "Step 08 - Bit Manipulation",
+    "file_name": "COUNT-BITS-TO-FLIP-A-TO-B.py",
+    "problem_name": "Count Bits To Flip A To B"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 08 - Bit Manipulation/CHECK-ITH-BIT.py",
+    "step_section": "Step 08 - Bit Manipulation",
+    "file_name": "CHECK-ITH-BIT.py",
+    "problem_name": "Check Ith Bit"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 08 - Bit Manipulation/TWO-NUMBERS-WITH-ODD-OCCURENCE.py",
+    "step_section": "Step 08 - Bit Manipulation",
+    "file_name": "TWO-NUMBERS-WITH-ODD-OCCURENCE.py",
+    "problem_name": "Two Numbers With Odd Occurence"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 08 - Bit Manipulation/DIVIDE-TWO-INT.py",
+    "step_section": "Step 08 - Bit Manipulation",
+    "file_name": "DIVIDE-TWO-INT.py",
+    "problem_name": "Divide Two Int"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 08 - Bit Manipulation/POWER-OF-TWO.py",
+    "step_section": "Step 08 - Bit Manipulation",
+    "file_name": "POWER-OF-TWO.py",
+    "problem_name": "Power Of Two"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 12 - Greedy Algorithm/VALID-PARANTHESES-02.py",
+    "step_section": "Step 12 - Greedy Algorithm",
+    "file_name": "VALID-PARANTHESES-02.py",
+    "problem_name": "Valid Parantheses 02"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 12 - Greedy Algorithm/SHORTEST-JOB-FIRST.py",
+    "step_section": "Step 12 - Greedy Algorithm",
+    "file_name": "SHORTEST-JOB-FIRST.py",
+    "problem_name": "Shortest Job First"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 12 - Greedy Algorithm/ASSIGN-COOKIES.py",
+    "step_section": "Step 12 - Greedy Algorithm",
+    "file_name": "ASSIGN-COOKIES.py",
+    "problem_name": "Assign Cookies"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 12 - Greedy Algorithm/JUMP-GAME-02.py",
+    "step_section": "Step 12 - Greedy Algorithm",
+    "file_name": "JUMP-GAME-02.py",
+    "problem_name": "Jump Game 02"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 12 - Greedy Algorithm/COIN-CHANGE.py",
+    "step_section": "Step 12 - Greedy Algorithm",
+    "file_name": "COIN-CHANGE.py",
+    "problem_name": "Coin Change"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 12 - Greedy Algorithm/FRACTIONAL-KNAPSACK.py",
+    "step_section": "Step 12 - Greedy Algorithm",
+    "file_name": "FRACTIONAL-KNAPSACK.py",
+    "problem_name": "Fractional Knapsack"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 12 - Greedy Algorithm/CANDY.py",
+    "step_section": "Step 12 - Greedy Algorithm",
+    "file_name": "CANDY.py",
+    "problem_name": "Candy"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 12 - Greedy Algorithm/N-MEETINGS.py",
+    "step_section": "Step 12 - Greedy Algorithm",
+    "file_name": "N-MEETINGS.py",
+    "problem_name": "N Meetings"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 12 - Greedy Algorithm/JUMP-GAME-01.py",
+    "step_section": "Step 12 - Greedy Algorithm",
+    "file_name": "JUMP-GAME-01.py",
+    "problem_name": "Jump Game 01"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 12 - Greedy Algorithm/PAGE-FAULT.py",
+    "step_section": "Step 12 - Greedy Algorithm",
+    "file_name": "PAGE-FAULT.py",
+    "problem_name": "Page Fault"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 12 - Greedy Algorithm/MIN-NUMBER-PLATFORMS.py",
+    "step_section": "Step 12 - Greedy Algorithm",
+    "file_name": "MIN-NUMBER-PLATFORMS.py",
+    "problem_name": "Min Number Platforms"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 12 - Greedy Algorithm/INSERT-INTERVAL.py",
+    "step_section": "Step 12 - Greedy Algorithm",
+    "file_name": "INSERT-INTERVAL.py",
+    "problem_name": "Insert Interval"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 12 - Greedy Algorithm/MERGE-INTERVALS.py",
+    "step_section": "Step 12 - Greedy Algorithm",
+    "file_name": "MERGE-INTERVALS.py",
+    "problem_name": "Merge Intervals"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 12 - Greedy Algorithm/VALID-PARANTHESES-01.py",
+    "step_section": "Step 12 - Greedy Algorithm",
+    "file_name": "VALID-PARANTHESES-01.py",
+    "problem_name": "Valid Parantheses 01"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 12 - Greedy Algorithm/NON-OVERLAPPING-INTERVALS.py",
+    "step_section": "Step 12 - Greedy Algorithm",
+    "file_name": "NON-OVERLAPPING-INTERVALS.py",
+    "problem_name": "Non Overlapping Intervals"
+  },
+  {
+    "file_path": "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 12 - Greedy Algorithm/JOB-SEQ-PROBLEM.py",
+    "step_section": "Step 12 - Greedy Algorithm",
+    "file_name": "JOB-SEQ-PROBLEM.py",
+    "problem_name": "Job Seq Problem"
+  }
+]

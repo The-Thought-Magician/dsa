@@ -1,0 +1,119 @@
+{
+  "2025-09-17 (Wednesday)": [
+    {
+      "id": "step02_sorting_task_1",
+      "title": "Learn Important Sorting Techniques - Part 1",
+      "type": "new_topic",
+      "section": "Learn Important Sorting Techniques",
+      "problems": [
+        "Bubble Sort"
+      ],
+      "estimated_time": 22,
+      "priority": "high",
+      "files": [
+        "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 02 - Sorting Techniques/BUBBLE-SORT.py",
+        "/home/chiranjeet/dev/dsa/Strivers-A2Z-DSA-Sheet/04.Linked List/3.Medium Problems of LL/10.Sort_LL.cpp"
+      ],
+      "notes": "1 problems, easy difficulty",
+      "difficulty": "easy"
+    },
+    {
+      "id": "step01_basics_task_1",
+      "title": "Learn the basics - Part 1",
+      "type": "new_topic",
+      "section": "Learn the basics",
+      "problems": [
+        "Check Palindrome",
+        "Lcm Gcd"
+      ],
+      "estimated_time": 44,
+      "priority": "high",
+      "files": [
+        "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 01 - Basics/CHECK-PALINDROME.py",
+        "/home/chiranjeet/dev/dsa/Strivers-A2Z-DSA-Sheet/04.Linked List/3.Medium Problems of LL/06.Check_for_palindrome_LL.cpp",
+        "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 01 - Basics/LCM-GCD.py"
+      ],
+      "notes": "2 problems, easy difficulty",
+      "difficulty": "easy"
+    }
+  ],
+  "2025-09-18 (Thursday)": [
+    {
+      "id": "step02_sorting_task_1_review",
+      "title": "Learn Important Sorting Techniques - Part 1 (Review)",
+      "type": "review",
+      "section": "Learn Important Sorting Techniques",
+      "problems": [
+        "Bubble Sort"
+      ],
+      "estimated_time": 7,
+      "priority": "low",
+      "files": [
+        "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 02 - Sorting Techniques/BUBBLE-SORT.py",
+        "/home/chiranjeet/dev/dsa/Strivers-A2Z-DSA-Sheet/04.Linked List/3.Medium Problems of LL/10.Sort_LL.cpp"
+      ],
+      "notes": "Review of Learn Important Sorting Techniques",
+      "difficulty": "easy"
+    },
+    {
+      "id": "step01_basics_task_1_review",
+      "title": "Learn the basics - Part 1 (Review)",
+      "type": "review",
+      "section": "Learn the basics",
+      "problems": [
+        "Check Palindrome",
+        "Lcm Gcd"
+      ],
+      "estimated_time": 15,
+      "priority": "low",
+      "files": [
+        "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 01 - Basics/CHECK-PALINDROME.py",
+        "/home/chiranjeet/dev/dsa/Strivers-A2Z-DSA-Sheet/04.Linked List/3.Medium Problems of LL/06.Check_for_palindrome_LL.cpp",
+        "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 01 - Basics/LCM-GCD.py"
+      ],
+      "notes": "Review of Learn the basics",
+      "difficulty": "easy"
+    }
+  ],
+  "2025-09-19 (Friday)": [
+    {
+      "id": "step06_linked_list_task_1",
+      "title": "Learn LinkedList - Part 1",
+      "type": "new_topic",
+      "section": "Learn LinkedList",
+      "problems": [
+        "Intersection Of Ll",
+        "Length Of Cycle",
+        "Flatten Dll",
+        "Split Linked List In Parts",
+        "Pairs In Dll"
+      ],
+      "estimated_time": 110,
+      "priority": "high",
+      "files": [
+        "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 06 - Linked List/INTERSECTION-OF-LL.py",
+        "/home/chiranjeet/dev/dsa/Strivers-A2Z-DSA-Sheet/04.Linked List/3.Medium Problems of LL/09.Delete_mid_of_LL.cpp",
+        "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 06 - Linked List/LENGTH-OF-CYCLE.py",
+        "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 06 - Linked List/FLATTEN-DLL.py",
+        "/home/chiranjeet/dev/dsa/Strivers-A2Z-DSA-Sheet/04.Linked List/5.Hard Promblems of LL/04.Flatten_LL.cpp",
+        "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 06 - Linked List/SPLIT-LINKED-LIST-IN-PARTS.py",
+        "/home/chiranjeet/dev/dsa/Strivers-A2Z-DSA-Sheet/04.Linked List/1. Single Linked List/03.Deleting_node_in_linked_list.cpp",
+        "/home/chiranjeet/dev/dsa/striver-a2z-dsa/Step 06 - Linked List/PAIRS-IN-DLL.py",
+        "/home/chiranjeet/dev/dsa/Strivers-A2Z-DSA-Sheet/04.Linked List/4.Medium Problems of DLL/02.Pair_sum_in_dll.cpp"
+      ],
+      "notes": "5 problems, easy difficulty",
+      "difficulty": "easy"
+    }
+  ],
+  "2025-09-20 (Saturday)": [],
+  "2025-09-21 (Sunday)": [],
+  "2025-09-22 (Monday)": [],
+  "2025-09-23 (Tuesday)": [],
+  "2025-09-24 (Wednesday)": [],
+  "2025-09-25 (Thursday)": [],
+  "2025-09-26 (Friday)": [],
+  "2025-09-27 (Saturday)": [],
+  "2025-09-28 (Sunday)": [],
+  "2025-09-29 (Monday)": [],
+  "2025-09-30 (Tuesday)": []
+}

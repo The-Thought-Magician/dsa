@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A2Z DSA Learning System</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="assets/css/style.css" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand" href="#"><i class="fas fa-brain"></i> A2Z DSA Learning System</a>
+            <div class="navbar-nav ms-auto">
+                <a class="nav-link" href="#dashboard" onclick="showSection('dashboard')">Dashboard</a>
+                <a class="nav-link" href="#topics" onclick="showSection('topics')">Topics</a>
+                <a class="nav-link" href="#coverage" onclick="showSection('coverage')">Coverage</a>
+                <a class="nav-link" href="#planning" onclick="showSection('planning')">Planning</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid mt-4">
+        <!-- Dashboard Section -->
+        <div id="dashboard-section" class="section active">
+            <div class="row mb-4">
+                <div class="col-12">
+                    <h2><i class="fas fa-tachometer-alt"></i> Dashboard</h2>
+                </div>
+            </div>
+
+            <!-- Stats Cards -->
+            <div class="row mb-4" id="stats-cards">
+                <!-- Stats will be loaded here -->
+            </div>
+
+            <!-- Progress Charts -->
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5><i class="fas fa-chart-pie"></i> Coverage Overview</h5>
+                        </div>
+                        <div class="card-body">
+                            <canvas id="coverageChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5><i class="fas fa-chart-bar"></i> Implementation Status</h5>
+                        </div>
+                        <div class="card-body">
+                            <canvas id="implementationChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Topics Section -->
+        <div id="topics-section" class="section">
+            <div class="row mb-4">
+                <div class="col-md-8">
+                    <h2><i class="fas fa-list"></i> Topics</h2>
+                </div>
+                <div class="col-md-4">
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="topic-search" placeholder="Search topics...">
+                        <button class="btn btn-outline-secondary" onclick="loadTopics()">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <select class="form-select" id="status-filter">
+                        <option value="">All Statuses</option>
+                        <option value="available">Available</option>
+                        <option value="partial">Partial</option>
+                        <option value="missing">Missing</option>
+                    </select>
+                </div>
+                <div class="col-md-6">
+                    <select class="form-select" id="section-filter">
+                        <option value="">All Sections</option>
+                    </select>
+                </div>
+            </div>
+
+            <div id="topics-container">
+                <!-- Topics will be loaded here -->
+            </div>
+        </div>
+
+        <!-- Coverage Section -->
+        <div id="coverage-section" class="section">
+            <div class="row mb-4">
+                <div class="col-12">
+                    <h2><i class="fas fa-chart-line"></i> Coverage Analysis</h2>
+                </div>
+            </div>
+
+            <div class="row mb-4">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5><i class="fas fa-exclamation-triangle"></i> Gap Analysis</h5>
+                        </div>
+                        <div class="card-body" id="gaps-container">
+                            <!-- Gap analysis will be loaded here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5><i class="fas fa-table"></i> Section Coverage</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-striped" id="coverage-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Step</th>
+                                            <th>Section</th>
+                                            <th>Status</th>
+                                            <th>Problems</th>
+                                            <th>Files</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <!-- Coverage data will be loaded here -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Planning Section -->
+        <div id="planning-section" class="section">
+            <div class="row mb-4">
+                <div class="col-md-8">
+                    <h2><i class="fas fa-calendar-alt"></i> Study Planning</h2>
+                </div>
+                <div class="col-md-4">
+                    <button class="btn btn-primary" onclick="generateNewPlan()">
+                        <i class="fas fa-sync-alt"></i> Generate New Plan
+                    </button>
+                </div>
+            </div>
+
+            <div class="row mb-4">
+                <div class="col-12">
+                    <div class="card bg-primary text-white">
+                        <div class="card-body" id="today-plan">
+                            <!-- Today's plan will be loaded here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5><i class="fas fa-calendar-week"></i> 14-Day Study Plan</h5>
+                        </div>
+                        <div class="card-body">
+                            <div id="study-plan-container">
+                                <!-- Study plan will be loaded here -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Modal -->
+    <div class="modal fade" id="loadingModal" tabindex="-1">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-body text-center">
+                    <div class="spinner-border text-primary" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                    <p class="mt-2">Loading...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="assets/js/app.js"></script>
+    <script src="assets/js/charts.js"></script>
+    <script src="assets/js/components.js"></script>
+</body>
+</html>
