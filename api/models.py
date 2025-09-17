@@ -100,6 +100,10 @@ class QuestionDetail(BaseModel):
     tags: List[str]
     status: Literal["unsolved", "attempted", "solved"]
     statement_markdown: str
+    approach_markdown: Optional[str] = None
+    theory_markdown: Optional[str] = None
+    concepts: Optional[List[Dict[str, str]]] = None
+    topic_summary: Optional[str] = None
     starter_code: str
     resources: List[QuestionResource]
     sample_tests: List[QuestionSampleTest]

@@ -6,7 +6,7 @@ import tempfile
 import time
 from datetime import datetime
 from pathlib import Path
-from typing import List, Dict, Any, Optional, Tuple
+from typing import List, Dict, Any, Optional, Tuple, Union
 
 from .models import (
     TopicResponse,
@@ -23,12 +23,29 @@ from .models import (
     QuestionSolutionResponse,
     TestCaseResult,
     QuestionResource,
+    QuestionSampleTest,
     AIChatRequest,
     AIChatResponse,
 )
 
 class MissingAIKeyError(RuntimeError):
     """Raised when no Gemini API key can be resolved."""
+
+
+class AIServiceError(RuntimeError):
+    """Base error for Gemini integration issues."""
+
+
+class AIModelTimeoutError(AIServiceError):
+    """Raised when the Gemini request exceeds the configured timeout."""
+
+
+class AIModelRateLimitError(AIServiceError):
+    """Raised when Gemini reports resource exhaustion or rate limiting."""
+
+
+class AIModelBadInputError(AIServiceError):
+    """Raised when Gemini rejects the prompt payload."""
 
 
 class DataService:
@@ -202,6 +219,8 @@ class DataService:
                 )
             with open(self.questions_payload_path, encoding="utf-8") as fh:
                 self._questions_cache = json.load(fh)
+        # Type guard to ensure we always return a dict
+        assert self._questions_cache is not None
         return self._questions_cache
 
     def _load_question_progress(self) -> Dict[str, Any]:
@@ -247,12 +266,13 @@ class DataService:
             question_id = raw["id"]
             status = statuses.get(question_id, "unsolved")
             viewed = question_id in solution_views
+            tags = list(dict.fromkeys(raw.get("tags", [])))
             items.append(
                 QuestionListItem(
                     id=question_id,
                     title=raw["title"],
                     difficulty=raw["difficulty"],
-                    tags=raw.get("tags", []),
+                    tags=tags,
                     status=status,
                     solution_viewed=viewed,
                 )
@@ -266,24 +286,43 @@ class DataService:
         viewed = question_id in progress.get("solution_views", {})
 
         sample_tests = [
-            {
-                "id": idx,
-                "input": test.get("input", ""),
-                "output": test.get("output", ""),
-                "explanation": test.get("explanation"),
-            }
+            QuestionSampleTest(
+                id=idx,
+                input=test.get("input", ""),
+                output=test.get("output", ""),
+                explanation=test.get("explanation"),
+            )
             for idx, test in enumerate(raw.get("sample_tests", []), start=1)
         ]
+
+        # Sanitize resources and tags
+        resources = []
+        for r in raw.get("resources", []):
+            url = r.get("url", "")
+            if url.startswith("file://"):
+                path = url.replace("file://", "", 1).lstrip("/")
+                url = f"/repos/{path}"
+            resources.append({
+                "title": r.get("title", ""),
+                "url": url,
+                "notes": r.get("notes"),
+            })
+
+        tags = list(dict.fromkeys(raw.get("tags", [])))
 
         return QuestionDetail(
             id=raw["id"],
             title=raw["title"],
             difficulty=raw.get("difficulty", "Unknown"),
-            tags=raw.get("tags", []),
+            tags=tags,
             status=status,
             statement_markdown=raw.get("statement_markdown", ""),
+            approach_markdown=raw.get("approach_markdown"),
+            theory_markdown=raw.get("theory_markdown"),
+            concepts=raw.get("concepts"),
+            topic_summary=raw.get("topic_summary"),
             starter_code=raw.get("starter_code", ""),
-            resources=raw.get("resources", []),
+            resources=resources,
             sample_tests=sample_tests,
             metadata=raw.get("metadata", {}),
             solution_available=bool(raw.get("solution_markdown")),
@@ -354,6 +393,11 @@ class DataService:
         for index, test in enumerate(raw.get("sample_tests", []), start=1):
             stdin = test.get("input", "")
             expected = test.get("output", "")
+            # Skip placeholder tests
+            if not stdin.strip() or stdin.strip().startswith('#'):
+                continue
+            if not expected.strip() or expected.strip().startswith('#'):
+                continue
             try:
                 stdout, stderr, runtime_ms, return_code = self._execute_python(request.code, stdin)
             except subprocess.TimeoutExpired:
@@ -420,11 +464,35 @@ class DataService:
     def get_study_plan(self) -> DailyPlanResponse:
         plan_file = self.data_dir / "study_plan_14day.json"
 
-        if not plan_file.exists():
-            subprocess.run([sys.executable, 'scripts/study_plan_generator.py'], check=True, cwd='.')
-
-        with open(plan_file) as f:
-            plan_data = json.load(f)
+        plan_data: Dict[str, Any]
+        if plan_file.exists():
+            with open(plan_file) as f:
+                plan_data = json.load(f)
+        else:
+            # Fallback plan built from question list
+            questions = self.get_question_list()
+            per_day = max(1, len(questions) // 14) if questions else 1
+            day_names = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+            plan_data = {}
+            idx = 0
+            for day in range(14):
+                slice_ = questions[idx: idx + per_day]
+                idx += per_day
+                tasks = []
+                for q in slice_:
+                    tasks.append({
+                        'id': q.id,
+                        'title': q.title,
+                        'type': 'practice',
+                        'section': 'Questions',
+                        'problems': [q.id],
+                        'estimated_time': 45,
+                        'priority': 'medium',
+                        'files': [],
+                        'notes': '',
+                        'difficulty': q.difficulty,
+                    })
+                plan_data[f"Day {day + 1} ({day_names[day % 7]})"] = tasks
 
         plans = []
         total_time = 0
@@ -472,24 +540,31 @@ class DataService:
         return DailyPlanResponse(plans=plans, summary=summary)
 
     def rebuild_data(self):
-        scripts = [
-            "analyze_repos.py",
-            "build_a2z_structure.py",
-            "build_index.py",
-            "build_questions_dataset.py"
-        ]
-
-        for script in scripts:
-            subprocess.run([sys.executable, f'scripts/{script}'], check=True, cwd='.')
-
-        # ensure fresh view of generated datasets
-        self._questions_cache = None
+        extractor = self.scripts_dir / "extract_cpp_questions_batch.py"
+        enricher = self.scripts_dir / "enrich_questions_with_gemini.py"
+        legacy = self.scripts_dir / "build_questions_dataset.py"
+        try:
+            if extractor.exists():
+                subprocess.run([sys.executable, str(extractor)], check=True, cwd='.')
+            elif legacy.exists():
+                subprocess.run([sys.executable, str(legacy)], check=True, cwd='.')
+            if enricher.exists():
+                subprocess.run([sys.executable, str(enricher)], check=True, cwd='.')
+        finally:
+            self._questions_cache = None
 
 
 class AIService:
     def __init__(self, data_service: DataService):
         self.data_service = data_service
-        self._model = None
+        self._client = None
+        self._default_config: Dict[str, Any] = {
+            "max_output_tokens": 2048,
+            "temperature": 0.75,
+            "top_p": 0.9,
+            "top_k": 40,
+        }
+        self._request_timeout = 45
 
     def _resolve_api_key(self) -> str:
         direct = os.getenv("GEMINI_API_KEY")
@@ -509,8 +584,8 @@ class AIService:
                     return value.strip()
         return ""
 
-    def _ensure_model(self):
-        if self._model is not None:
+    def _ensure_client(self):
+        if self._client is not None:
             return
 
         api_key = self._resolve_api_key()
@@ -518,15 +593,14 @@ class AIService:
             raise MissingAIKeyError("GEMINI_API_KEY is not configured")
 
         try:
-            import google.generativeai as genai
+            from google import genai
         except ImportError as exc:  # pragma: no cover
-            raise RuntimeError("google-generativeai package is not installed") from exc
+            raise RuntimeError("google-genai package is not installed") from exc
 
-        genai.configure(api_key=api_key)
-        self._model = genai.GenerativeModel("gemini-1.5-flash")
+        self._client = genai.Client(api_key=api_key)
 
     def ask(self, request: AIChatRequest) -> AIChatResponse:
-        self._ensure_model()
+        self._ensure_client()
 
         question = self.data_service.get_question_detail(request.question_id)
         allow_full_solution = question.solution_viewed
@@ -547,7 +621,7 @@ class AIService:
         context_lines = [
             f"Question: {question.title}",
             f"Difficulty: {question.difficulty}",
-            f"Tags: {', '.join(question.tags)}",
+            f"Tags: {', '.join(question.tags)}" if question.tags else "Tags: none provided",
             "Statement:",
             question.statement_markdown,
         ]
@@ -564,49 +638,63 @@ class AIService:
         if question.sample_tests:
             sample_summary = []
             for test in question.sample_tests:
-                preview_input = self.data_service.preview_text(test.input, limit=60)
+                preview_input = self.data_service.preview_text(test.input, limit=80)
                 sample_summary.append(
                     f"  - Test {test.id}: input={preview_input}, expected={test.output.strip()}"
                 )
             context_lines.append("Sample tests:\n" + "\n".join(sample_summary))
 
         base_context = "\n\n".join(context_lines)
-
-        conversation = [
-            {"role": "system", "parts": [{"text": system_prompt}]},
-            {"role": "user", "parts": [{"text": base_context}]},
-        ]
-
+        
+        # Build the complete prompt content
+        prompt_parts = [base_context]
+        
         if request.code:
-            conversation.append(
-                {
-                    "role": "user",
-                    "parts": [
-                        {
-                            "text": (
-                                "Here is the current attempt in Python:\n\n"
-                                f"```python\n{request.code}\n```"
-                            )
-                        }
-                    ],
-                }
+            prompt_parts.append(
+                "Here is the current attempt in Python:\n\n"
+                f"```python\n{request.code}\n```"
             )
 
         for message in request.messages:
-            if message.role not in {"user", "assistant", "system"}:
-                continue
-            gemini_role = message.role if message.role != "system" else "user"
-            conversation.append({"role": gemini_role, "parts": [{"text": message.content}]})
+            if message.role in {"user", "assistant"}:
+                prompt_parts.append(f"{message.role}: {message.content}")
 
-        model_response = self._model.generate_content(conversation)
-        text_response = getattr(model_response, "text", None)
+        full_prompt = "\n\n".join(prompt_parts)
+
+        try:
+            from google.genai import types
+            
+            model_response = self._client.models.generate_content(  # type: ignore
+                model="gemini-2.0-flash-001",
+                contents=full_prompt,
+                config=types.GenerateContentConfig(
+                    system_instruction=system_prompt,
+                    **self._default_config,
+                ),
+            )
+        except Exception as exc:  # Catch-and-map handled below
+            text = str(exc)
+            try:
+                from google.api_core import exceptions as google_exceptions  # type: ignore
+            except ImportError:  # pragma: no cover
+                google_exceptions = None
+
+            if google_exceptions:
+                if isinstance(exc, google_exceptions.DeadlineExceeded):
+                    raise AIModelTimeoutError("Gemini request timed out. Please try again.") from exc
+                if isinstance(exc, google_exceptions.ResourceExhausted):
+                    raise AIModelRateLimitError("Gemini rate limit reached. Wait a moment and retry.") from exc
+                if isinstance(exc, google_exceptions.InvalidArgument):
+                    raise AIModelBadInputError("Gemini rejected the request payload.") from exc
+                if isinstance(exc, google_exceptions.PermissionDenied):
+                    raise AIServiceError("Gemini API key lacks permission or is invalid.") from exc
+                if isinstance(exc, google_exceptions.ServiceUnavailable):
+                    raise AIServiceError("Gemini service is temporarily unavailable. Try again shortly.") from exc
+            raise AIServiceError(text or "Gemini request failed.") from exc
+
+        text_response = getattr(model_response, "text", "")
         if not text_response:
-            parts = []
-            for part in getattr(model_response, "parts", []) or []:
-                part_text = getattr(part, "text", "")
-                if part_text:
-                    parts.append(part_text)
-            text_response = "\n".join(parts) if parts else "I could not generate a response."
+            raise AIServiceError("Gemini returned an empty response.")
 
         guardrail_triggered = False
         if not allow_full_solution and "```" in text_response and "def " in text_response:
@@ -617,7 +705,12 @@ class AIService:
                 "and think about the order in which you evaluate the characters or numbers."
             )
 
-        references = [QuestionResource(**resource) for resource in question.resources]
+        references: List[QuestionResource] = []
+        for resource in question.resources:
+            if isinstance(resource, QuestionResource):
+                references.append(resource)
+            else:
+                references.append(QuestionResource(**resource))
 
         return AIChatResponse(
             message=text_response.strip(),

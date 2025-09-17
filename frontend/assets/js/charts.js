@@ -208,8 +208,20 @@ window.renderCharts = () => {
     }
 };
 
-App.prototype.renderCharts = function() {
-    if (chartsManager) {
-        chartsManager.renderCharts();
-    }
-};
+if (typeof App !== 'undefined') {
+    App.prototype.renderCharts = function() {
+        if (chartsManager) {
+            chartsManager.renderCharts();
+        }
+    };
+} else {
+    window.addEventListener('load', () => {
+        if (typeof App !== 'undefined') {
+            App.prototype.renderCharts = function() {
+                if (chartsManager) {
+                    chartsManager.renderCharts();
+                }
+            };
+        }
+    });
+}

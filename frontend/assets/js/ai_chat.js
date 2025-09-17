@@ -121,14 +121,14 @@ export class AIChatPanel {
         }
 
         const { code = '', language = 'python' } = context;
+
+        this.appendUserMessage(content);
         const payload = {
             question_id: this.questionId,
             messages: this.history.map((msg) => ({ role: msg.role, content: msg.content })),
             code,
             language,
         };
-
-        this.appendUserMessage(content);
         this.setSending(true);
         this.elements.input.value = '';
 
@@ -138,11 +138,16 @@ export class AIChatPanel {
                     const res = await fetch(`${API_BASE_URL}/api/ai/ask`, {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({ ...payload, messages: payload.messages }),
+                        body: JSON.stringify(payload),
                     });
                     if (!res.ok) {
                         const detail = await res.json().catch(() => ({}));
-                        const message = detail.detail || 'AI assistant unavailable right now.';
+                        let message = detail.detail || 'AI assistant unavailable right now.';
+                        if (res.status === 429) {
+                            message = 'AI is receiving too many requests. Please wait a few seconds and retry.';
+                        } else if (res.status === 504) {
+                            message = 'AI timed out before responding. Try again in a moment.';
+                        }
                         throw new Error(message);
                     }
                     return res.json();

@@ -13,11 +13,10 @@ dependencies = [
     "beautifulsoup4>=4.13.0",
     "lxml>=6.0.0",
     "httpx>=0.28.0",
-    "google-genai>=0.9.0"
+    "google-genai>=0.1.0"
 ]
 
 [project.scripts]
-dsa-cli = "main:app"
 dsa-web = "run_server:main"
 
 [build-system]

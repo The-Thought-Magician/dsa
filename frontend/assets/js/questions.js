@@ -120,6 +120,12 @@ export class QuestionsController {
             title: document.getElementById('question-detail-heading'),
             meta: document.getElementById('question-meta'),
             statement: document.getElementById('question-statement'),
+            approachSection: document.querySelector('.question-approach'),
+            approach: document.getElementById('question-approach'),
+            theorySection: document.querySelector('.question-theory'),
+            theory: document.getElementById('question-theory'),
+            conceptsSection: document.querySelector('.question-concepts'),
+            concepts: document.getElementById('question-concepts'),
             resourcesList: document.getElementById('question-resources-list'),
             samplesContainer: document.getElementById('question-samples-container'),
             viewSolutionButton: document.getElementById('question-view-solution-btn'),
@@ -309,6 +315,38 @@ export class QuestionsController {
         this.elements.title.textContent = detail.title;
         this.elements.meta.innerHTML = metaHtml.join(' ');
         this.elements.statement.innerHTML = renderMarkdown(detail.statement_markdown);
+        if (detail.approach_markdown) {
+            this.elements.approach.innerHTML = renderMarkdown(detail.approach_markdown);
+            this.elements.approachSection.classList.remove('visually-hidden');
+        } else {
+            this.elements.approachSection.classList.add('visually-hidden');
+            this.elements.approach.innerHTML = '';
+        }
+        if (detail.theory_markdown) {
+            this.elements.theory.innerHTML = renderMarkdown(detail.theory_markdown);
+            this.elements.theorySection.classList.remove('visually-hidden');
+        } else {
+            this.elements.theorySection.classList.add('visually-hidden');
+            this.elements.theory.innerHTML = '';
+        }
+        if (Array.isArray(detail.concepts) && detail.concepts.length) {
+            this.elements.concepts.innerHTML = detail.concepts
+                .map((c) => `
+                    <div class="col-md-4">
+                        <div class="border rounded-3 p-3 h-100">
+                            <h4 class="h6 mb-2">${escapeHtml(c.name || '')}</h4>
+                            <div class="small text-muted mb-2">${escapeHtml(c.summary || '')}</div>
+                            ${c.why_it_matters ? `<div class="small"><strong>Why:</strong> ${escapeHtml(c.why_it_matters)}</div>` : ''}
+                            ${c.practice_tips ? `<div class="small mt-1"><strong>Practice:</strong> ${escapeHtml(c.practice_tips)}</div>` : ''}
+                        </div>
+                    </div>
+                `)
+                .join('');
+            this.elements.conceptsSection.classList.remove('visually-hidden');
+        } else {
+            this.elements.concepts.innerHTML = '';
+            this.elements.conceptsSection.classList.add('visually-hidden');
+        }
         this.elements.editor.value = detail.starter_code || '';
 
         this.renderResources(detail.resources || []);
