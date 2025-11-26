@@ -56,7 +56,7 @@ class CPPQuestionExtractor:
             approach_text = re.sub(r'\s+', ' ', approach_text).strip()
 
             return {
-                "file_path": str(file_path),
+                "file_path": file_path.as_posix(),
                 "title": self._extract_title_from_path(file_path),
                 "question": question_text,
                 "approach": approach_text,
@@ -168,7 +168,7 @@ if __name__ == "__main__":
                 "time_complexity": question_data.get('time_complexity', 'O(n)'),
                 "space_complexity": question_data.get('space_complexity', 'O(1)'),
                 "source_file": question_data['file_path'],
-                "needs_ai_generation": True  # Flag for later AI processing
+                "needs_ai_generation": True
             },
             "solution_markdown": f"```cpp\n{question_data['cpp_code']}\n```"
         }

@@ -1,30 +1,75 @@
-# TODO — Single Shot Plan
+# TODO — Single Checklist
 
-- Fix favicon 404 by serving `frontend/favicon.ico` at `/favicon.ico`.
-- Stabilize AI chat: upgrade Gemini calls to 2.5 models, remove unsupported system role, map timeouts and 429s to HTTP errors.
-- Ensure `/api/study-plan`, `/api/study-plan/today`, `/api/rebuild` work with current UI.
-- Use the C++ repo for source data: extract all `.cpp` files, sanitize, and build `data/questions/questions.json`.
-- Enrich questions with Gemini: generate statement, approach, theory, concepts, runnable Python solution, and real sample tests.
-- Surface new fields in UI: approach, theory, concepts, and keep run/submit + solution reveal intact.
-- Keep assets small, non-blocking overlay wired across fetch.
-
-Commands
-
-- Create venv and install: `uv venv && source .venv/bin/activate && uv pip install -e .`
-- Extract dataset: `python scripts/extract_cpp_questions_batch.py`
-- Enrich dataset: `python scripts/enrich_questions_with_gemini.py`
-- Run server: `python run_server.py` then open `http://localhost:8000`
-
-Acceptance
-
-- Dashboard loads without console errors; favicon resolves.
-- Questions list non-empty; detail shows statement, resources, samples.
-- Approach/Theory/Concepts sections render when present.
-- Run executes code against sample tests; Submit updates status.
-- AI chat responds and respects guardrails; 429/timeout show friendly toasts.
-- Study plan endpoints return data; rebuild triggers extractor/enricher.
-
-Notes
-
-- Use real data only; do not handcraft placeholder tests.
-- Large enrichment runs may take time and quota; run once and commit dataset.
+- [x] Confirm repository layout is minimal and consistent (root only contains `api/`, `frontend/`, `data/`, `scripts/`, `docs/`, `Strivers-A2Z-DSA-Sheet/`, `run_server.py`, `pyproject.toml`).
+- [x] Audit duplicate/legacy dirs (e.g., `striver-a2z-dsa/`); if redundant, move to `.backup/striver-a2z-dsa/`.
+- [x] Review top-level Markdown files (`CLAUDE.md`, `TRANSFORMATION_SUMMARY.md`, `additional-content.md`, `prompt.md`); if not needed for users, move to `.backup/`.
+- [x] Remove or move obsolete JSONs and artifacts under `data/` that are no longer read by code (keep `data/questions/questions.json` and `data/question_progress.json`).
+- [x] Ensure docs live under `docs/` per AGENTS.md; keep only `AGENTS.md` at root by exception.
+- [ ] Verify `.env` is git-ignored and only contains `GEMINI_API_KEY`.
+- [ ] Standardize path usage across frontend to use relative `API_BASE_URL` from `frontend/assets/js/config.js:1`.
+- [ ] Verify static mounts: `/assets`, `/components`, `/repos`, `/favicon.ico` in `api/main.py:1`.
+- [ ] Normalize resource links: convert any remaining `file://` URLs to `/repos/...` during response build (`api/services.py:239`).
+- [ ] Replace any hard-coded absolute paths with repo-relative paths.
+- [ ] Confirm non-blocking loading overlay and toasts are used for all fetch calls (`frontend/assets/js/ui/loading.js`, `frontend/assets/js/ui/toast.js`).
+- [ ] Confirm overlay shows within 100ms for long requests and auto-hides on resolve/error; Esc/Tab work.
+- [ ] Set overlay timeout to 30s and decide on retry CTA behavior; implement if required.
+- [ ] Verify favicon loads without 404 (`/favicon.ico`) and appears in tab.
+- [ ] Remove any references to global `App` from charts; ensure charts use `window.app` only (`frontend/assets/js/charts.js:1`).
+- [ ] Ensure Chart.js is available via CDN before `charts.js` runs (`frontend/index.html:1`).
+- [ ] Review and clean up DOM ids/classes used by charts and dashboard cards to match code.
+- [ ] Confirm dashboard fetches `/api/stats`, `/api/topics`, `/api/coverage` and renders without console errors (`frontend/assets/js/app.js:1`).
+- [ ] Verify planning endpoints `/api/study-plan`, `/api/study-plan/today`, `/api/rebuild` exist and return JSON (`api/main.py:94`).
+- [ ] Ensure `window.generateNewPlan()` triggers extractor + enricher and refreshes planning view (`frontend/assets/js/app.js:418`).
+- [x] Remove `test_extraction.py` stray return or convert to proper assertions; keep tests self-contained.
+- [ ] Confirm Python execution engine timeouts and cleanup work (`api/services.py:332`).
+- [ ] Guard against arbitrary network/file access in code execution; ensure `subprocess.run` uses local cwd only.
+- [ ] Confirm status transitions unsolved→attempted→solved work via run/submit (`api/services.py:413`, `frontend/assets/js/questions.js:520`).
+- [ ] Verify solution reveal path and progress tracking (`/api/questions/{id}/solution/view`) updates local list and detail state.
+- [ ] Ensure sanitization exists when rendering markdown (escape HTML, render simple markdown) (`frontend/assets/js/questions.js:24`).
+- [ ] Confirm questions routes `/questions` and `/questions/:id` render correctly and SSR fallback serves SPA (`api/main.py:125`).
+- [ ] Ensure keyboard accessibility for question cards (Enter/Space activates) (`frontend/assets/js/questions.js:201`).
+- [ ] Check that empty states render for zero topics/coverage/questions gracefully.
+- [ ] Review `frontend/assets/js/components.js` for dead code; remove if unused.
+- [ ] Replace any placeholder tests in `data/questions/questions.json`; no `# Input will be provided` remains.
+- [ ] Add dataset integrity check script to validate each question has at least 3 sample tests with input/output.
+- [ ] Ensure every question has `difficulty`, `tags`, `resources`, `metadata.source_file` when available.
+- [ ] Verify `scripts/extract_cpp_questions_batch.py` finds all `.cpp` files under `Strivers-A2Z-DSA-Sheet/` and builds basic objects (id/title/tags/solution_markdown).
+- [ ] Confirm extractor uses real content; no fabricated statements or tests.
+- [ ] Add path normalization in extractor outputs to use forward slashes and repo-relative paths.
+- [ ] Ensure `scripts/enrich_questions_with_gemini.py` runs per-question (not all at once) and can resume (skip already enriched items).
+- [ ] Add optional `--only <id>` and `--limit N --offset K` flags to the enricher for controlled runs.
+- [ ] Implement simple backoff and 429/5xx retry in enricher; respect rate limits.
+- [ ] Store enriched fields on question object: `statement_markdown`, `approach_markdown`, `theory_markdown`, `concepts`, `topic_summary`, `starter_code`, `sample_tests`, `solution_markdown`.
+- [ ] Save Gemini-produced `python_solution` into `metadata.python_solution` or dedicated file under `data/solutions/<id>.py` and reference path in metadata.
+- [ ] Validate that sample tests produce expected output with the generated `python_solution` via a small harness before saving.
+- [ ] Sanitize concepts objects to the required keys (name, summary, why_it_matters, practice_tips) and strings only.
+- [ ] Ensure all resources are safe links (same-origin `/repos` or http/https) and use titles.
+- [ ] After enrichment, remove any `metadata.needs_ai_generation` flags.
+- [ ] Ensure `api/services.py` detail response includes new fields and types align with `api/models.py:48`.
+- [ ] Render approach/theory/concepts sections only if present in detail view (`frontend/components/question-detail.html:1`, `frontend/assets/js/questions.js:101`).
+- [ ] Add topic summary snippet to question detail header if available.
+- [ ] Verify AI Chat uses Gemini 2.5 model and does not send unsupported roles; no server 500s on chat (`api/services.py:652`, `api/routers/ai.py:1`).
+- [ ] Map Gemini errors to HTTP: 400 invalid input, 429 rate limit, 504 timeout, 503 config missing; show friendly toasts (`frontend/assets/js/ai_chat.js:1`).
+- [ ] Ensure guardrails: hide full solutions until user clicks “View solution”; replace code blocks with hints if not unlocked.
+- [ ] Add per-question context id in chat payload and verify references are shown as resource links.
+- [ ] Confirm UI remains interactive during requests; no focus traps; aria-busy toggled on main region.
+- [ ] Ensure prefers-reduced-motion is respected in overlay CSS.
+- [ ] Verify mobile layout for questions list/detail and chat panel.
+- [ ] Review build and packaging; `pyproject.toml` minimal runtime deps only; ensure `google-generativeai>=0.8.0` fits used API surface.
+- [ ] Pin Python version `>=3.11` in tooling and CI; verify with `python --version` in venv.
+- [ ] Install with `uv pip install -e .` succeeds; fix missing dependencies if any.
+- [ ] Run unit tests (`pytest -q`); add tests for questions endpoints and planning endpoints using small fixtures.
+- [ ] Add minimal negative AI-chat tests: missing API key returns 503; timeout mapped to 504.
+- [ ] Add a dataset regression test to ensure at least N questions with ≥3 sample tests exist.
+- [ ] Add script `scripts/validate_dataset.py` to report broken or missing fields and invalid URLs.
+- [ ] Run Python linting (ruff/flake8) and fix style issues; enforce 4-space indentation and type hints.
+- [ ] Run a simple JS linter/formatter (if configured) or perform a manual pass to remove dead code and unused imports.
+- [ ] Verify all fetches have error handling and show toasts with actionable messages.
+- [ ] Confirm no console errors in Chrome devtools while navigating Dashboard → Topics → Coverage → Planning → Questions.
+- [ ] Ensure 404s for unknown routes are handled by SPA fallback (served index) without breaking refresh.
+- [ ] Verify server logs show 2xx for expected endpoints and no repeated 404s (e.g., `/api/study-plan/today`, `/api/rebuild`).
+- [ ] Document the data pipeline usage in `docs/README.md` (extract → enrich → validate).
+- [ ] Keep `.backup/` organized for any moved legacy files with a README noting why they were archived.
+- [ ] Final pass to rename any vague variables/functions to descriptive names; no comments added per AGENTS.md.
+- [ ] Remove any remaining unused files and update `.gitignore` accordingly.
+- [ ] Tag a commit and note remaining known limitations (e.g., Python-only execution, local subprocess sandbox).

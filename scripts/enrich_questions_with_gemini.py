@@ -1,7 +1,14 @@
+import argparse
 import json
 import os
-from pathlib import Path
+import subprocess
+import sys
+import tempfile
 import textwrap
+import time
+from pathlib import Path
+
+from typing import Iterable, List, Dict
 
 def load_key() -> str:
     key = os.getenv("GEMINI_API_KEY", "").strip()
@@ -51,7 +58,96 @@ def build_prompt(source_cpp: str) -> str:
         """
     )
 
-def enrich_one(model, item: dict) -> dict:
+def extract_text(response) -> str:
+    direct = getattr(response, "text", None)
+    if direct:
+        return direct
+    parts: List[str] = []
+    candidates = getattr(response, "candidates", []) or []
+    for candidate in candidates:
+        content = getattr(candidate, "content", None)
+        if not content:
+            continue
+        for part in getattr(content, "parts", []) or []:
+            piece = getattr(part, "text", None)
+            if piece:
+                parts.append(piece)
+    return "\n".join(parts)
+
+
+def parse_args():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--only", action="append")
+    parser.add_argument("--limit", type=int)
+    parser.add_argument("--offset", type=int, default=0)
+    parser.add_argument("--validate", action="store_true")
+    return parser.parse_args()
+
+
+def call_model(model, prompt: str) -> Dict[str, object]:
+    from google.api_core import exceptions as google_exceptions
+
+    delays = [5, 10, 20]
+    last_error = None
+    for delay in delays:
+        try:
+            response = model.generate_content(
+                prompt,
+                generation_config={"temperature": 0.5, "top_p": 0.8, "top_k": 40, "max_output_tokens": 2048},
+                request_options={"timeout": 120},
+            )
+            text = extract_text(response)
+            return coerce_json(text)
+        except google_exceptions.ResourceExhausted as exc:
+            last_error = exc
+            time.sleep(delay)
+        except google_exceptions.ServiceUnavailable as exc:
+            last_error = exc
+            time.sleep(delay)
+        except google_exceptions.DeadlineExceeded as exc:
+            last_error = exc
+            time.sleep(delay)
+        except google_exceptions.InternalServerError as exc:
+            last_error = exc
+            time.sleep(delay)
+        except Exception as exc:
+            last_error = exc
+            time.sleep(delay)
+    raise RuntimeError(str(last_error) if last_error else "Gemini request failed")
+
+
+def run_python_solution(code: str, tests: Iterable[Dict[str, str]]) -> None:
+    solutions_dir = Path("data/solutions")
+    solutions_dir.mkdir(parents=True, exist_ok=True)
+    with tempfile.NamedTemporaryFile(mode="w", suffix=".py", delete=False, encoding="utf-8") as tmp:
+        tmp.write(code)
+        temp_path = Path(tmp.name)
+    try:
+        for test in tests:
+            proc = subprocess.run(
+                [sys.executable, str(temp_path)],
+                input=test["input"],
+                text=True,
+                capture_output=True,
+                timeout=6,
+            )
+            expected = test["output"].strip()
+            actual = proc.stdout.strip()
+            if proc.returncode != 0 or actual != expected:
+                raise RuntimeError("Sample test mismatch")
+    finally:
+        temp_path.unlink(missing_ok=True)
+
+
+def save_python_solution(identifier: str, code: str) -> str:
+    solutions_dir = Path("data/solutions")
+    solutions_dir.mkdir(parents=True, exist_ok=True)
+    path = solutions_dir / f"{identifier}.py"
+    path.write_text(code, encoding="utf-8")
+    return path.as_posix()
+
+
+def enrich_one(model, item: dict, validate: bool) -> dict:
     src_path = item.get("metadata", {}).get("source_file") or item.get("resources", [{}])[0].get("url", "").replace("file://", "")
     if not src_path:
         return item
@@ -60,8 +156,7 @@ def enrich_one(model, item: dict) -> dict:
     except Exception:
         return item
     prompt = build_prompt(source_text)
-    resp = model.generate_content(prompt, generation_config={"temperature":0.5, "top_p":0.8, "top_k":40, "max_output_tokens":2048})
-    data = coerce_json(getattr(resp, "text", "") or "{}")
+    data = call_model(model, prompt)
     if not isinstance(data, dict):
         return item
     out = dict(item)
@@ -83,17 +178,25 @@ def enrich_one(model, item: dict) -> dict:
             })
         except Exception:
             continue
-    if normalized_tests:
-        out["sample_tests"] = normalized_tests
+    if len(normalized_tests) < 3:
+        raise RuntimeError("Not enough sample tests")
+    out["sample_tests"] = normalized_tests
     if data.get("solution_markdown"):
         out["solution_markdown"] = data["solution_markdown"]
     meta = dict(out.get("metadata") or {})
-    meta["python_solution"] = data.get("python_solution")
-    meta["needs_ai_generation"] = False
+    python_solution = data.get("python_solution")
+    if not python_solution:
+        raise RuntimeError("Missing python_solution")
+    if validate:
+        run_python_solution(python_solution, normalized_tests)
+    solution_path = save_python_solution(out["id"], python_solution)
+    meta["python_solution_path"] = solution_path
+    meta.pop("needs_ai_generation", None)
     out["metadata"] = meta
     return out
 
 def main():
+    args = parse_args()
     key = load_key()
     if not key:
         raise SystemExit("GEMINI_API_KEY not set")
@@ -104,21 +207,39 @@ def main():
     path = Path("data/questions/questions.json")
     data = json.loads(path.read_text(encoding="utf-8")) if path.exists() else {"questions": []}
     items = data.get("questions", [])
+    only_ids = set([ident.strip() for ident in args.only]) if args.only else None
+    start_index = args.offset if args.offset else 0
+    limit = args.limit if args.limit is not None else None
     updated = []
-    for item in items:
+    processed = 0
+    enriched_count = 0
+    for index, item in enumerate(items):
         meta = item.get("metadata", {})
         needs = bool(meta.get("needs_ai_generation", False)) or any(
             (not t.get("input") or t.get("input").strip().startswith("#")) for t in item.get("sample_tests", [])
         )
-        if needs:
-            updated.append(enrich_one(model, item))
+        include = True
+        if only_ids is not None and item["id"] not in only_ids:
+            include = False
+        if index < start_index:
+            include = False
+        if limit is not None and processed >= limit:
+            include = False
+        if needs and include:
+            try:
+                enriched = enrich_one(model, item, args.validate)
+                updated.append(enriched)
+                enriched_count += 1
+            except Exception as exc:
+                print(f"Failed to enrich {item['id']}: {exc}")
+                updated.append(item)
+            processed += 1
         else:
             updated.append(item)
 
     out = {"questions": updated}
     path.write_text(json.dumps(out, indent=2, ensure_ascii=False), encoding="utf-8")
-    print(f"Enriched {sum(1 for q in items if q.get('metadata', {}).get('needs_ai_generation'))} questions")
+    print(f"Updated {enriched_count} questions")
 
 if __name__ == "__main__":
     main()
-

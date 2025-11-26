@@ -25,3 +25,8 @@ build-backend = "hatchling.build"
 
 [tool.hatch.build.targets.wheel]
 packages = ["api"]
+
+[tool.uv.workspace]
+members = [
+    "ai-study/llm_from_scratch",
+]

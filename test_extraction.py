@@ -37,13 +37,7 @@ def test_extraction():
             print(f"  File not found: {test_file}")
 
     print(f"\nGenerated {len(questions)} test questions")
-
-    # Save test results
-    if questions:
-        extractor.save_questions(questions)
-        print("Test extraction completed successfully!")
-
-    return questions
+    assert questions, "Extraction produced no questions"
 
 if __name__ == "__main__":
     questions = test_extraction()
