@@ -163,5 +163,7 @@ window.Config = {
     },
 };
 
+// Export what's needed by other modules
 export { API_BASE_URL, ENDPOINTS, TIMEOUTS };
-export default window.Config;
+
+

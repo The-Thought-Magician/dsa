@@ -191,7 +191,41 @@ if (document.readyState === 'loading') {
     observer.observe(document.body, { childList: true, subtree: true });
 }
 
-// Export functions for external use
+// Initialize all keyboard navigation features
+function initKeyboardNavigation() {
+    setupAriaAttributes();
+    setupQuestionCardKeyboardNav();
+    setupFilterKeyboardNav();
+    setupCodeEditorShortcuts();
+    setupSkipLink();
+
+    // Announce page load to screen readers
+    announceToScreenReader('Page loaded');
+}
+
+// Auto-initialize on DOM ready
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initKeyboardNavigation);
+} else {
+    initKeyboardNavigation();
+}
+
+// Re-initialize when DOM changes (for dynamic content)
+const observer = new MutationObserver(() => {
+    setupQuestionCardKeyboardNav();
+    setupFilterKeyboardNav();
+});
+
+// Start observing when DOM is ready
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => {
+        observer.observe(document.body, { childList: true, subtree: true });
+    });
+} else {
+    observer.observe(document.body, { childList: true, subtree: true });
+}
+
+// Make functions available globally
 window.KeyboardNav = {
     setupAriaAttributes,
     setupQuestionCardKeyboardNav,
@@ -201,11 +235,3 @@ window.KeyboardNav = {
     initKeyboardNavigation,
 };
 
-export {
-    setupAriaAttributes,
-    setupQuestionCardKeyboardNav,
-    setupCodeEditorShortcuts,
-    trapFocus,
-    announceToScreenReader,
-    initKeyboardNavigation,
-};

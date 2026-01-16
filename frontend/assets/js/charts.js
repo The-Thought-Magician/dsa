@@ -314,7 +314,3 @@ window.renderCharts = async function() {
     const manager = initializeCharts();
     await manager.renderCharts();
 };
-
-// Export for module usage
-export { ChartsManager, initializeCharts };
-export default chartsManager;

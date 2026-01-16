@@ -1,5 +1,4 @@
 import { showToast } from './toast.js';
-import { DEFAULT_TIMEOUT_MS } from '../config.js';
 
 const ACTIVE_OPERATIONS = new Map();
 const OVERLAY_ID = 'global-loading-overlay';
@@ -10,8 +9,15 @@ const STATE = {
     error: 'error',
 };
 
+// Default timeout - can be overridden by window.Config.TIMEOUTS.DEFAULT
+const DEFAULT_TIMEOUT_MS = 30000;
+
 let overlayElement = null;
 let messageElement = null;
+
+function getTimeout() {
+    return (window.Config && window.Config.TIMEOUTS && window.Config.TIMEOUTS.DEFAULT) || DEFAULT_TIMEOUT_MS;
+}
 
 function ensureOverlay() {
     if (overlayElement) {
@@ -85,14 +91,15 @@ function handleTimeout(token, { timeoutMs }) {
     }, 600);
 }
 
-export function beginLoading(label = 'Loading...', { timeoutMs = DEFAULT_TIMEOUT_MS } = {}) {
+export function beginLoading(label = 'Loading...', { timeoutMs } = {}) {
     ensureOverlay();
     const token = Symbol('loading');
     setOverlayMessage(label);
     setBusyState(true);
 
-    const timer = window.setTimeout(() => handleTimeout(token, { timeoutMs }), timeoutMs);
-    ACTIVE_OPERATIONS.set(token, { timer, label, timeoutMs });
+    const actualTimeout = timeoutMs || getTimeout();
+    const timer = window.setTimeout(() => handleTimeout(token, { timeoutMs: actualTimeout }), actualTimeout);
+    ACTIVE_OPERATIONS.set(token, { timer, label, timeoutMs: actualTimeout });
 
     updateOverlayVisibility();
     return token;
@@ -118,7 +125,7 @@ export function endLoading(token, { errorMessage } = {}) {
     updateOverlayVisibility();
 }
 
-export async function withLoading(task, { label = 'Loading...', timeoutMs = DEFAULT_TIMEOUT_MS, errorMessage } = {}) {
+export async function withLoading(task, { label = 'Loading...', timeoutMs, errorMessage } = {}) {
     const token = beginLoading(label, { timeoutMs });
     try {
         const result = await task();
