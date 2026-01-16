@@ -1,0 +1,121 @@
+name: Test
+
+on:
+  push:
+    branches: ['dev', 'master']
+  pull_request:
+    branches: ['dev', 'master']
+
+jobs:
+  lint-python:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install ruff
+
+      - name: Run ruff
+        run: |
+          ruff check api/ scripts/
+        continue-on-error: false
+
+  test-python:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -e '.[dev]'
+
+      - name: Run tests
+        run: |
+          pytest --cov --cov-report=xml --cov-report=term
+
+      - name: Upload coverage
+        uses: codecov/codecov-action@v4
+        env:
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+        with:
+          files: ./coverage.xml
+          fail_ci_if_error: false
+
+  validate-dataset:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+
+      - name: Validate questions dataset
+        run: |
+          python -c "
+          import json
+          from pathlib import Path
+
+          questions_file = Path('data/questions/questions.json')
+          if not questions_file.exists():
+              print('Questions file not found')
+              exit(1)
+
+          with open(questions_file) as f:
+              data = json.load(f)
+
+          questions = data.get('questions', [])
+          print(f'Found {len(questions)} questions')
+
+          # Check for placeholder tests
+          placeholder_count = 0
+          for q in questions:
+              for test in q.get('sample_tests', []):
+                  if test.get('input', '').strip().startswith('#'):
+                      placeholder_count += 1
+
+          if placeholder_count > 0:
+              print(f'Warning: {placeholder_count} placeholder tests found')
+          else:
+              print('No placeholder tests found')
+          "
+
+  type-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install ruff
+
+      - name: Type check with ruff
+        run: |
+          ruff check --select ANN,ARG,PT --ignore ANN001,ANN002,ANN003,ANN401 --extend-select I api/
+        continue-on-error: true

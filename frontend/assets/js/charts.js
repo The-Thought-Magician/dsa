@@ -1,17 +1,79 @@
+/**
+ * Chart.js integration for A2Z DSA Learning System
+ * Handles all chart rendering with defensive checks
+ */
+
 class ChartsManager {
     constructor() {
         this.charts = {};
+        this.initialized = false;
     }
 
-    renderCharts() {
-        this.renderCoverageChart();
-        this.renderImplementationChart();
+    /**
+     * Wait for window.app to be available with stats data
+     */
+    async waitForAppData(maxWait = 5000) {
+        const startTime = Date.now();
+        while (Date.now() - startTime < maxWait) {
+            if (window.app && window.app.data && window.app.data.stats) {
+                return window.app.data.stats;
+            }
+            await new Promise(resolve => setTimeout(resolve, 100));
+        }
+        return null;
     }
 
-    renderCoverageChart() {
-        const ctx = document.getElementById('coverageChart').getContext('2d');
-        const stats = window.app.data.stats;
+    /**
+     * Initialize charts manager
+     */
+    async init() {
+        if (this.initialized) {
+            return;
+        }
 
+        // Wait for Chart.js to be available
+        if (typeof Chart === 'undefined') {
+            console.warn('Chart.js not loaded yet');
+            return false;
+        }
+
+        this.initialized = true;
+        return true;
+    }
+
+    /**
+     * Render all charts
+     */
+    async renderCharts() {
+        await this.init();
+
+        const stats = await this.waitForAppData();
+        if (!stats) {
+            console.warn('No stats data available for charts');
+            return;
+        }
+
+        this.renderCoverageChart(stats);
+        this.renderImplementationChart(stats);
+    }
+
+    /**
+     * Render coverage doughnut chart
+     */
+    renderCoverageChart(stats) {
+        const canvas = document.getElementById('coverageChart');
+        if (!canvas) {
+            console.warn('coverageChart canvas not found');
+            return;
+        }
+
+        const ctx = canvas.getContext('2d');
+        if (!ctx) {
+            console.warn('Could not get 2d context for coverageChart');
+            return;
+        }
+
+        // Destroy existing chart
         if (this.charts.coverage) {
             this.charts.coverage.destroy();
         }
@@ -20,9 +82,9 @@ class ChartsManager {
             labels: ['Python Solutions', 'C++ Solutions', 'Missing'],
             datasets: [{
                 data: [
-                    stats.python_solutions,
-                    stats.cpp_solutions,
-                    (stats.total_problems * 2) - stats.python_solutions - stats.cpp_solutions
+                    stats.python_solutions || 0,
+                    stats.cpp_solutions || 0,
+                    (stats.total_problems * 2) - (stats.python_solutions || 0) - (stats.cpp_solutions || 0)
                 ],
                 backgroundColor: [
                     '#28a745',
@@ -62,10 +124,23 @@ class ChartsManager {
         });
     }
 
-    renderImplementationChart() {
-        const ctx = document.getElementById('implementationChart').getContext('2d');
-        const stats = window.app.data.stats;
+    /**
+     * Render implementation bar chart
+     */
+    renderImplementationChart(stats) {
+        const canvas = document.getElementById('implementationChart');
+        if (!canvas) {
+            console.warn('implementationChart canvas not found');
+            return;
+        }
 
+        const ctx = canvas.getContext('2d');
+        if (!ctx) {
+            console.warn('Could not get 2d context for implementationChart');
+            return;
+        }
+
+        // Destroy existing chart
         if (this.charts.implementation) {
             this.charts.implementation.destroy();
         }
@@ -75,9 +150,9 @@ class ChartsManager {
             datasets: [{
                 label: 'Problem Mappings',
                 data: [
-                    stats.exact_matches,
-                    stats.approx_matches,
-                    stats.total_problems - stats.exact_matches - stats.approx_matches
+                    stats.exact_matches || 0,
+                    stats.approx_matches || 0,
+                    (stats.total_problems || 0) - (stats.exact_matches || 0) - (stats.approx_matches || 0)
                 ],
                 backgroundColor: [
                     '#28a745',
@@ -101,7 +176,7 @@ class ChartsManager {
                     tooltip: {
                         callbacks: {
                             label: function(context) {
-                                const total = stats.total_problems;
+                                const total = stats.total_problems || 1;
                                 const percentage = ((context.raw / total) * 100).toFixed(1);
                                 return `${context.label}: ${context.raw} (${percentage}%)`;
                             }
@@ -125,23 +200,34 @@ class ChartsManager {
         });
     }
 
+    /**
+     * Render section progress chart
+     */
     renderSectionProgressChart(coverageData) {
-        const ctx = document.getElementById('sectionProgressChart');
-        if (!ctx) return;
+        const canvas = document.getElementById('sectionProgressChart');
+        if (!canvas) {
+            return;
+        }
 
+        const ctx = canvas.getContext('2d');
+        if (!ctx) {
+            return;
+        }
+
+        // Destroy existing chart
         if (this.charts.sectionProgress) {
             this.charts.sectionProgress.destroy();
         }
 
-        const sections = Object.entries(coverageData.coverage_by_section)
+        const sections = Object.entries(coverageData.coverage_by_section || {})
             .sort((a, b) => a[1].step_number - b[1].step_number);
 
-        const sectionNames = sections.map(([name, _]) => {
+        const sectionNames = sections.map(([name]) => {
             return name.length > 20 ? name.substring(0, 20) + '...' : name;
         });
 
-        const problemCounts = sections.map(([_, data]) => data.problem_count);
-        const fileCounts = sections.map(([_, data]) => data.file_count);
+        const problemCounts = sections.map(([, data]) => data.problem_count || 0);
+        const fileCounts = sections.map(([, data]) => data.file_count || 0);
 
         const sectionData = {
             labels: sectionNames,
@@ -188,40 +274,47 @@ class ChartsManager {
         });
     }
 
+    /**
+     * Destroy all charts
+     */
     destroy() {
         Object.values(this.charts).forEach(chart => {
-            if (chart) chart.destroy();
+            if (chart && typeof chart.destroy === 'function') {
+                chart.destroy();
+            }
         });
         this.charts = {};
     }
 }
 
-let chartsManager;
+// Create singleton instance
+let chartsManager = null;
 
-document.addEventListener('DOMContentLoaded', () => {
-    chartsManager = new ChartsManager();
-});
-
-window.renderCharts = () => {
+// Initialize on DOM ready
+function initializeCharts() {
     if (chartsManager) {
-        chartsManager.renderCharts();
+        return chartsManager;
     }
+
+    chartsManager = new ChartsManager();
+    return chartsManager;
+}
+
+// Auto-initialize when DOM is ready
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => {
+        initializeCharts();
+    });
+} else {
+    initializeCharts();
+}
+
+// Global function to render charts (called by app.js)
+window.renderCharts = async function() {
+    const manager = initializeCharts();
+    await manager.renderCharts();
 };
 
-if (typeof App !== 'undefined') {
-    App.prototype.renderCharts = function() {
-        if (chartsManager) {
-            chartsManager.renderCharts();
-        }
-    };
-} else {
-    window.addEventListener('load', () => {
-        if (typeof App !== 'undefined') {
-            App.prototype.renderCharts = function() {
-                if (chartsManager) {
-                    chartsManager.renderCharts();
-                }
-            };
-        }
-    });
-}
+// Export for module usage
+export { ChartsManager, initializeCharts };
+export default chartsManager;

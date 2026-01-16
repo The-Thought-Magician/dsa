@@ -1,0 +1,329 @@
+/* Responsive Design for A2Z DSA Learning System */
+
+/* Mobile-first adjustments */
+
+/* Ensure proper viewport meta tag is in index.html */
+/* <meta name="viewport" content="width=device-width, initial-scale=1.0"> */
+
+/* Mobile-specific styles */
+@media (max-width: 768px) {
+    /* Questions list - card layout */
+    .question-card {
+        padding: 0.75rem;
+        margin-bottom: 0.5rem;
+        border-radius: 0.5rem;
+    }
+
+    .question-card .difficulty-badge {
+        font-size: 0.7rem;
+        padding: 0.2rem 0.4rem;
+    }
+
+    .question-card .question-title {
+        font-size: 0.95rem;
+    }
+
+    /* Stack filters vertically */
+    .filters-container {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .filters-container select,
+    .filters-container input {
+        width: 100%;
+        padding: 0.5rem;
+    }
+
+    /* Filter labels */
+    .filter-group {
+        margin-bottom: 0.5rem;
+    }
+
+    .filter-group label {
+        display: block;
+        margin-bottom: 0.25rem;
+        font-size: 0.875rem;
+        font-weight: 500;
+    }
+
+    /* Dashboard cards */
+    .stats-card {
+        margin-bottom: 1rem;
+        padding: 1rem;
+    }
+
+    .stats-card .stats-value {
+        font-size: 2rem;
+    }
+
+    /* Code editor on mobile */
+    .code-editor-container {
+        flex-direction: column;
+    }
+
+    .code-editor,
+    .output-panel {
+        min-height: 200px;
+        font-size: 14px;
+        border-radius: 0.5rem;
+    }
+
+    .code-editor textarea {
+        font-size: 14px;
+    }
+
+    /* Chat panel */
+    .ai-chat-panel {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 70vh;
+        border-radius: 1rem 1rem 0 0;
+        transform: translateY(100%);
+        transition: transform 0.3s ease;
+        z-index: 1000;
+    }
+
+    .ai-chat-panel.open {
+        transform: translateY(0);
+    }
+
+    /* Chat toggle button */
+    .ai-chat-toggle {
+        position: fixed;
+        bottom: 1rem;
+        right: 1rem;
+        z-index: 999;
+        width: 3.5rem;
+        height: 3.5rem;
+        border-radius: 50%;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    /* Dashboard charts */
+    .chart-container {
+        height: 200px;
+        padding: 0.5rem;
+    }
+
+    /* Navigation */
+    .navbar {
+        padding: 0.5rem 1rem;
+    }
+
+    .navbar-brand {
+        font-size: 1rem;
+    }
+
+    .nav-link {
+        padding: 0.5rem;
+        font-size: 0.875rem;
+    }
+
+    /* Tables on mobile */
+    .table-responsive {
+        border: 0;
+    }
+
+    .table thead {
+        display: none;
+    }
+
+    .table tbody tr {
+        display: block;
+        margin-bottom: 1rem;
+        border: 1px solid #dee2e6;
+        border-radius: 0.5rem;
+    }
+
+    .table tbody td {
+        display: block;
+        text-align: right;
+        padding: 0.5rem;
+        border-bottom: 1px solid #e9ecef;
+    }
+
+    .table tbody td:last-child {
+        border-bottom: 0;
+    }
+
+    .table tbody td::before {
+        content: attr(data-label);
+        float: left;
+        font-weight: 600;
+        text-align: left;
+    }
+
+    /* Buttons on mobile */
+    .btn {
+        min-height: 44px;
+        min-width: 44px;
+        padding: 0.75rem 1rem;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* Form elements */
+    input,
+    select,
+    textarea {
+        font-size: 16px; /* Prevent zoom on iOS */
+    }
+
+    /* Modal on mobile */
+    .modal-dialog {
+        margin: 0.5rem;
+        max-width: calc(100% - 1rem);
+    }
+
+    /* Toast notifications */
+    .toast-container {
+        top: 1rem;
+        right: 1rem;
+        left: 1rem;
+        max-width: none;
+    }
+
+    /* Question detail */
+    .question-detail {
+        padding: 1rem 0.5rem;
+    }
+
+    .question-statement {
+        font-size: 0.95rem;
+    }
+
+    /* Study plan */
+    .study-plan-day {
+        padding: 0.75rem;
+        margin-bottom: 0.75rem;
+    }
+
+    /* Loading overlay */
+    .loading-overlay {
+        padding: 2rem 1rem;
+    }
+}
+
+/* Tablet-specific styles */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .question-card {
+        padding: 1rem;
+    }
+
+    .chart-container {
+        height: 250px;
+    }
+
+    /* Two column layout for stats cards */
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Desktop enhancements */
+@media (min-width: 1025px) {
+    /* Hover effects for question cards */
+    .question-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Smooth transitions */
+    .question-card,
+    .btn,
+    .nav-link {
+        transition: all 0.2s ease;
+    }
+}
+
+/* Touch targets - minimum size for accessibility */
+.btn,
+.question-card,
+.nav-link,
+.filter-group select,
+.filter-group input {
+    min-height: 44px;
+    min-width: 44px;
+}
+
+@media (pointer: coarse) {
+    /* Touch devices */
+    .btn:active {
+        transform: scale(0.98);
+    }
+
+    .question-card:active {
+        transform: scale(0.99);
+    }
+}
+
+/* Landscape mobile */
+@media (max-width: 768px) and (orientation: landscape) {
+    .ai-chat-panel {
+        height: 90vh;
+    }
+
+    .code-editor-container {
+        flex-direction: row;
+    }
+
+    .code-editor,
+    .output-panel {
+        height: 40vh;
+    }
+}
+
+/* Small mobile phones */
+@media (max-width: 375px) {
+    .navbar-brand {
+        font-size: 0.9rem;
+    }
+
+    .stats-value {
+        font-size: 1.5rem;
+    }
+
+    .question-title {
+        font-size: 0.9rem;
+    }
+
+    .btn {
+        padding: 0.5rem 0.75rem;
+        font-size: 0.875rem;
+    }
+}
+
+/* Large phones and phablets */
+@media (min-width: 376px) and (max-width: 480px) {
+    .stats-card {
+        padding: 1.25rem;
+    }
+
+    .question-card {
+        padding: 1rem;
+    }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    .question-card {
+        border: 2px solid currentColor;
+    }
+
+    .btn {
+        border: 2px solid currentColor;
+    }
+}

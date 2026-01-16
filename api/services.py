@@ -1,5 +1,7 @@
 import json
 import os
+import re
+import resource
 import subprocess
 import sys
 import tempfile
@@ -27,6 +29,81 @@ from .models import (
     AIChatRequest,
     AIChatResponse,
 )
+
+
+# -----------------------------
+# Code Validation & Security
+# -----------------------------
+
+DANGEROUS_PATTERNS = [
+    (r"\bimport\s+", "Imports are not allowed"),
+    (r"\b__import__\s*\(", "Dynamic imports are not allowed"),
+    (r"\beval\s*\(", "eval() is not allowed"),
+    (r"\bexec\s*\(", "exec() is not allowed"),
+    (r"\bopen\s*\(", "File operations are not allowed"),
+    (r"\bsubprocess\s*\.", "Subprocess calls are not allowed"),
+    (r"\bos\s*\.", "OS module is not allowed"),
+    (r"\bsys\s*\.", "Sys module is not allowed"),
+    (r"\bpathlib\s*\.", "Pathlib is not allowed"),
+    (r"\.\./", "Path traversal detected"),
+    (r"\bhttp[s]?://\S+", "Network calls are not allowed"),
+    (r"\burllib\s*\.", "Network operations are not allowed"),
+    (r"\brequests\s*\.", "Network operations are not allowed"),
+    (r"\bsocket\s*\.", "Socket operations are not allowed"),
+]
+
+
+def validate_code_for_execution(code: str) -> tuple[bool, str]:
+    """Validate that code doesn't contain dangerous patterns.
+
+    Returns:
+        (is_valid, error_message)
+    """
+    code_lower = code.lower()
+
+    for pattern, message in DANGEROUS_PATTERNS:
+        if re.search(pattern, code_lower):
+            return False, f"{message}. Your code contains: '{pattern}'"
+
+    # Check for excessively long code
+    if len(code) > 10_000:
+        return False, "Code exceeds maximum length of 10,000 characters"
+
+    # Check for too many lines
+    if len(code.split("\n")) > 200:
+        return False, "Code exceeds maximum line count of 200"
+
+    # Check for suspicious function names that might bypass checks
+    suspicious = ["compile", "globals", "locals", "vars", "getattr", "setattr", "delattr"]
+    code_words = re.findall(r"\b\w+\b", code_lower)
+    for word in suspicious:
+        if word in code_words:
+            return False, f"Use of '{word}' is not allowed for security reasons"
+
+    return True, ""
+
+
+def sanitize_code_output(output: str) -> str:
+    """Sanitize code output to prevent information leakage."""
+    if not output:
+        return output
+
+    # Remove potential file paths
+    lines = []
+    for line in output.split("\n"):
+        # Remove lines that look like file paths
+        if re.match(r"^(\/|~|[A-Za-z]:)", line.strip()):
+            continue
+        # Remove lines with error stack traces (keep first line)
+        if "Traceback (most recent call last):" in line:
+            lines.append("Traceback (most recent call last):")
+            continue
+        if line.strip().startswith("File ") and "line " in line:
+            continue
+        lines.append(line)
+
+    return "\n".join(lines)
+
 
 class MissingAIKeyError(RuntimeError):
     """Raised when no Gemini API key can be resolved."""
@@ -350,6 +427,10 @@ class DataService:
         )
 
     def _execute_python(self, code: str, stdin: str) -> Tuple[str, str, float, int]:
+        """Execute Python code with resource limits and sandboxing.
+
+        Sets resource limits for memory and CPU time to prevent abuse.
+        """
         self.data_dir.mkdir(parents=True, exist_ok=True)
         temp_path: Optional[Path] = None
         with tempfile.NamedTemporaryFile(mode="w", suffix=".py", delete=False, encoding="utf-8") as tmp:
@@ -359,18 +440,48 @@ class DataService:
         if temp_path is None:
             raise RuntimeError("Could not create temporary execution file")
 
+        def set_resource_limits():
+            """Set resource limits for the child process."""
+            # Limit CPU time (5 seconds)
+            resource.setrlimit(resource.RLIMIT_CPU, (5, 5))
+
+            # Limit memory (128 MB) - only works on Unix-like systems
+            try:
+                resource.setrlimit(resource.RLIMIT_AS, (128 * 1024 * 1024, 128 * 1024 * 1024))
+            except (ValueError, OSError):
+                # RLIMIT_AS not available on all systems
+                pass
+
+            # Limit number of processes
+            try:
+                resource.setrlimit(resource.RLIMIT_NPROC, (10, 10))
+            except (ValueError, OSError):
+                pass
+
         try:
             started = time.perf_counter()
+
+            # Pre-exec function to set resource limits
             completed = subprocess.run(
-                [sys.executable, str(temp_path)],
+                [sys.executable, "-u", str(temp_path)],
                 input=stdin,
                 text=True,
                 capture_output=True,
                 timeout=5,
-                cwd="."
+                cwd=".",
+                preexec_fn=set_resource_limits if sys.platform != "win32" else None,
             )
             runtime_ms = (time.perf_counter() - started) * 1000
-            return completed.stdout, completed.stderr, runtime_ms, completed.returncode
+
+            # Sanitize outputs to prevent information leakage
+            stdout = sanitize_code_output(completed.stdout)
+            stderr = sanitize_code_output(completed.stderr)
+
+            return stdout, stderr, runtime_ms, completed.returncode
+        except subprocess.TimeoutExpired:
+            raise
+        except MemoryError:
+            return "", "MemoryError: Code exceeded memory limit", 5000.0, 1
         finally:
             try:
                 temp_path.unlink(missing_ok=True)
@@ -382,6 +493,11 @@ class DataService:
             raise ValueError("Only Python execution is supported at the moment")
         if not request.code.strip():
             raise ValueError("Submission code cannot be empty")
+
+        # Validate code for security
+        is_valid, error_message = validate_code_for_execution(request.code)
+        if not is_valid:
+            raise ValueError(error_message)
 
         raw = self._get_question_payload(question_id)
         progress = self._load_question_progress()
