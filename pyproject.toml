@@ -2,7 +2,6 @@
 name = "a2z-dsa-learning-system"
 version = "1.0.0"
 description = "Comprehensive Python-first learning system for Striver's A2Z DSA course with web interface"
-readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
     "fastapi>=0.116.0",
