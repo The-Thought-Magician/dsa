@@ -1,8 +1,10 @@
 {
   "statuses": {
-    "implement-min-heap": "attempted"
+    "implement-min-heap": "attempted",
+    "check-if-array-is-heap": "unsolved"
   },
   "solution_views": {
-    "implement-min-heap": "2025-09-17T18:13:52Z"
+    "implement-min-heap": "2025-09-17T18:13:52Z",
+    "check-if-array-is-heap": "2026-01-16T11:13:19Z"
   }
 }
