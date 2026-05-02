@@ -1,0 +1,10 @@
+{
+  "name": "project",
+  "version": "0.1.0",
+  "description": "Project setup",
+  "scripts": {
+    "test": "jest",
+    "dev": "node index.js",
+    "lint": "eslint ."
+  }
+}
